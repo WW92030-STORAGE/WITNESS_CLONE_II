@@ -17,7 +17,7 @@
 # FEATURES
 
 - Polynomino region checker - supports fixed and arbitrary rotations AND ALSO subtractive regions!
-- Hexagon dots + colored blobs + triangles + stars + (TODO) cancellations
+- Hexagon dots + colored blobs + triangles + stars + cancellations
 - Verification of a given path - Checks if a path is solved.
 <!-- 
 - Game interface - Wrapper class for grids that can process inputs. (You will have to provide the inputs yourself.)

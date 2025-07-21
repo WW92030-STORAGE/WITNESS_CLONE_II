@@ -232,9 +232,24 @@ class BlockGroup : public ColorEntity {
         for (int i = start; i < n; i++) totalremtiles += small[i].points.size();
         
         // The first check checks if the total number of remaining placeable tiles is enough. If not we return false
-        // This only works if all remaining tiles have the same sign
-        if (totalremtiles < current.size()) {
-            return false;
+        // This only works if all remaining tiles have the same sign, all tiles in the sum have the same sign, and those two signs are the same.
+        bool rp = true;
+        bool rn = true;
+        bool sp = true;
+        bool sn = true;
+        for (auto i : current) {
+            if (i.second > 0) sn = false;
+            if (i.second < 0) sp = false;
+        }
+        for (int i = start; i < n; i++) {
+            if (small[i].value > 0) rn = false;
+            if (small[i].value < 0) rp = false;
+        }
+
+        if ((rn && sn) || (rp && sp)) {
+            if (totalremtiles < current.size()) {
+                return false;
+            }
         }
 
         return true;

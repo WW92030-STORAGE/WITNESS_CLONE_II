@@ -103,7 +103,7 @@ void bggrid2() {
     grid.set(0, 0, new Endpoint(true));
     grid.set(8, 8, new Endpoint(false));
     grid.set(1, 1, new BlockGroup(BGS::J));
-    grid.set(7, 1, new BlockGroup(BGS::O));
+    grid.set(7, 1, new BlockGroup(BGS::L));
 
     BlockGroup seven(BGS::L);
     seven.rotate(1);
@@ -352,7 +352,7 @@ int main() {
 
 
 
-    canceldot();
+    bggrid3();
 
 
 
