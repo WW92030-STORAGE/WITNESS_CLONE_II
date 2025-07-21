@@ -325,6 +325,22 @@ void cancelcolors2() {
     std::cout << "VERDICT: " << GridUtils::Validate(&grid) << "\n";
 }
 
+void canceldot() {
+
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(0, 8, new PathDot());
+    grid.set(7, 1, new Cancel());
+
+    const bool FAIL = false;
+
+    grid.drawLine(0, 0, 8, 0);
+    grid.drawLine(8, 0, 8, 8);
+    std::cout << grid.to_string() << "\n";
+    std::cout << "VERDICT: " << GridUtils::Validate(&grid) << "\n";
+}
+
 
 int main() {
     srand(time(0));
@@ -336,7 +352,7 @@ int main() {
 
 
 
-    bggrid3();
+    canceldot();
 
 
 

@@ -19,9 +19,11 @@
 - Polynomino region checker - supports fixed and arbitrary rotations AND ALSO subtractive regions!
 - Hexagon dots + colored blobs + triangles + stars + (TODO) cancellations
 - Verification of a given path - Checks if a path is solved.
+<!-- 
 - Game interface - Wrapper class for grids that can process inputs. (You will have to provide the inputs yourself.)
 - Grid solver - Automatically solves puzzle grids. Be warned that the current algorithm takes a long time to solve boards (grid cells) larger than 4x4.
 - Random puzzle generator - Choose among certain presets.
+-->
 
 
 # DEFINITIONS
@@ -39,7 +41,7 @@
 - 【COLORED STARS】- The Region containing the star must have exactly one other object of the star's color. Other colors are disregarded.
 - 【POLYOMINOS】 - Arrange the constituent Polyominoes such that all of their tiles lie within the bounds of the grid. Additive tiles add +1 to the value of a grid tile, subtractive tiles add -1. Tiles can lie outside the region. The region's shape must satisfy the constraint that there exists an arrangement of the Polyominoes such that the total sum of all tiles outside the region is zero, and the total sum of all tiles inside the region is the same across all such tiles, and that this sum is either zero or one.
 - 【TRIANGLES】- The number of triangles denotes the number of sides of the Cell the symbol lies in that must be traversed by the Path.
-- 【CANCELLATION】- A Region containing N cancellations must contain exactly N symbols that would render the solution invalid otherwise. Cancellations cannot nullify each other. Dots are considered symbols if they lie inside the same Region as a cancellation.
+- 【CANCELLATION】- A Region containing N cancellations must contain exactly N symbols that would render the solution invalid otherwise. Cancellations CAN nullify each other. Dots are considered symbols if they lie inside the same Region as a cancellation.
 
 # INTERNAL REPRESENTATION
 
