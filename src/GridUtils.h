@@ -54,7 +54,7 @@ namespace GridUtils {
         return res;
     }
 
-    // Get the active symbols of a color
+    // Get the symbols of a color
     Utils::pointSet getSymbolsColor(Grid* g, EntityColor::Color c) {
         Utils::pointSet res;
         for (int r = 0; r < g->R; r++) {

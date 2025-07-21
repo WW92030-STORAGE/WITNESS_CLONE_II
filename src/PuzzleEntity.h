@@ -111,11 +111,6 @@ class PathDot : public PuzzleEntity {
         init();
     }
 
-    PathDot(bool s) : PuzzleEntity() {
-        isPath = true;
-        init();
-    }
-
     PathDot(const PathDot& other) : PuzzleEntity(other) {
         init();
     }

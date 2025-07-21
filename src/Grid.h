@@ -208,7 +208,7 @@ class Grid {
         return res;
     }
 
-    // A valid path in this grid has two endpoints with only one neighbor, and 
+    // A valid path in this grid has two endpoints with only one neighbor, all others have two degree, and the graph is connected.
     virtual bool validatePath() {
         auto line = getLine();
         Utils::pointSet activeStarts, activeEnds;
