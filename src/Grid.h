@@ -169,6 +169,10 @@ class Grid {
         board[x][y]->hasLine = z;
     }
 
+    void setLine(std::pair<int, int> p, bool z) {
+        setLine(p.first, p.second, z);
+    }
+
     // TODO something about border cells that are considered non-cells, allowing the user to shape grids within the bounding box.
 
     // Draw a line. Does not do anything if the boundaries are not a straight line

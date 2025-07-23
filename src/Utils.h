@@ -10,7 +10,7 @@
 
 namespace Utils {
 
-typedef std::pair<int64_t, int64_t> point; // Also can be an interval
+typedef std::pair<int, int> point; // Also can be an interval
 typedef std::set<point> pointSet;
 typedef std::queue<point> pointQueue;
 typedef std::vector<point> pointVec;
@@ -33,9 +33,19 @@ const AABB MAXBB = {MINPT, MAXPT};
     
     */
 
+    std::string disp(Utils::point s) {
+        return "(" + std::to_string(s.first) + ", " + std::to_string(s.second) + ")";
+    }
+
     std::string disp(Utils::pointSet s) {
         std::string res = "[";
-        for (auto i : s) res = res + "(" + std::to_string(i.first) + ", " + std::to_string(i.second) + ")";
+        for (auto i : s) res = res + disp(i);
+        return res + "]";
+    }
+
+    std::string disp(Utils::pointVec s) {
+        std::string res = "[";
+        for (auto i : s) res = res + disp(i);
         return res + "]";
     }
 

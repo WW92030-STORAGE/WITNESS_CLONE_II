@@ -8,5 +8,6 @@
 #include "Utils.h"
 #include "GridUtils.h"
 #include "BlockGroup.h"
+#include "Solver.h"
 
 #endif

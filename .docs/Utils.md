@@ -14,7 +14,7 @@ Utility typedefs, classes, and functions.
 
 ## Typedefs
 
-- `point: std::pair<int64_t, int64_t>` - Ordered pair of integers
+- `point: std::pair<int, int>` - Ordered pair of integers
 - `pointSet: std::set<point>`
 - `pointQueue: std::queue<point>`
 - `pointVec: std::vector<point>`
@@ -22,7 +22,9 @@ Utility typedefs, classes, and functions.
 
 ## Functions
 
+- `std::string disp(Utils::point s)`
 - `std::string disp(Utils::pointSet s)`
+- `std::string disp(Utils::pointVec s)`
 - `bool contains(Utils::pointSet s, Utils::point p)` - Does a pointSet contain a point?
 - `template <typename T> bool contains(std::set<T> s, T p)` - Does a set contain a certain key?
 - `bool contains(AABB ab, Utils::point point)` - Is a point inside an AABB?
