@@ -130,6 +130,12 @@ class PathDot : public PuzzleEntity {
         init();
     }
 
+    PathDot(uint8_t res) : PuzzleEntity() {
+        isPath = true;
+        restriction = res;
+        init();
+    }
+
     PathDot(const PathDot& other) : PuzzleEntity(other) {
         restriction = other.restriction;
         init();

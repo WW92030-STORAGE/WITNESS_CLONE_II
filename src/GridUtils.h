@@ -303,7 +303,14 @@ namespace GridUtils {
         // Check dots
         for (auto i : getActiveSymbols<PathDot>(grid)) {
             PuzzleEntity* p = grid->get(i);
+            if (!instanceof<PathDot>(p)) continue;
             if (p && !p->hasLine) violations.insert(i);
+            PathDot* pd = dynamic_cast<PathDot*>(p);
+            uint64_t restriction = pd->restriction;
+            if (restriction == 0) continue; // If restriction = 0 continue else check bits
+            // std::cout << restriction << " " << (int)(p->hasLine) << "\n";
+            if (restriction & (1<<(p->hasLine - 1))) continue;
+            violations.insert(i);
         }
 
         // Check triangles

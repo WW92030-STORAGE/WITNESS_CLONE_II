@@ -332,6 +332,37 @@ void horizontal1() {
     std::cout << grid.to_string() << "\n";
 }
 
+void symdot() {
+    HSymmetryGrid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(8, 1, new PathDot());
+    grid.set(2, 6, new PathDot());
+    grid.set(6, 7, new PathDot(2));
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve(1);
+    if (s.solutions.size()) {
+        std::cout << Utils::disp(s.solutions[0]) << "\n";
+        s.apply(0);
+    }
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void badpaths() {
+    RotationalGrid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.drawLine(0, 0, 8, 0);
+    grid.drawLine(0, 8, 8, 8);
+    grid.drawLine(2, 2, 4, 2);
+
+    std::cout << GridUtils::Validate(&grid) << "\n";
+}
+
 int main() {
     srand(42069);
 
@@ -339,7 +370,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    horizontal1();
+    symdot();
 
 
 
