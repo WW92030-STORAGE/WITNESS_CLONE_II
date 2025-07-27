@@ -87,4 +87,5 @@ Utility things outside `namespace Utils`
 - `Utils::pointSet neighbors(std::pair<int, int> p)` - Get the neighbors of a point in the cardinal directions
 - `template <typename AGAINST, typename TEST> bool instanceof(const TEST* test)` - Is the `TEST test` an instance of `AGAINST`? (Equivalent to `test instanceof AGAINST` in Java).
 - `template <typename T> std::set<T> intersection(const std::set<T>& a, const std::set<T>& b)` - Intersection of two sets
+- `Utils::pointSet intersection(const Utils::pointSet& a, const Utils::pointSet& b)` - Intersection of two sets
 - `int clamp(int x, int L, int H)` - Returns the clamped value for `x` between `L` and `H`.

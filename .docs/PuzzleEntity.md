@@ -47,7 +47,8 @@ This is what comprises a grid. All points in a grid, including the actual grid c
 ## Fields
 
 - `color: EntityColor::Color = EntityColor::NIL` - Color of the object
-- `isPath, isLine, isBlocker: bool = {false, false, false}` - Can we draw a path, does the cell have a path already drawn, does the cell block floodfills?
+- `isPath, isBlocker: bool = {false, false}` - Can we draw a path, does the cell block floodfills?
+- `hasLine: uint8_t = 0` - Does the cell have a path already drawn? (That's the boolean value -- the integer value is the index of the line)
 - `type: std::string = "PuzzleEntity"` - The class name as a string
 - `disp: std::string = "OBJECT"` - A six letter symbol representing the object. This can change based on internal properties of the object but must be consistent.
 - `isActive" bool = true` - Is the symbol active in the grid? (Used for things like cancels)
@@ -60,6 +61,8 @@ This is what comprises a grid. All points in a grid, including the actual grid c
 
 - `void init()` - This should be called at the END of each constructor
 - `PuzzleEntity clear()` - Returns an empty PuzzleEntity
+- `std::vector<uint8_t> getregs()` - Gets `isPath, hasLine, isBlocker`
+- `void setregs(std::vector<uint8_t> v)` - Sets the registers in that order
 
 ---
 
@@ -115,7 +118,7 @@ Path dots
 
 ## Fields
 
-- `isStart: bool = true` - Is the point a starting point else an ending point?
+- `restriction: int8_t = 0` - Restrictions for specific lines in symmetry puzzles
 
 ## Constructors
 

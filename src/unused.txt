@@ -1,0 +1,37 @@
+            // Experimental - actually yields worse results than without it.
+            const bool PRUNE2 = false;
+
+            if (PRUNE2 && !(src.first & 1) && !(src.second & 1)) {
+                bool triggered = false;
+                for (int dd = 0; dd < 4; dd++) {
+                    bool blocked[4] = {0, 0, 0, 0};
+                    std::pair<int, int> card[4];
+                    for (int i = 0; i < 4; i++) {
+                        card[i] = {src.first + 2 * Utils::dx[(d + dd + i) & 3], src.second + 2 * Utils::dy[(d + dd + i) & 3]};
+                        blocked[i] = !grid->isPathable(card[i]);
+                    }
+
+                    if (blocked[0] && !blocked[1] && !blocked[3]) {
+                        std::vector<bool> regs;
+                        Utils::point next = {src.first + Utils::dx[(d + dd) & 3], src.second + Utils::dy[(d + dd) & 3]};
+                        if (grid->inBounds(next)) {
+                            regs = (grid->get(next))->getregs();
+                            (grid->get(next))->setregs({1, 1, 1});
+                        }
+
+                        auto FF1 = GridUtils::floodfill(grid, card[1]);
+                        auto FF3 = GridUtils::floodfill(grid, card[3]);
+                        if (grid->inBounds(next)) (grid->get(next))->setregs(regs);
+                        if (intersection<Utils::point>(FF1, FF3).size() > 0) {
+                            continue;
+                        } else {
+                            if (GridUtils::validateRegionNoRecur(grid, FF1).size() && GridUtils::validateRegionNoRecur(grid, FF3).size()) {
+                                triggered = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (triggered) continue;
+            }

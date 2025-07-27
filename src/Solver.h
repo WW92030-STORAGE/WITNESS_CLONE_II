@@ -11,8 +11,6 @@
 #include <vector>
 #include <map>
 
-#include <iostream>
-
 /*
 
 Automatic solver for the puzzles. This should never be a place to long term store grids.
@@ -25,6 +23,10 @@ class Solver {
     int numEnds = 1;
     std::map<Utils::point, Utils::point> vis; // Each point stores its parent. The parent of the starting point is itself.
     std::vector<Utils::pointVec> solutions;
+
+    ~Solver() {
+
+    }
 
     Solver() {
     }
@@ -54,6 +56,7 @@ class Solver {
 
                 grid->setLine(src, false);
 
+                // If there's only one endpoint (which is true for most puzzles people make) there is no reason to skip over it.
                 if (numEnds == 1) return; // Simple optimization for if you covered all endpoints
             }
 
@@ -62,18 +65,34 @@ class Solver {
 
         // Depth first search
 
+
+
         vis.insert({src, prev});
         grid->setLine(src, true);
 
-        int offset = rand() % 4;
+        int offset = rand() & 3;
 
         for (int dd = 0; dd < 4; dd++) {
-            int d = (dd + offset) % 4;
+            int d = (dd + offset) & 3;
             Utils::point next = {src.first + Utils::dx[d], src.second + Utils::dy[d]};
+            Utils::point next2 = {src.first + Utils::dx[d] * 2, src.second + Utils::dy[d] * 2};
 
             if (!grid->inBounds(next)) continue;
             if (!(grid->get(next)->isPath)) continue;
             if (vis.find(next) != vis.end()) continue;
+            if ((grid->get(next)->hasLine)) continue;
+
+            const bool PRUNE1 = true;
+
+            // don't back into any dead ends
+            if (PRUNE1 && !instanceof<Endpoint, PuzzleEntity>(grid->get(next))) {
+                if (grid->inBounds(next2)) {
+                    auto p = grid->get(next2);
+                    if (p->hasLine) continue;
+                    if (!p->isPath) continue;
+                }
+            }
+            
             path(next, src, numsol);
             if (solutions.size() >= numsol) break;
         }
@@ -85,9 +104,12 @@ class Solver {
     void solve(int numsol = 1) {
         solutions.clear();
         numEnds = 0;
-        for (auto i : GridUtils::getSymbols<Endpoint>(grid)) {
+        auto endsnstarts = GridUtils::getSymbols<Endpoint>(grid);
+        for (auto i : endsnstarts) {
             auto p = grid->get(i);
-            if (!instanceof<Endpoint, PuzzleEntity>(p)) continue;
+            if (!instanceof<Endpoint, PuzzleEntity>(p)) {
+                continue;
+            }
             Endpoint* pp = dynamic_cast<Endpoint*>(p);
             if (!pp->isStart) {
                 numEnds++;
@@ -97,8 +119,16 @@ class Solver {
             vis.clear();
             vis.insert({i, i});
             path(i, i, numsol);
-            if (solutions.size() >= numsol) break;
+            if (solutions.size() >= numsol) {
+                break;
+            }
         }
+    }
+
+    void apply(int x) {
+        if (x < 0 || x >= solutions.size()) return;
+
+        grid->drawPath(solutions[x]);
     }
 };
 

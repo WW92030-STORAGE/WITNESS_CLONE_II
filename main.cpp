@@ -255,16 +255,82 @@ void canceldot2() {
 void solvertest() {
     Solver solver;
 
-    Grid g = simpletriangle();
+    Grid g = canceldotblob();
     cout << g.to_string() << "\n";
     solver.grid = &g;
 
     solver.solve(INT_MAX);
 
-    std::cout << Utils::disp(solver.solutions[0]) << "\n";
+    if (solver.solutions.size() > 0) std::cout << Utils::disp(solver.solutions[0]) << "\n";
+    else std::cout << "NO SOLUTIONS :(\n";
     std::cout << solver.solutions.size() << " SOLUTIONS FOUND\n";
+
+    solver.apply(0);
+    std::cout << g.to_string() << "\n";
 }
 
+void rotation1() {
+    RotationalGrid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(3, 1, new Star(EntityColor::RGB_RED));
+    grid.set(7, 1, new Star(EntityColor::RGB_RED));
+
+    grid.set(1, 7, new Star(EntityColor::RGB_RED));
+    grid.set(5, 7, new Star(EntityColor::RGB_RED));
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve(1);
+    if (s.solutions.size()) {
+        std::cout << Utils::disp(s.solutions[0]) << "\n";
+        s.apply(0);
+    }
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void vertical1() {
+    VSymmetryGrid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(4, 1, new PathDot());
+    grid.set(8, 1, new PathDot());
+    grid.set(2, 6, new PathDot());
+    grid.set(6, 7, new PathDot());
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve(1);
+    if (s.solutions.size()) {
+        std::cout << Utils::disp(s.solutions[0]) << "\n";
+        s.apply(0);
+    }
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void horizontal1() {
+    HSymmetryGrid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(8, 1, new PathDot());
+    grid.set(2, 6, new PathDot());
+    grid.set(6, 7, new PathDot());
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve(1);
+    if (s.solutions.size()) {
+        std::cout << Utils::disp(s.solutions[0]) << "\n";
+        s.apply(0);
+    }
+
+    std::cout << grid.to_string() << "\n";
+}
 
 int main() {
     srand(42069);
@@ -273,15 +339,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-
-
-
-    solvertest();
-
-
-
-
-
+    horizontal1();
 
 
 

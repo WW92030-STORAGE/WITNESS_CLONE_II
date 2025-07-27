@@ -9,5 +9,11 @@
 #include "GridUtils.h"
 #include "BlockGroup.h"
 #include "Solver.h"
+#include "Randgen.h"
+#include "RandGrid.h"
+
+// Grid types
+
+#include "SymmetryGrid.h"
 
 #endif

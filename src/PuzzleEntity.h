@@ -4,6 +4,7 @@
 #include <climits>
 #include <cstdint>
 #include <string>
+#include <vector>
 
 namespace EntityColor {
 
@@ -38,7 +39,7 @@ class PuzzleEntity {
     public:
     EntityColor::Color color = EntityColor::NIL;
     bool isPath = false; // Is Pathable (false if cut or is symbol cell)
-    bool hasLine = false; // Is there a path here
+    uint8_t hasLine = false; // Is there a path here
     bool isBlocker = false; 
     // Blocks BFS searches and the placement of certain objects into the position -- acts like a hole in the grid. Ideally if this option is set then isPath should also be false.
     std::string type = "PuzzleEntity"; // Naming convention: The "type" of an object is its class name.
@@ -68,6 +69,22 @@ class PuzzleEntity {
     }
 
     virtual ~PuzzleEntity() {
+    }
+
+    std::vector<uint8_t> getregs() {
+        return std::vector<uint8_t>({isPath, hasLine, isBlocker});
+    }
+
+    void setregs(std::vector<uint8_t> v) {
+        if (v.size()) isPath = v[0];
+        if (v.size() > 1) hasLine = v[1];
+        if (v.size() > 2) isBlocker = v[2];
+    }
+
+    void setregs(uint8_t v[3]) {
+        isPath = v[0];
+        hasLine = v[1];
+        isBlocker = v[2];
     }
 };
 
@@ -100,10 +117,12 @@ class Endpoint : public PuzzleEntity {
 
 class PathDot : public PuzzleEntity {
     public:
+    uint8_t restriction = 0; // If restriction != 0 then it only passes if a line of index k passes over it, such that the (1<<(k - 1)) bit is set.
 
     void init() {
         type = "PathDot";
-        disp = "PATHDT";
+        disp = "PDOT" + std::to_string(restriction);
+        while (disp.size() < 6) disp = disp + "_";
     }
 
     PathDot() : PuzzleEntity() {
@@ -112,6 +131,7 @@ class PathDot : public PuzzleEntity {
     }
 
     PathDot(const PathDot& other) : PuzzleEntity(other) {
+        restriction = other.restriction;
         init();
     }
 };

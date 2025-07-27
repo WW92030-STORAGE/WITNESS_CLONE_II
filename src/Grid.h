@@ -79,6 +79,20 @@ class Grid {
         return inBounds(p.first, p.second);
     }
 
+    // Can I draw a line here where there was not?
+    bool isPathable(int x, int y) {
+        if (!inBounds(x, y)) return false;
+        auto p = board[x][y];
+        if (!p->isPath) return false;
+        if (p->isBlocker) return false;
+        if (p->hasLine) return false;
+        return true;
+    }
+
+    bool isPathable(std::pair<int, int> p) {
+        return isPathable(p.first, p.second);
+    }
+
     PuzzleEntity* get(int x, int y) {
         if (!inBounds(x, y)) return nullptr;
         return board[x][y];
@@ -97,7 +111,8 @@ class Grid {
         return getColor(p.first, p.second);
     }
 
-    Utils::pointSet neighbors(std::pair<int, int> p) {
+    // Get the neighbors of a point. This might include non adjacent points.
+    virtual Utils::pointSet neighbors(std::pair<int, int> p) {
         Utils::pointSet res;
 
         for (int d = 0; d < 4; d++) {
@@ -127,7 +142,10 @@ class Grid {
         PuzzleEntity* pe = board[r][c]; // remember that `pe` is simply a number which is the address of the original object in memory
         board[r][c] = p; // place the address of our new object into the board
         delete pe; // delete the original object
+    }
 
+    void set(std::pair<int, int> p, PuzzleEntity* pe) {
+        set(p.first, p.second, pe);
     }
 
     // Remove all path blocks (except endpoints) and clear all floodfill blockers. This will also clear any entities on the paths themselves
@@ -164,36 +182,47 @@ class Grid {
 
     // Set the hasLine of a cell
 
-    void setLine(int x, int y, bool z) {
+    virtual void setLine(int x, int y, uint8_t z) {
         if (x < 0 || y < 0 || x >= R || y >= C) return;
         board[x][y]->hasLine = z;
     }
 
-    void setLine(std::pair<int, int> p, bool z) {
+    virtual void setLine(std::pair<int, int> p, uint8_t z) {
         setLine(p.first, p.second, z);
     }
 
-    // TODO something about border cells that are considered non-cells, allowing the user to shape grids within the bounding box.
+    void setBlocker(int x, int y, bool z) {
+        if (x < 0 || y < 0 || x >= R || y >= C) return;
+        board[x][y]->isBlocker = z;
+    }
+
+    void setBlocker(std::pair<int, int> p, bool z) {
+        setBlocker(p.first, p.second, z);
+    }
 
     // Draw a line. Does not do anything if the boundaries are not a straight line
 
-    void drawLine(int x1, int y1, int x2, int y2) {
+    virtual void drawLine(int x1, int y1, int x2, int y2, uint8_t index = 1) {
         if (x1 != x2 && y1 != y2) return;
         if (x1 > x2) std::swap(x1, x2);
         if (y1 > y2) std::swap(y1, y2);
         for (int i = x1; i <= x2; i++) {
-            for (int j = y1; j <= y2; j++) setLine(i, j, true);
+            for (int j = y1; j <= y2; j++) setLine(i, j, index);
         }
     }
 
+    virtual void drawLine(std::pair<int, int> a, std::pair<int, int> b, uint8_t index = 1) {
+        drawLine(a.first, a.second, b.first, b.second, index);
+    }
+
+    // Draw a path between points
+    virtual void drawPath(std::vector<std::pair<int, int>> path, uint8_t index = 1) {
+        for (int i = 0; i < path.size() - 1; i++) drawLine(path[i], path[i + 1], index);
+    }
+
     // Erases a line. Does not do checks on whether the result is continuous.
-    void clearLine(int x1, int y1, int x2, int y2) {
-        if (x1 != x2 && y1 != y2) return;
-        if (x1 > x2) std::swap(x1, x2);
-        if (y1 > y2) std::swap(y1, y2);
-        for (int i = x1; i <= x2; i++) {
-            for (int j = y1; j <= y2; j++) setLine(i, j, false);
-        }
+    virtual void clearLine(int x1, int y1, int x2, int y2) {
+        drawLine(x1, y1, x2, y2, 0);
     }
 
     /*
@@ -201,20 +230,48 @@ class Grid {
     VALIDATION UTILS (Not a complete validation)
     
     */
+
+    // Get a single line, the line containing a specified point
     
-    virtual Utils::pointSet getLine() {
+    Utils::pointSet getSingleLine(Utils::point p) {
         Utils::pointSet res; 
-        for (int r = 0; r < R; r++) {
-            for (int c = 0; c < C; c++) {
-                if (get(r, c) && get(r, c)->hasLine) res.insert({r, c});
+        Utils::pointQueue q;
+        q.push(p);
+        while (q.size()) {
+            Utils::point pp = q.front();
+            q.pop();
+            res.insert(pp);
+            auto nn = neighbors(pp);
+            for (auto i : nn) {
+                if (!get(i)->hasLine) continue;
+                if (res.find(i) != res.end()) continue;
+                q.push(i);
+                res.insert(i);
             }
         }
         return res;
     }
 
+    std::vector<Utils::pointSet> getLines() {
+        std::vector<Utils::pointSet> pp;
+        Utils::pointSet vis;
+
+        for (int r = 0; r < R; r++) {
+            for (int c = 0; c < C; c++) {
+                if (!get(r, c)->hasLine) continue;
+                if (vis.find({r, c}) != vis.end()) continue;
+                auto line = getSingleLine({r, c});
+                for (auto ll : line) vis.insert(ll);
+                if (line.size() > 0) pp.push_back(line);
+            }
+        }
+
+        return pp;
+    }
+
     // A valid path in this grid has two endpoints with only one neighbor, all others have two degree, and the graph is connected.
-    virtual bool validatePath() {
-        auto line = getLine();
+    bool validateSinglePath(Utils::point p) {
+        auto line = getSingleLine(p);
         Utils::pointSet activeStarts, activeEnds;
         for (auto i : line) {
             PuzzleEntity* pp = get(i);
@@ -251,6 +308,14 @@ class Grid {
         return Utils::contains<Utils::point>(ps, *(activeEnds.begin()));
     }
 
+    bool validatePath() {
+        auto ss = getLines();
+        for (auto line : ss) {
+            if (!validateSinglePath(*(line.begin()))) return false;
+        }
+        return true;
+    }
+
     /*
     
     UTILS
@@ -264,7 +329,14 @@ class Grid {
         for (int c = C - 1; c >= 0; c--) {
             for (int r = 0; r < R; r++) {
                 char delim = '.';
-                if (board[r][c]->hasLine) delim = '#';
+                if (board[r][c]->hasLine) {
+                    uint8_t x = board[r][c]->hasLine;
+                    delim = '#';
+                    if (x == 1) delim = '#';
+                    if (x == 2) delim = '@';
+                    if (x == 3) delim = '$';
+                    if (x == 4) delim = '%';
+                }
                 else if (board[r][c]->isPath) delim = '+';
                 
                 

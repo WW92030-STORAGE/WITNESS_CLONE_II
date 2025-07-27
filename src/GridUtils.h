@@ -192,6 +192,104 @@ namespace GridUtils {
     */
 
     // Retrieve a set of wrong symbol positions, ignoring cancels.
+
+    Utils::pointSet validateRegionNoRecur(Grid* grid, Utils::pointSet region) {
+        Utils::pointSet violations;
+
+        /*
+        
+        IN ACCORDANCE WITH THE FOUR STEP PROTOCOL
+        ALL SYMBOLS THAT OPERATE WITHIN A LOCAL NEIGHBORHOOD (AND NOT A CONTIGUOUS REGION) SHOULD BE CHECKED HERE
+        
+        */
+
+        // Check dots
+        for (auto i : (region, getActiveSymbols<PathDot>(grid))) {
+            PuzzleEntity* p = grid->get(i);
+            if (!instanceof<PathDot>(p)) continue;
+            if (p && !p->hasLine) violations.insert(i);
+            PathDot* pd = dynamic_cast<PathDot*>(p);
+            uint64_t restriction = pd->restriction;
+            if (restriction == 0) continue; // If restriction = 0 continue else check bits
+            if (restriction & (1<<(p->hasLine - 1))) continue;
+            violations.insert(i);
+        }
+
+        // Check triangles
+        for (auto i : intersection(region, getActiveSymbols<Triangle>(grid))) {
+            PuzzleEntity* pp = grid->get(i);
+            if (!instanceof<Triangle>(pp)) continue;
+            Triangle* trix = dynamic_cast<Triangle*>(pp);
+            int cc = 0;
+            for (auto n : grid->neighbors(i)) {
+                if (grid->get(n) && grid->get(n)->hasLine) cc++;
+            }
+            if (cc != trix->count) violations.insert(i);
+        }
+
+        auto entities = intersection(region, getActiveSymbols<ColorEntity>(grid)); // All colored symbols in the grid
+
+
+        /*
+        
+        IN ACCORDANCE WITH THE FOUR STEP PROTOCOL
+        ALL SYMBOLS THAT OPERATE WITHIN A CONTINUOUS REGION BUT ONLY INTERACT WITH OTHER SYMBOLS IN THE REGION BY THEIR TYPE OR COLOR SHOULD BE CHECKED HERE
+        
+        */
+
+        // Check blobs
+        auto blobs = intersection(region, getActiveSymbols<Blob>(grid));
+        std::set<EntityColor::Color> colors;
+        for (auto symbol : blobs) colors.insert(grid->getColor(symbol));
+
+        if (colors.size() > 1) {
+            for (auto i : blobs) violations.insert(i);
+        }
+
+        // Check stars
+        auto stars = getActiveSymbols<Star>(grid);
+        auto colorcount = getActiveColors(grid, region);
+
+        for (auto star : stars) {
+            EntityColor::Color c = grid->getColor(star);
+            if (colorcount.find(c) == colorcount.end()) violations.insert(star);
+            else {
+                if (colorcount.at(c) != 2) violations.insert(star);
+            }
+        }
+
+
+        /*
+        
+        IN ACCORDANCE WITH THE FOUR STEP PROTOCOL
+        ALL SYMBOLS THAT OPERATE WITHIN A CONTINUOUS REGION AND ALSO DIRECTLY WITH THE METADATA OF OTHER SYMBOLS IN THE REGION SHOULD BE CHECKED HERE
+        
+        */
+
+        // Check BlockGroups
+        auto bgs = intersection(region, getActiveSymbols<BlockGroup>(grid));
+        // Make the region into a shape
+        Utils::pointSet convertedregion;
+        for (auto i : region) convertedregion.insert({(i.first - 1) / 2, (i.second - 1) / 2});
+
+        BlockGroup big(convertedregion);
+        std::vector<BlockGroup> v;
+        for (auto i : bgs) v.push_back(BlockGroup(*(dynamic_cast<BlockGroup*>(grid->get(i)))));
+
+        if (!BlockGroup::checkPlacements(big, v, {{0, 0}, {grid->R / 2, grid->C / 2}})) {
+            for (auto i : bgs) violations.insert(i);
+        }
+
+        /*
+        
+        IN ACCORDANCE WITH THE FOUR STEP PROTOCOL
+        ALL SYMBOLS THAT CAN MODIFY OTHER SYMBOLS WITHIN ITS REGION (OR ARE MODIFIED BY OTHER SYMBOLS IN ITS REGION) SHOULD NOT BE CHECKED IN THIS METHOD
+        
+        */
+
+        return violations;
+    }
+
     Utils::pointSet getViolationsNoRecursion(Grid* grid) {
         Utils::pointSet violations;
 

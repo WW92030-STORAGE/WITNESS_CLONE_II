@@ -5,4 +5,4 @@ test: compile
 	valgrind ./main
 
 compile:
-	g++ main.cpp -o main -O3
+	g++ -g main.cpp -o main -O3

@@ -261,14 +261,13 @@ class BlockGroup : public ColorEntity {
         int index = placements.size();
 
         if (!isEvenPossible(big, small, placements, zeroOK)) return false;
-
-        auto bp = small[index].getPlaceables(big);
-        auto places = Utils::getAllPoints(Utils::intersection(bp, restriction));
-
         // std::cout << placements.size() << " " << small.size() << " " << places.size() << "\n";
 
         BlockGroup tester(small[index]);
-        for (int i = (small[index].fixed) ? 3 : 0; i < 4; i++) {
+        for (int i = (tester.fixed) ? 3 : 0; i < 4; i++) {
+            auto bp = tester.getPlaceables(big);
+            auto places = Utils::getAllPoints(Utils::intersection(bp, restriction));
+
             for (auto p : places) {
                 tester.moveBLTo(p);
                 if (tester.OOB(restriction)) continue;

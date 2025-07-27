@@ -197,7 +197,7 @@ const AABB MAXBB = {MINPT, MAXPT};
         return res;
     }
 
-    // Get the neighbors of a point
+    // Get the neighbors of a point - These might be in weird places in some e.g. pillar grids.
     Utils::pointSet neighbors(std::pair<int, int> p) {
         Utils::pointSet res;
 
@@ -221,6 +221,10 @@ std::set<T> intersection(const std::set<T>& a, const std::set<T>& b) {
         if (b.find(i) != b.end()) res.insert(i);
     }
     return res;
+}
+
+Utils::pointSet intersection(const Utils::pointSet& a, const Utils::pointSet& b) {
+    return intersection<Utils::point>(a, b);
 }
 
 int clamp(int x, int L, int H) {
