@@ -111,8 +111,7 @@ namespace GridUtils {
             Utils::point now = q.front();
             q.pop();
 
-            for (int d = 0; d < 4; d++) {
-                Utils::point next = {now.first + Utils::dx[d], now.second + Utils::dy[d]};
+            for (auto next : g->neighbors(now)) {
                 if (!isFFable(g, next)) continue;
                 if (Utils::contains(vis, next)) continue;
                 vis.insert(next);
@@ -130,6 +129,7 @@ namespace GridUtils {
     // Cells that share an edge as neighbor are considered adjacent in this model.
     Utils::pointSet floodfillCells(Grid* g, Utils::point p) {
         Utils::pointSet vis;
+        Utils::pointSet res;
         Utils::pointQueue q;
         if (!isFFable(g, p)) return vis;
         q.push(p);
@@ -139,17 +139,17 @@ namespace GridUtils {
             Utils::point now = q.front();
             q.pop();
 
-            for (int d = 0; d < 4; d++) {
-                Utils::point hit = {now.first + Utils::dx[d], now.second + Utils::dy[d]};
-                Utils::point next = {hit.first + Utils::dx[d], hit.second + Utils::dy[d]};
-                if (!isFFable(g, hit)) continue;
+            for (auto next : g->neighbors(now)) {
                 if (!isFFable(g, next)) continue;
                 if (Utils::contains(vis, next)) continue;
                 vis.insert(next);
                 q.push(next);
             }
         }
-        return vis;
+        for (auto i : vis) {
+            if ((i.first & 1) && (i.second & 1)) res.insert(i);
+        }
+        return res;
     }
 
     std::vector<Utils::pointSet> getRegions(Grid* g) {

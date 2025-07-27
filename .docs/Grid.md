@@ -4,7 +4,7 @@
 
 ## Description
 
-Grids that contain `PuzzleEntity` objects. This documentation encompasses all forms of `Grid` objects and their subclasses.
+Grids that contain `PuzzleEntity` objects. This documentation encompasses all forms of `Grid` objects and their subclasses in `Grid.h, SymmetryGrid.h, and PillarGrid.h`.
 
 ## Notes
 
@@ -41,11 +41,13 @@ Grids that contain `PuzzleEntity` objects. This documentation encompasses all fo
 - `void clearAllPaths()` - Clear all paths (except endpoints) and path dots from the board
 - `void defaultPaths()` - Put paths on all coordinates with at least one even coordinate
 - `virtual void defaultDiagonal()` - Put paths on all possible coordinates, a start point at (0, 0), and an end point at the top right.
+- `virtual void setPath(int x, int y, bool z)` - Set the `isPath` of an entry.
+- `virtual void setPath(std::pair<int, int> p, bool z)` 
 - `virtual void setLine(int x, int y, uint8_t z)` - Set the `hasLine` of an entry.
 - `virtual void setLine(std::pair<int, int> p, uint8_t z)` 
 - `void setBlocker(int x, int y, bool z)` - Set the `isBlocker` of an entry.
 - `void setBlocker(std::pair<int, int> p, bool z)` 
-- `virtual void drawLine(int x1, int y1, int x2, int y2, uint8_t index = 1)` - Draw a Line between two points that are axis aligned. In cases of ambiguity: left to right, bottom to top.
+- `virtual void drawLine(int x1, int y1, int x2, int y2, uint8_t index = 1)` - Draw a Line between two points that are axis aligned.
 - `virtual void drawLine(std::pair<int, int> a, std::pair<int, int> b, uint8_t index = 1)`
 - `virtual void drawPath(std::vector<std::pair<int, int>> path, uint8_t index = 1)` - Draw a path between consecutive points in the path.
 - `virtual void clearLine(int x1, int y1, int x2, int y2)` - Clear the Line from the points in the line connecting the inputs.

@@ -65,33 +65,24 @@ class Solver {
 
         // Depth first search
 
-
+        Utils::pointVec nn;
+        for (auto i : grid->neighbors(src)) nn.push_back(i);
 
         vis.insert({src, prev});
         grid->setLine(src, true);
 
-        int offset = rand() & 3;
+        int offset = rand() % nn.size();
 
-        for (int dd = 0; dd < 4; dd++) {
-            int d = (dd + offset) & 3;
-            Utils::point next = {src.first + Utils::dx[d], src.second + Utils::dy[d]};
-            Utils::point next2 = {src.first + Utils::dx[d] * 2, src.second + Utils::dy[d] * 2};
+        for (int dd = 0; dd < nn.size(); dd++) {
+            int d = (dd + offset) % nn.size();
+            Utils::point next = nn[d];
 
             if (!grid->inBounds(next)) continue;
             if (!(grid->get(next)->isPath)) continue;
             if (vis.find(next) != vis.end()) continue;
             if ((grid->get(next)->hasLine)) continue;
 
-            const bool PRUNE1 = true;
-
-            // don't back into any dead ends
-            if (PRUNE1 && !instanceof<Endpoint, PuzzleEntity>(grid->get(next))) {
-                if (grid->inBounds(next2)) {
-                    auto p = grid->get(next2);
-                    if (p->hasLine) continue;
-                    if (!p->isPath) continue;
-                }
-            }
+            // TODO - Figure out a simple pruning strategy maybe? idk
             
             path(next, src, numsol);
             if (solutions.size() >= numsol) break;
@@ -125,10 +116,10 @@ class Solver {
         }
     }
 
-    void apply(int x) {
+    void apply(int x = 0) {
         if (x < 0 || x >= solutions.size()) return;
 
-        grid->drawPath(solutions[x]);
+        for (auto i : solutions[x]) grid->setLine(i, 1);
     }
 };
 

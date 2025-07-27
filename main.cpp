@@ -352,6 +352,61 @@ void symdot() {
     std::cout << grid.to_string() << "\n";
 }
 
+
+void symdot2() {
+    RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    grid.set(6, 2, new PathDot(1));
+    grid.set(4, 4, new PathDot(0));
+    grid.set(2, 6, new PathDot(2));
+    grid.set(10, 5, new PathDot(0));
+    grid.set(1, 10, new PathDot(0));
+    grid.set(6, 9, new PathDot(0));
+    grid.set(10, 8, new PathDot(2));
+    Solver s;
+    s.grid = &grid;
+
+    s.solve(4);
+    std::cout << s.solutions.size() << "\n";
+    if (s.solutions.size()) {
+        std::cout << Utils::disp(s.solutions[0]) << "\n";
+        s.apply(0);
+    }
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void symblob() {
+    RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    grid.set(7, 1, new Blob(EntityColor::RGB_WHITE));
+    grid.set(5, 3, new Blob(EntityColor::RGB_WHITE));
+    grid.set(1, 3, new Blob(EntityColor::RGB_WHITE));
+    grid.set(5, 9, new Blob(EntityColor::RGB_WHITE));
+    
+    grid.set(9, 1, new Blob(EntityColor::RGB_BLACK));
+    grid.set(9, 3, new Blob(EntityColor::RGB_BLACK));
+    grid.set(3, 5, new Blob(EntityColor::RGB_BLACK));
+    grid.set(7, 7, new Blob(EntityColor::RGB_BLACK));
+    grid.set(10, 1, new PathDot());
+
+
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve(2);
+    std::cout << s.solutions.size() << "\n";
+    if (s.solutions.size()) {
+        std::cout << Utils::disp(s.solutions[0]) << "\n";
+        s.apply(0);
+    }
+
+    std::cout << grid.to_string() << "\n";
+}
+
 void badpaths() {
     RotationalGrid grid(9, 9);
     grid.defaultDiagonal();
@@ -363,6 +418,7 @@ void badpaths() {
     std::cout << GridUtils::Validate(&grid) << "\n";
 }
 
+
 int main() {
     srand(42069);
 
@@ -370,7 +426,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    symdot();
+    symblob();
 
 
 

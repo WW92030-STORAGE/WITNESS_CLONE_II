@@ -35,3 +35,115 @@
 
                 if (triggered) continue;
             }
+
+
+// Pillar tests
+
+
+void pillar1() {
+    PillarGrid pg(9, 9);
+    pg.defaultDiagonal();
+
+
+    pg.drawLine(0, 0, 0, 2);
+    pg.drawLine(0, 2, 4, 2);
+    pg.drawLine(4, 2, 4, 4);
+    pg.drawLine(4, 4, 12, 4);
+    pg.drawLine(2, 4, 2, 8);
+    pg.drawLine(2, 8, 0, 8);
+
+    std::cout << Utils::disp( pg.neighbors({0, 4}) ) << "\n";
+
+    std::cout << pg.to_string() << "\n";
+
+    std::cout << GridUtils::Validate(&pg) << "\n";
+}
+
+void pillar2() {
+    PillarGrid pg(9, 9); // The number of rows (x dimension; the grid is transposed and rotated so that (0, 0) is the bottom left) is automatically extended to 10.
+    pg.defaultDiagonal();
+
+
+    pg.set(1, 2, new PathDot());
+    pg.set(9, 4, new PathDot());
+    pg.set(8, 5, new PathDot());
+    pg.set(9, 6, new PathDot());
+    pg.set(3, 6, new PathDot());
+
+    Solver s;
+    s.grid = &pg;
+
+    s.solve();
+    std::cout << Utils::disp(s.solutions[0]) << "\n";
+    s.apply();
+
+    std::cout << pg.to_string() << "\n";
+
+    std::cout << GridUtils::Validate(&pg) << "\n";
+}
+
+void pillar3() {
+    PillarGrid pg(11, 9);
+    pg.defaultPaths();
+
+    for (int i = 0; i < 11; i += 2) {
+        for (int j = 0; j < 9; j += 2) pg.set(i, j, new PathDot());
+    }
+
+    pg.set(0, 0, new Endpoint(true));
+    pg.set(2, 0, new Endpoint(true));
+    pg.set(4, 0, new Endpoint(true));
+    pg.set(8, 8, new Endpoint(false));
+
+    pg.setPath(2, 1, false);
+    pg.setPath(3, 2, false);
+    pg.setPath(4, 3, false);
+    pg.setPath(5, 4, false);
+    pg.setPath(6, 5, false);
+    pg.setPath(7, 6, false);
+    pg.setPath(8, 7, false);
+
+    Solver s;
+    s.grid = &pg;
+
+    s.solve();
+    std::cout << Utils::disp(s.solutions[0]) << "\n";
+    s.apply();
+
+    std::cout << pg.to_string() << "\n";
+
+    std::cout << GridUtils::Validate(&pg) << "\n";
+}
+
+void pillar3() {
+    PillarGrid pg(11, 9);
+    pg.defaultPaths();
+
+    for (int i = 0; i < 11; i += 2) {
+        for (int j = 0; j < 9; j += 2) pg.set(i, j, new PathDot());
+    }
+
+    pg.set(0, 0, new Endpoint(true));
+    pg.set(2, 0, new Endpoint(true));
+    pg.set(4, 0, new Endpoint(true));
+    pg.set(8, 8, new Endpoint(false));
+
+    pg.setPath(2, 1, false);
+    pg.setPath(3, 2, false);
+    pg.setPath(4, 3, false);
+    pg.setPath(5, 4, false);
+    pg.setPath(6, 5, false);
+    pg.setPath(7, 6, false);
+    pg.setPath(8, 7, false);
+
+    Solver s;
+    s.grid = &pg;
+
+    s.solve();
+    std::cout << Utils::disp(s.solutions[0]) << "\n";
+    s.apply();
+
+    std::cout << pg.to_string() << "\n";
+
+    std::cout << GridUtils::Validate(&pg) << "\n";
+}

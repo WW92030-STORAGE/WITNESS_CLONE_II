@@ -180,6 +180,17 @@ class Grid {
 
     }
 
+    // Set the isPath of a cell
+
+    virtual void setPath(int x, int y, bool z) {
+        if (x < 0 || y < 0 || x >= R || y >= C) return;
+        board[x][y]->isPath = z;
+    }
+
+    virtual void setPath(std::pair<int, int> p, bool z) {
+        setPath(p.first, p.second, z);
+    }
+
     // Set the hasLine of a cell
 
     virtual void setLine(int x, int y, uint8_t z) {
