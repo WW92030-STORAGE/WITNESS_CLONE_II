@@ -11,6 +11,8 @@
 #include <vector>
 #include <map>
 
+#include "Randgen.h"
+
 /*
 
 Automatic solver for the puzzles. This should never be a place to long term store grids.
@@ -23,12 +25,22 @@ class Solver {
     int numEnds = 1;
     std::map<Utils::point, Utils::point> vis; // Each point stores its parent. The parent of the starting point is itself.
     std::vector<Utils::pointVec> solutions;
+    RandGen rand;
 
     ~Solver() {
 
     }
 
     Solver() {
+        rand = RandGen();
+    }
+
+    Solver(int64_t seed) {
+        rand = RandGen(seed);
+    }
+
+    void seed(int64_t see) {
+        rand.seed(see);
     }
 
     void path(Utils::point src, Utils::point prev, int numsol = 1) {
@@ -71,7 +83,7 @@ class Solver {
         vis.insert({src, prev});
         grid->setLine(src, true);
 
-        int offset = rand() % nn.size();
+        int offset = rand.randint(nn.size());
 
         for (int dd = 0; dd < nn.size(); dd++) {
             int d = (dd + offset) % nn.size();
@@ -119,7 +131,8 @@ class Solver {
     void apply(int x = 0) {
         if (x < 0 || x >= solutions.size()) return;
 
-        for (auto i : solutions[x]) grid->setLine(i, 1);
+        // for (auto i : solutions[x]) grid->setLine(i, 1);
+        grid->drawPath(solutions[x], 1);
     }
 };
 

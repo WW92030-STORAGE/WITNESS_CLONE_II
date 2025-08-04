@@ -333,12 +333,7 @@ void horizontal1() {
 }
 
 void symdot() {
-    HSymmetryGrid grid(9, 9);
-    grid.defaultDiagonal();
-
-    grid.set(8, 1, new PathDot());
-    grid.set(2, 6, new PathDot());
-    grid.set(6, 7, new PathDot(2));
+    HSymmetryGrid grid = simplesymdots();
 
     Solver s;
     s.grid = &grid;
@@ -354,16 +349,7 @@ void symdot() {
 
 
 void symdot2() {
-    RotationalGrid grid(11, 11);
-    grid.defaultDiagonal();
-
-    grid.set(6, 2, new PathDot(1));
-    grid.set(4, 4, new PathDot(0));
-    grid.set(2, 6, new PathDot(2));
-    grid.set(10, 5, new PathDot(0));
-    grid.set(1, 10, new PathDot(0));
-    grid.set(6, 9, new PathDot(0));
-    grid.set(10, 8, new PathDot(2));
+    RotationalGrid grid = complexsymdots();
     Solver s;
     s.grid = &grid;
 
@@ -378,19 +364,7 @@ void symdot2() {
 }
 
 void symblob() {
-    RotationalGrid grid(11, 11);
-    grid.defaultDiagonal();
-
-    grid.set(7, 1, new Blob(EntityColor::RGB_WHITE));
-    grid.set(5, 3, new Blob(EntityColor::RGB_WHITE));
-    grid.set(1, 3, new Blob(EntityColor::RGB_WHITE));
-    grid.set(5, 9, new Blob(EntityColor::RGB_WHITE));
-    
-    grid.set(9, 1, new Blob(EntityColor::RGB_BLACK));
-    grid.set(9, 3, new Blob(EntityColor::RGB_BLACK));
-    grid.set(3, 5, new Blob(EntityColor::RGB_BLACK));
-    grid.set(7, 7, new Blob(EntityColor::RGB_BLACK));
-    grid.set(10, 1, new PathDot());
+    RotationalGrid grid = simplesymblobs();
 
 
 
@@ -407,6 +381,16 @@ void symblob() {
     std::cout << grid.to_string() << "\n";
 }
 
+void symshape() {
+    RotationalGrid grid = weirddualshapes();
+
+    grid.drawPath(Utils::pointVec({{0, 0}, {4, 0}, {4, 2}, {2, 2}, {2, 6}, {4, 6}, {4, 4}, {6, 4}, {6, 2}, {8, 2}, {8, 4}, {10, 4}, {10, 0}, {12, 0}}));
+
+    std::cout << grid.to_string() << "\n";
+    std::cout << GridUtils::validate(&grid) << "\n";
+}
+
+
 void badpaths() {
     RotationalGrid grid(9, 9);
     grid.defaultDiagonal();
@@ -418,6 +402,104 @@ void badpaths() {
     std::cout << GridUtils::Validate(&grid) << "\n";
 }
 
+void randgridtest() {
+    RandGrid randgrid(42069);
+
+    randgrid.pathfind();
+    std::cout << randgrid.storedpaths.size() << "\n";
+
+    auto grid = randgrid.randTriangles(10);
+    std::cout << grid.to_string() << "\n";
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve();
+    s.apply(0);
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void randblocktest() {
+    RandGrid randgrid(2);
+
+    randgrid.pathfind();
+    std::cout << randgrid.storedpaths.size() << "\n";
+
+    auto grid = randgrid.randBlocks();
+    std::cout << grid.to_string() << "\n";
+
+    for (int r = 1; r < grid.R; r++) {
+        for (int c = 1; c < grid.C; c++) {
+            if (instanceof<BlockGroup, PuzzleEntity>(grid.board[r][c])) {
+                std::cout << r << " " << c << " : ";
+                BlockGroup* bg = dynamic_cast<BlockGroup*>(grid.board[r][c]);
+                std::cout << bg->to_string() << "\n";
+            }
+        }
+    }
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve();
+    s.apply(0);
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void randdottest() {
+    RandGrid randgrid(2);
+
+    randgrid.pathfind();
+    std::cout << randgrid.storedpaths.size() << "\n";
+
+    auto grid = randgrid.randDots();
+    std::cout << grid.to_string() << "\n";
+
+    Solver s;
+    s.grid = &grid;
+
+    s.solve();
+    s.apply(0);
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void randrotgridtest() {
+    RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    RandSymGrid<RotationalGrid> RRG(11, 11);
+
+    RRG.pathfind();
+    std::cout << RRG.storedpaths.size() << "\n";
+
+    RRG.pickRandomPath();
+    RRG.applyChosenPath(&grid);
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void randrottest() {
+    RandSymGrid<RotationalGrid> RRG(11, 11, 287432);
+
+    RRG.pathfind();
+    std::cout << RRG.storedpaths.size() << "\n";
+
+    RRG.pickRandomPath();
+    std::cout << Utils::disp(RRG.chosenpath) << "\n";
+
+    auto grid = RRG.randTriangles();
+    std::cout << grid.to_string() << "\n";
+
+    Solver s;
+    s.grid = &grid;
+    s.solve();
+    s.apply(0);    
+
+    std::cout << grid.to_string() << "\n";
+}
 
 int main() {
     srand(42069);
@@ -426,7 +508,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    symblob();
+    randrottest();
 
 
 

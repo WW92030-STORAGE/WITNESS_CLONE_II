@@ -233,4 +233,42 @@ int clamp(int x, int L, int H) {
     return x;
 }
 
+// Integer to base N <= 10 string
+
+std::string to_string(uint64_t n, int base) {
+    if (n == 0) return "0";
+
+    if (base >= 10) return std::to_string(n);
+    if (base < 2) return std::to_string(n);
+
+    std::string res;
+    while (n) {
+        char d = '0' + (n % base);
+        res.insert(res.begin(), d);
+        n /= base;
+    }
+    return res;
+}
+
+// Count chars in a string
+int count_chars(std::string s, char c) {
+    int res = 0;
+    for (auto i : s) {
+        if (i == c) res++;
+    }
+    return res;
+}
+
+int64_t rem(int64_t a, int64_t m) {
+    a %= m;
+    while (a < 0) a += m;
+    return a % m;
+}
+// Modular exponentiation
+int64_t modexp(int64_t b, int64_t e, int64_t m = 1000000007) {
+    if (e <= 0) return 1;
+    if (e & 1) return rem(b * modexp(b, e - 1, m), m);
+    int64_t sqxx = modexp(b, e>>1, m);
+    return rem(sqxx * sqxx, m);
+}
 #endif

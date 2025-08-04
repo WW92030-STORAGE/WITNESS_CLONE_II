@@ -328,17 +328,17 @@ namespace BGS {
 const BlockGroup vdomino = BlockGroup(std::vector<Utils::point>({{0, 0}, {0, 1}}));
 const BlockGroup hdomino = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}}));
 const BlockGroup unit = BlockGroup(std::vector<Utils::point>({{0, 0}}));
-const BlockGroup corner = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}}));
-const BlockGroup I3 = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {2, 0}}));
+const BlockGroup corner = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}})); // Corner shape with the arms up and right
+const BlockGroup I3 = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {2, 0}})); // Horizontal 3x1 piece
 
 
-const BlockGroup I = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {2, 0}, {3, 0}}));
-const BlockGroup O = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}, {1, 1}}));
-const BlockGroup T = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}, {-1, 0}}));
-const BlockGroup S = BlockGroup(std::vector<Utils::point>({{0, 0}, {0, 1}, {1, 1}, {-1, 0}}));
-const BlockGroup Z = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}, {-1, 1}}));
-const BlockGroup J = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {-1, 1}, {-1, 0}}));
-const BlockGroup L = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {1, 1}, {-1, 0}}));
+const BlockGroup I = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {2, 0}, {3, 0}})); // Horizontal 4x1
+const BlockGroup O = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}, {1, 1}})); // 2x2
+const BlockGroup T = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}, {-1, 0}})); // T shape with the stem doing downwards
+const BlockGroup S = BlockGroup(std::vector<Utils::point>({{0, 0}, {0, 1}, {1, 1}, {-1, 0}})); // Horizontal S shape
+const BlockGroup Z = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1}, {-1, 1}})); // Horizontal Z shape
+const BlockGroup J = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {-1, 1}, {-1, 0}})); // Horizontal J shape with the long side at the bottom
+const BlockGroup L = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {1, 1}, {-1, 0}})); // Horizontal L shape with the long side at the bottom
 
 }
 

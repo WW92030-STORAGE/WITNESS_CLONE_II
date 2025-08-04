@@ -225,7 +225,7 @@ class Grid {
     virtual void drawLine(std::pair<int, int> a, std::pair<int, int> b, uint8_t index = 1) {
         drawLine(a.first, a.second, b.first, b.second, index);
     }
-
+    
     // Draw a path between points
     virtual void drawPath(std::vector<std::pair<int, int>> path, uint8_t index = 1) {
         for (int i = 0; i < path.size() - 1; i++) drawLine(path[i], path[i + 1], index);
@@ -234,6 +234,12 @@ class Grid {
     // Erases a line. Does not do checks on whether the result is continuous.
     virtual void clearLine(int x1, int y1, int x2, int y2) {
         drawLine(x1, y1, x2, y2, 0);
+    }
+
+    virtual void clearAllLines() {
+        for (int i = 0; i < R; i++) {
+            for (int j = 0; j < C; j++) setLine(i, j, 0);
+        }
     }
 
     /*

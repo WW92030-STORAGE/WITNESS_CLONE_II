@@ -51,6 +51,7 @@ Grids that contain `PuzzleEntity` objects. This documentation encompasses all fo
 - `virtual void drawLine(std::pair<int, int> a, std::pair<int, int> b, uint8_t index = 1)`
 - `virtual void drawPath(std::vector<std::pair<int, int>> path, uint8_t index = 1)` - Draw a path between consecutive points in the path.
 - `virtual void clearLine(int x1, int y1, int x2, int y2)` - Clear the Line from the points in the line connecting the inputs.
+- `virtual void clearAllLines()` - Erases all lines.
 - `Utils::pointSet getSingleLine(Utils::point p)` - Returns the connected component of `hasLine` entries containing `p` (such a component is called a `path`)
 - `std::vector<Utils::pointSet> getLines()` - Returns all connected components of hasLine tiles (such a connected component is called a `path`)
 - `bool validateSinglePath(Utils::point p)` - Is the path containing `p` from a start to end, continuous, and non branching?

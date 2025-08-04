@@ -496,6 +496,10 @@ namespace GridUtils {
         
         return getViolations(grid).size() == 0; // Tentative!!!!
     }
+
+    bool validate(Grid* grid) {
+        return Validate(grid);
+    }
 }  
 
 #endif

@@ -32,11 +32,12 @@ class RotationalGrid : public Grid {
         Grid::setLine(R - x - 1, C - y - 1, (z == 0) ? (z) : (z + 1));
     }
 
-
+    /*
     virtual void drawLine(int x1, int y1, int x2, int y2, uint8_t index = 1) {
         Grid::drawLine(x1, y1, x2, y2, index);
         Grid::drawLine(R - x1 - 1, C - y1 - 1, R - x2 - 1, C - y2 - 1, (index == 0) ? (index) : (index + 1));
     }
+    */
 
     virtual void defaultDiagonal() {
         set(0, 0, new Endpoint(true));
@@ -62,11 +63,12 @@ class VSymmetryGrid : public Grid {
         Grid::setLine(x, C - y - 1, (z == 0) ? (z) : (z + 1));
     }
 
-
+    /*
     virtual void drawLine(int x1, int y1, int x2, int y2, uint8_t index = 1) {
         Grid::drawLine(x1, y1, x2, y2, index);
         Grid::drawLine(x1, C - y1 - 1, x2, C - y2 - 1, (index == 0) ? (index) : (index + 1));
     }
+    */
 
     virtual void defaultDiagonal() {
         set(0, 0, new Endpoint(true));
@@ -91,12 +93,12 @@ class HSymmetryGrid : public Grid {
         Grid::setLine(x, y, z);
         Grid::setLine(R - x - 1, y, (z == 0) ? (z) : (z + 1));
     }
-
-
+    /*
     virtual void drawLine(int x1, int y1, int x2, int y2, uint8_t index = 1) {
         Grid::drawLine(x1, y1, x2, y2, index);
         Grid::drawLine(R - x1 - 1, y1, R - x2 - 1, y2, (index == 0) ? (index) : (index + 1));
     }
+    */
 
     virtual void defaultDiagonal() {
         set(0, 0, new Endpoint(true));

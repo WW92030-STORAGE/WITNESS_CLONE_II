@@ -31,6 +31,9 @@ enum Color { // Color is an enum to prevent exploiting loopholes (e.g. 2 similar
     SP1 = 0x8AD8FF
 };
 
+// Vector containing max saturation+value colors
+std::vector<Color> COLORS({RGB_RED, RGB_YELLOW, RGB_GREEN, RGB_CYAN, RGB_BLUE, RGB_MAGENTA, RGB_WHITE});
+
 };
 
 

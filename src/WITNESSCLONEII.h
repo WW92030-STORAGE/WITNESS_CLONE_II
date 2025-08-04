@@ -10,10 +10,14 @@
 #include "BlockGroup.h"
 #include "Solver.h"
 #include "Randgen.h"
-#include "RandGrid.h"
 
 // Grid types
 
 #include "SymmetryGrid.h"
+
+// Grid Generators
+
+#include "RandGrid.h"
+#include "RandSymGrid.h"
 
 #endif

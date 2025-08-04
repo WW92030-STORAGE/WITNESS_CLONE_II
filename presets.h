@@ -209,3 +209,60 @@ Grid canceldotblob() {
     grid.set(7, 1, new Cancel());
     return grid;
 }
+
+HSymmetryGrid simplesymdots() {
+    HSymmetryGrid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(8, 1, new PathDot());
+    grid.set(2, 6, new PathDot());
+    grid.set(6, 7, new PathDot(2));
+    return grid;
+}
+
+RotationalGrid complexsymdots() {
+        RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    grid.set(6, 2, new PathDot(1));
+    grid.set(4, 4, new PathDot(0));
+    grid.set(2, 6, new PathDot(2));
+    grid.set(10, 5, new PathDot(0));
+    grid.set(1, 10, new PathDot(0));
+    grid.set(6, 9, new PathDot(0));
+    grid.set(10, 8, new PathDot(2));
+    return grid;
+}
+
+RotationalGrid simplesymblobs() {
+        RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    grid.set(7, 1, new Blob(EntityColor::RGB_WHITE));
+    grid.set(5, 3, new Blob(EntityColor::RGB_WHITE));
+    grid.set(1, 3, new Blob(EntityColor::RGB_WHITE));
+    grid.set(5, 9, new Blob(EntityColor::RGB_WHITE));
+    
+    grid.set(9, 1, new Blob(EntityColor::RGB_BLACK));
+    grid.set(9, 3, new Blob(EntityColor::RGB_BLACK));
+    grid.set(3, 5, new Blob(EntityColor::RGB_BLACK));
+    grid.set(7, 7, new Blob(EntityColor::RGB_BLACK));
+    grid.set(10, 1, new PathDot());
+    return grid;
+}
+
+RotationalGrid weirddualshapes() {
+    RotationalGrid grid(13, 13);
+    grid.defaultDiagonal();
+
+    grid.set(5, 1, new BlockGroup(BGS::corner));
+    grid.set(7, 1, new BlockGroup(BGS::L));
+    BlockGroup ss(BGS::S);
+    ss.rotate(1);
+    BlockGroup corner(BGS::corner);
+    corner.rotate(3);
+
+    grid.set(5, 11, new BlockGroup(ss));
+    grid.set(7, 11, new BlockGroup(corner));
+    return grid;
+}

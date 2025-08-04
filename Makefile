@@ -4,5 +4,9 @@ all: compile
 test: compile
 	valgrind ./main
 
+proof:
+	g++ -g test.cpp -o test -O3
+	./test
+
 compile:
 	g++ -g main.cpp -o main -O3

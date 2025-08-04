@@ -15,7 +15,7 @@ class RandGen {
     std::mt19937 gen;
 
     RandGen() {
-        gen = std::mt19937(time(0));
+        gen = std::mt19937(rand());
     }
 
     RandGen(int64_t seed) {
@@ -27,16 +27,16 @@ class RandGen {
     }
 
     // All generators are inclusive on the left but exclusive on the right
-    double rand() {
+    double random() {
         return (double)(gen()) / (double)(gen.max());
     }
 
     double operator()() {
-        return rand();
+        return random();
     }
 
     int64_t randint(int64_t b) {
-        return (int64_t)(rand() * b);
+        return (int64_t)(random() * b);
     }
 
     int64_t randint(int a, int b) {
