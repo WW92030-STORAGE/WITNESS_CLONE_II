@@ -43,6 +43,14 @@ class Solver {
         rand.seed(see);
     }
 
+    // These numbers are taken from the Minecraft slime chunk algorithm.
+    int hash(Utils::point a, Utils::point b) {
+        int res1 = (a.first + a.second) ^ 0x4c1906;
+        int res2 = (b.first + b.second) ^ 0x4307a7L;
+
+        return (res1 + res2) ^ 0x3ad8025f;
+    }
+
     void path(Utils::point src, Utils::point prev, int numsol = 1) {
         if (solutions.size() >= numsol) return;
         // std::cout << Utils::disp(src) << "\n";
@@ -84,6 +92,8 @@ class Solver {
         grid->setLine(src, true);
 
         int offset = rand.randint(nn.size());
+
+        // int offset = hash(src, prev) % nn.size();
 
         for (int dd = 0; dd < nn.size(); dd++) {
             int d = (dd + offset) % nn.size();

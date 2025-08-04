@@ -67,12 +67,22 @@ class RandSymGrid : public RandGrid {
         if (x < 0 || x >= storedpaths.size()) return;
         chosenpath.clear();
         auxiliaryPaths.clear();
-        Utils::pointSet secondPath;
         for (auto i : storedpaths[x]) {
             chosenpath.insert(i);
-            secondPath.insert({R - 1 - i.first, C - 1 - i.second});
         }
-        auxiliaryPaths[2] = secondPath;
+        SymmetryGrid grid = blankGrid();
+        applyChosenPath(&grid);
+
+        for (int r = 0; r < grid.R; r++) {
+            for (int c = 0; c < grid.C; c++) {
+                if (grid.board[r][c]->hasLine) {
+                    int line = grid.board[r][c]->hasLine;
+                    if (line == 1) continue;
+                    if (auxiliaryPaths.find(line) == auxiliaryPaths.end()) auxiliaryPaths[line] = Utils::pointSet();
+                    auxiliaryPaths[line].insert({r, c});
+                }
+            }
+        }
     }
 
     // Pathfind
@@ -170,6 +180,88 @@ class RandSymGrid : public RandGrid {
         }
 
         return grid;
+    }
+
+    SymmetryGrid randBlocks(int numSymbols = 3, int numRegions = 2, int numCuts = 2, double rotation = 0.1) {
+        pickRandomPath();
+        auto cutlocs = getRandomEdges(numCuts, true);
+
+        SymmetryGrid grid = blankGrid();
+        applyChosenPath(&grid);
+        auto regions = GridUtils::getRegionsCells(&grid);
+        grid.clearAllLines();
+
+        for (auto i : cutlocs) grid.setPath(i, 0);
+
+        auto regionindices = randomChoice(regions.size(), numRegions);
+
+        // Get symbol seed locations
+        Utils::pointVec vv;
+        for (auto i : regionindices) {
+            auto region = regions[i];
+            for (auto p : region) vv.push_back(p);
+        }
+
+        auto choice = randomChoice(vv.size(), numSymbols);
+        Utils::pointSet seeds;
+        for (auto i : choice) seeds.insert(vv[i]);
+
+        for (auto i : regionindices) {
+            auto region = regions[i];
+
+            // Apply blocks
+            
+            auto blockseeds = intersection(seeds, region);
+            if (blockseeds.size() <= 0) continue; // no blocks here -- moving on!
+
+            // Use a simple random flood fill to decide what goes where 
+            std::map<Utils::point, int> blockNo; // What block each point goes to?
+            Utils::pointVec seedblock; // Placement locations of blocks in the region
+            std::priority_queue<std::pair<uint64_t, Utils::point>> q;
+            int index = 0;
+            for (auto i : blockseeds) {
+                blockNo.insert({i, index++});
+                seedblock.push_back(i);
+            }
+            for (auto i : blockseeds) q.push({rand.gen(), i});
+
+            while (q.size()) {
+                auto p = q.top().second;
+                auto number = blockNo[p];
+                q.pop();
+                int offset = rand.randint(4);
+                for (int dd = 0; dd < 4; dd++) {
+                    int d = (dd + offset) % 4;
+                    Utils::point next = {p.first + 2 * Utils::dx[d], p.second + 2 * Utils::dy[d]};
+                    if (!grid.inBounds(next)) continue;
+                    if (blockNo.find(next) != blockNo.end()) continue;
+                    if (region.find(next) == region.end()) continue;
+
+                    blockNo.insert({next, number});
+                    q.push({rand.gen(), next});
+                }
+            }
+
+            std::shuffle(seedblock.begin(), seedblock.end(), rand.gen);
+
+            // Do the thing
+            for (int i = 0; i < seedblock.size(); i++) {
+                Utils::pointVec transformed;
+                for (auto p : blockNo) {
+                    if (p.second == i) transformed.push_back({(p.first.first - 1) / 2, (p.first.second - 1) / 2 });
+                    BlockGroup bg(transformed);
+                    if (rand() < rotation) {
+                        bg.fixed = false;
+                        bg.rotate(rand.randint(4));
+                    }
+                    bg.normalize();
+                    grid.set(seedblock[i], new BlockGroup(bg));
+                }
+            }
+        }
+
+        return grid;
+        
     }
 };
 

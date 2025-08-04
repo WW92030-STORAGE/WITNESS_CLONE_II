@@ -372,8 +372,8 @@ class RandGrid {
             if (blockseeds.size() <= 0) continue; // no blocks here -- moving on!
 
             // Use a simple random flood fill to decide what goes where 
-            std::map<Utils::point, int> blockNo;
-            Utils::pointVec seedblock;
+            std::map<Utils::point, int> blockNo; // What block each point goes to?
+            Utils::pointVec seedblock; // Placement locations of blocks in the region
             std::priority_queue<std::pair<uint64_t, Utils::point>> q;
             int index = 0;
             for (auto i : blockseeds) {
@@ -398,6 +398,8 @@ class RandGrid {
                     q.push({rand.gen(), next});
                 }
             }
+
+            std::shuffle(seedblock.begin(), seedblock.end(), rand.gen);
 
             // Do the thing
             for (int i = 0; i < seedblock.size(); i++) {

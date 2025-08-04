@@ -490,8 +490,38 @@ void randrottest() {
     RRG.pickRandomPath();
     std::cout << Utils::disp(RRG.chosenpath) << "\n";
 
-    auto grid = RRG.randTriangles();
+    auto grid = RRG.randStars();
     std::cout << grid.to_string() << "\n";
+
+    Solver s;
+    s.grid = &grid;
+    s.solve();
+    s.apply(0);    
+
+    std::cout << grid.to_string() << "\n";
+}
+
+void randrotblocks() {
+    RandSymGrid<HSymmetryGrid> RRG(11, 11, 2);
+
+    RRG.pathfind();
+    std::cout << RRG.storedpaths.size() << "\n";
+
+    RRG.pickRandomPath();
+    std::cout << Utils::disp(RRG.chosenpath) << "\n";
+
+    auto grid = RRG.randBlocks();
+    std::cout << grid.to_string() << "\n";
+
+    for (int r = 1; r < grid.R; r++) {
+        for (int c = 1; c < grid.C; c++) {
+            if (instanceof<BlockGroup, PuzzleEntity>(grid.board[r][c])) {
+                std::cout << r << " " << c << " : ";
+                BlockGroup* bg = dynamic_cast<BlockGroup*>(grid.board[r][c]);
+                std::cout << bg->to_string() << "\n";
+            }
+        }
+    }
 
     Solver s;
     s.grid = &grid;
@@ -508,7 +538,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    randrottest();
+    randrotblocks();
 
 
 
