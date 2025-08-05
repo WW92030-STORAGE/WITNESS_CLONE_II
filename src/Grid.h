@@ -198,7 +198,7 @@ class Grid {
         board[x][y]->hasLine = z;
     }
 
-    virtual void setLine(std::pair<int, int> p, uint8_t z) {
+    void setLine(std::pair<int, int> p, uint8_t z) {
         setLine(p.first, p.second, z);
     }
 

@@ -470,7 +470,7 @@ void randrotgridtest() {
     RotationalGrid grid(11, 11);
     grid.defaultDiagonal();
 
-    RandSymGrid<RotationalGrid> RRG(11, 11);
+    RandGrid<RotationalGrid> RRG(11, 11);
 
     RRG.pathfind();
     std::cout << RRG.storedpaths.size() << "\n";
@@ -482,7 +482,7 @@ void randrotgridtest() {
 }
 
 void randrottest() {
-    RandSymGrid<RotationalGrid> RRG(11, 11, 287432);
+    RandGrid<RotationalGrid> RRG(11, 11, 287432);
 
     RRG.pathfind();
     std::cout << RRG.storedpaths.size() << "\n";
@@ -490,7 +490,7 @@ void randrottest() {
     RRG.pickRandomPath();
     std::cout << Utils::disp(RRG.chosenpath) << "\n";
 
-    auto grid = RRG.randStars();
+    auto grid = RRG.randDots();
     std::cout << grid.to_string() << "\n";
 
     Solver s;
@@ -502,7 +502,7 @@ void randrottest() {
 }
 
 void randrotblocks() {
-    RandSymGrid<HSymmetryGrid> RRG(11, 11, 2);
+    RandGrid<HSymmetryGrid> RRG(11, 11, 2);
 
     RRG.pathfind();
     std::cout << RRG.storedpaths.size() << "\n";
@@ -538,7 +538,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    randrotblocks();
+    randrottest();
 
 
 

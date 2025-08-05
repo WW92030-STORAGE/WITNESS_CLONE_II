@@ -25,22 +25,22 @@ class Solver {
     int numEnds = 1;
     std::map<Utils::point, Utils::point> vis; // Each point stores its parent. The parent of the starting point is itself.
     std::vector<Utils::pointVec> solutions;
-    RandGen rand;
+    RandGen PRNG;
 
     ~Solver() {
 
     }
 
     Solver() {
-        rand = RandGen();
+        PRNG = RandGen();
     }
 
     Solver(int64_t seed) {
-        rand = RandGen(seed);
+        PRNG = RandGen(seed);
     }
 
     void seed(int64_t see) {
-        rand.seed(see);
+        PRNG.seed(see);
     }
 
     // These numbers are taken from the Minecraft slime chunk algorithm.
@@ -91,7 +91,7 @@ class Solver {
         vis.insert({src, prev});
         grid->setLine(src, true);
 
-        int offset = rand.randint(nn.size());
+        int offset = PRNG.randint(nn.size());
 
         // int offset = hash(src, prev) % nn.size();
 

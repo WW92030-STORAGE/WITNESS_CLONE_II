@@ -13,10 +13,9 @@ Customizable random grid generator. This one is a bit more robust than the origi
 
 */
 
-template <typename GridT = Grid>
 class RandGrid {
     public:
-    RandGen PRNG;
+    RandGen rand;
     std::vector<Utils::pointVec> storedpaths; // A simple cache of stored paths
     Utils::pointSet chosenpath; // Chosen path
     std::map<int, Utils::pointSet> auxiliaryPaths; // Additional paths for things like symmetry grids
@@ -26,76 +25,51 @@ class RandGrid {
     Utils::pointSet ends;
 
     void init() {
-        GridT symgrid = blankGrid();
-        symgrid.defaultDiagonal();
-        starts.clear();
-        ends.clear();
-        for (int r = 0; r < R; r++) {
-            for (int c = 0; c < C; c++) {
-                PuzzleEntity* p = symgrid.get(r, c);
-                if (instanceof<Endpoint>(p)) {
-                    Endpoint* ep = dynamic_cast<Endpoint*>(p);
-                    if (ep->isStart) starts.insert({r, c});
-                    else ends.insert({r, c});
-                }
-            }
-        }
+        if (!(R & 1)) R++;
+        if (!(C & 1)) C++;
+        starts = Utils::pointSet({{0, 0}});
+        ends = Utils::pointSet({{R - 1, C - 1}});
     }
 
     RandGrid() {
-        PRNG = RandGen();
+        rand = RandGen();
         init();
     }
 
     RandGrid(int64_t seed) {
-        PRNG = RandGen(seed);
+        rand = RandGen(seed);
         init();
     }
 
     RandGrid(int64_t r, int64_t c) {
         R = r;
         C = c;
-        PRNG = RandGen();
+        rand = RandGen();
         init();
     }
     
     RandGrid(int64_t r, int64_t c, int64_t seed) {
         R = r;
         C = c;
-        PRNG = RandGen(seed);
+        rand = RandGen(seed);
         init();
     }
 
     virtual void setChosenPath(int x) {
         if (x < 0 || x >= storedpaths.size()) return;
-        chosenpath.clear();
         auxiliaryPaths.clear();
-        for (auto i : storedpaths[x]) {
-            chosenpath.insert(i);
-        }
-        GridT grid = blankGrid();
-        applyChosenPath(&grid);
-
-        for (int r = 0; r < grid.R; r++) {
-            for (int c = 0; c < grid.C; c++) {
-                if (grid.board[r][c]->hasLine) {
-                    int line = grid.board[r][c]->hasLine;
-                    if (line == 1) continue;
-                    if (auxiliaryPaths.find(line) == auxiliaryPaths.end()) auxiliaryPaths[line] = Utils::pointSet();
-                    auxiliaryPaths[line].insert({r, c});
-                }
-            }
-        }
+        chosenpath.clear();
+        for (auto i : storedpaths[x]) chosenpath.insert(i);
     }
 
     void pickRandomPath() {
-        setChosenPath(PRNG.randint(storedpaths.size()));
+        setChosenPath(rand.randint(storedpaths.size()));
     }
 
-    virtual void applyChosenPath(GridT* grid) {
+    virtual void applyChosenPath(Grid* grid) {
         grid->clearAllLines();
         for (auto i : chosenpath) {
-            grid->setLine(i.first, i.second, 1);
+            grid->setLine(i, 1);
         }
     }
 
@@ -111,8 +85,8 @@ class RandGrid {
         return false;
     }
 
-    GridT blankGrid() {
-        GridT g(R, C);
+    Grid blankGrid() {
+        Grid g(R, C);
         for (auto i : starts) g.set(i, new Endpoint(true));
         for (auto i : ends) g.set(i, new Endpoint(false));
 
@@ -121,12 +95,12 @@ class RandGrid {
     }
 
     void seed(int64_t see) {
-        PRNG.seed(see);
+        rand.seed(see);
     }
 
     // Pathfind
     void pathfind(int numPaths = INT_MAX, int see = 0) {
-        GridT g = blankGrid();
+        Grid g = blankGrid();
         Solver solver;
         if (see) solver.seed(see);
         solver.grid = &g;
@@ -139,7 +113,7 @@ class RandGrid {
         if (k > n) k = n;
         std::vector<int> v(n);
         for (int i = 0; i < n; i++) v[i] = i;
-        std::shuffle(v.begin(), v.end(), PRNG.gen);
+        std::shuffle(v.begin(), v.end(), rand.gen);
 
         while (v.size() > k && v.size()) v.pop_back();
         return v;
@@ -258,7 +232,7 @@ class RandGrid {
         if (k >= EntityColor::COLORS.size()) k = EntityColor::COLORS.size();
         std::vector<EntityColor::Color> v;
         for (auto i : EntityColor::COLORS) v.push_back(i);
-        std::shuffle(v.begin(), v.end(), PRNG.gen);
+        std::shuffle(v.begin(), v.end(), rand.gen);
 
         std::vector<EntityColor::Color> res;
         for (int i = 0; i < k && i < v.size(); i++) res.push_back(v[i]);
@@ -273,15 +247,15 @@ class RandGrid {
 
 
     // 8 random stars. Any more than that and there might be unsolvable ones.
-    GridT randStars() {
+    Grid randStars() {
         std::vector<bool> v({0, 0, 0, 0, 1, 1, 1, 1});
-        std::shuffle(v.begin(), v.end(), PRNG.gen);
+        std::shuffle(v.begin(), v.end(), rand.gen);
 
         auto vv = getRandomCells(8);
         auto cols = getRandomColors(2);
 
 
-        GridT grid = blankGrid();
+        Grid grid = blankGrid();
 
         for (int i = 0; i < v.size(); i++) {
             auto p = vv[i];
@@ -292,42 +266,35 @@ class RandGrid {
 
     // ALL NUMBERS ARE UPPER BOUNDS
     // Random maze
-    GridT randMaze(int cuts = 10) {
+    Grid randMaze(int cuts = 10) {
         pickRandomPath();
         auto cutlocs = getRandomEdges(cuts, true);
 
-        GridT grid = blankGrid();
+        Grid grid = blankGrid();
         for (auto i : cutlocs) grid.setPath(i, false);
 
         return grid;
     }
 
     // Random dots
-    GridT randDots(int numSymbols = 8, int numCuts = 2, double threshold = 0.5) {
+    Grid randDots(int numSymbols = 8, int numCuts = 2) {
         pickRandomPath();
         auto cutlocs = getRandomEdges(numCuts, true);
         auto symbols = getRandomPaths(numSymbols, false, true);
 
-        GridT grid = blankGrid();
-        applyChosenPath(&grid);
+        Grid grid = blankGrid();
         for (auto i : cutlocs) grid.setPath(i, false);
-        for (auto i : symbols) {
-            if (PRNG() < threshold) {
-                grid.set(i, new PathDot((1<<(-1 + grid.get(i)->hasLine))));
-            }
-            else grid.set(i, new PathDot());
-        }
-        grid.clearAllLines();
+        for (auto i : symbols) grid.set(i, new PathDot());
         return grid;
     }
 
     // Random blobs
-    GridT randBlobs(int numSymbols = 10, int numCols = 3, int numCuts = 2) {
+    Grid randBlobs(int numSymbols = 10, int numCols = 3, int numCuts = 2) {
         pickRandomPath();
         auto cutlocs = getRandomEdges(numCuts, true);
         auto symbols = getRandomCells(numSymbols);
 
-        GridT grid = blankGrid();
+        Grid grid = blankGrid();
         applyChosenPath(&grid);
         auto regions = GridUtils::getRegionsCells(&grid);
         grid.clearAllLines();
@@ -351,12 +318,12 @@ class RandGrid {
         return grid;
     }
 
-    GridT randTriangles(int numSymbols = 10, int numCuts = 2) {
+    Grid randTriangles(int numSymbols = 10, int numCuts = 2) {
         pickRandomPath();
         auto cutlocs = getRandomEdges(numCuts, true);
         auto symbols = getRandomCells(numSymbols);
 
-        GridT grid = blankGrid();
+        Grid grid = blankGrid();
         applyChosenPath(&grid);
 
         for (auto i : symbols) {
@@ -372,11 +339,11 @@ class RandGrid {
         return grid;
     }
 
-    GridT randBlocks(int numSymbols = 3, int numRegions = 2, int numCuts = 2, double rotation = 0.1) {
+    Grid randBlocks(int numSymbols = 3, int numRegions = 2, int numCuts = 2, double rotation = 0.1) {
         pickRandomPath();
         auto cutlocs = getRandomEdges(numCuts, true);
 
-        GridT grid = blankGrid();
+        Grid grid = blankGrid();
         applyChosenPath(&grid);
         auto regions = GridUtils::getRegionsCells(&grid);
         grid.clearAllLines();
@@ -407,36 +374,32 @@ class RandGrid {
             // Use a simple random flood fill to decide what goes where 
             std::map<Utils::point, int> blockNo; // What block each point goes
             Utils::pointVec seedblock; // Placement locations of blocks in the region
-            std::queue<Utils::point> q;
+            std::priority_queue<std::pair<uint64_t, Utils::point>> q;
             int index = 0;
             for (auto i : blockseeds) {
                 blockNo.insert({i, index++});
                 seedblock.push_back(i);
             }
-            for (auto i : blockseeds) q.push(i);
+            for (auto i : blockseeds) q.push({rand.gen(), i});
 
             while (q.size()) {
-                auto p = q.front();
+                auto p = q.top().second;
                 auto number = blockNo[p];
                 q.pop();
-                std::vector<Utils::point> nexts;
-                for (int d = 0; d < 4; d++) {
-                    Utils::point next = {p.first + 2 * Utils::dx[d], p.second + 2 * Utils::dy[d]};
-                    nexts.push_back(next);
-                }
-                std::shuffle(nexts.begin(), nexts.end(), PRNG.gen);
+                int offset = rand.randint(4);
                 for (int dd = 0; dd < 4; dd++) {
-                    Utils::point next = nexts[dd];
+                    int d = (dd + offset) % 4;
+                    Utils::point next = {p.first + 2 * Utils::dx[d], p.second + 2 * Utils::dy[d]};
                     if (!grid.inBounds(next)) continue;
                     if (blockNo.find(next) != blockNo.end()) continue;
                     if (region.find(next) == region.end()) continue;
 
                     blockNo.insert({next, number});
-                    q.push(next);
+                    q.push({rand.gen(), next});
                 }
             }
 
-            std::shuffle(seedblock.begin(), seedblock.end(), PRNG.gen);
+            std::shuffle(seedblock.begin(), seedblock.end(), rand.gen);
 
             // Do the thing
             for (int i = 0; i < seedblock.size(); i++) {
@@ -444,9 +407,9 @@ class RandGrid {
                 for (auto p : blockNo) {
                     if (p.second == i) transformed.push_back({(p.first.first - 1) / 2, (p.first.second - 1) / 2 });
                     BlockGroup bg(transformed);
-                    if (PRNG() < rotation) {
+                    if (rand() < rotation) {
                         bg.fixed = false;
-                        bg.rotate(PRNG.randint(4));
+                        bg.rotate(rand.randint(4));
                     }
                     bg.normalize();
                     grid.set(seedblock[i], new BlockGroup(bg));
