@@ -254,7 +254,7 @@ class RandGrid {
     }
 
     // Get random colors
-    std::vector<EntityColor::Color> getRandomColors(int k) {
+    std::vector<EntityColor::Color> getRandomColors(int k = INT_MAX) {
         if (k >= EntityColor::COLORS.size()) k = EntityColor::COLORS.size();
         std::vector<EntityColor::Color> v;
         for (auto i : EntityColor::COLORS) v.push_back(i);
@@ -273,7 +273,7 @@ class RandGrid {
 
 
     // 8 random stars. Any more than that and there might be unsolvable ones.
-    GridT randStars() {
+    Grid randStars() {
         std::vector<bool> v({0, 0, 0, 0, 1, 1, 1, 1});
         std::shuffle(v.begin(), v.end(), PRNG.gen);
 
@@ -281,12 +281,48 @@ class RandGrid {
         auto cols = getRandomColors(2);
 
 
-        GridT grid = blankGrid();
+        Grid grid = blankGrid();
 
         for (int i = 0; i < v.size(); i++) {
             auto p = vv[i];
             grid.set(p.first, p.second, new Star(cols[i & 1]));
         }
+        return grid;
+    }
+
+    GridT randStarsGeneral(int numPairs = 4, int numCuts = 2) {
+        pickRandomPath();
+        auto cutlocs = getRandomEdges(numCuts, true);
+        GridT grid = blankGrid();
+        applyChosenPath(&grid);
+        auto regions = GridUtils::getRegionsCells(&grid);
+        grid.clearAllLines();
+
+        for (auto i : cutlocs) grid.setPath(i, false);
+        int nReg = regions.size();
+
+        std::vector<int> regioncuts; 
+        for (int rno = 0; rno < nReg; rno++) {
+            for (int i = 0; i < regions[rno].size(); i += 2) regioncuts.push_back(rno);
+        }
+
+        std::shuffle(regioncuts.begin(), regioncuts.end(), PRNG.gen);
+        
+        std::vector<int> pairsPerRegion(nReg, 0);
+        for (int i = 0; i < numPairs && i < regioncuts.size(); i++) pairsPerRegion[regioncuts[i]]++;
+
+        auto colors = getRandomColors();
+
+        for (int rno = 0; rno < nReg; rno++) {
+            Utils::pointVec region;
+            for (auto i : regions[rno]) region.push_back(i);
+            std::shuffle(region.begin(), region.end(), PRNG.gen);
+            for (int i = 0; i < pairsPerRegion[rno]; i++) {
+                grid.set(region[i<<1], new Star(colors[i]));
+                grid.set(region[1 + (i<<1)], new Star(colors[i]));
+            }
+        }
+
         return grid;
     }
 
@@ -331,8 +367,6 @@ class RandGrid {
         applyChosenPath(&grid);
         auto regions = GridUtils::getRegionsCells(&grid);
         grid.clearAllLines();
-
-        for (auto i : regions) std::cout << Utils::disp(i) << "\n";
 
         for (auto i : cutlocs) grid.setPath(i, false);
 

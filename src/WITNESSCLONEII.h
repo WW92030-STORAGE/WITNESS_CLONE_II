@@ -18,6 +18,5 @@
 // Grid Generators
 
 #include "RandGrid.h"
-// #include "RandSymGrid.h"
 
 #endif

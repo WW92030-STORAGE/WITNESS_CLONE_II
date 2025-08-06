@@ -482,7 +482,7 @@ void randrotgridtest() {
 }
 
 void randrottest() {
-    RandGrid<RotationalGrid> RRG(11, 11, 287432);
+    RandGrid<Grid> RRG(11, 11, 287432);
 
     RRG.pathfind();
     std::cout << RRG.storedpaths.size() << "\n";
@@ -490,7 +490,7 @@ void randrottest() {
     RRG.pickRandomPath();
     std::cout << Utils::disp(RRG.chosenpath) << "\n";
 
-    auto grid = RRG.randDots();
+    auto grid = RRG.randStarsGeneral();
     std::cout << grid.to_string() << "\n";
 
     Solver s;
