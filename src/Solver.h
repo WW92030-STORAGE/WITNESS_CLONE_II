@@ -11,7 +11,7 @@
 #include <vector>
 #include <map>
 
-#include "Randgen.h"
+#include "RandGen.h"
 
 /*
 

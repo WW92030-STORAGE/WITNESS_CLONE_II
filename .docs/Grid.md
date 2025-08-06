@@ -4,7 +4,7 @@
 
 ## Description
 
-Grids that contain `PuzzleEntity` objects. This documentation encompasses all forms of `Grid` objects and their subclasses in `Grid.h, SymmetryGrid.h, and PillarGrid.h`.
+Grids that contain `PuzzleEntity` objects. This documentation encompasses all forms of `Grid` objects and their subclasses in `Grid.h` and `SymmetryGrid.h`.
 
 ## Notes
 

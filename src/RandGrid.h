@@ -1,7 +1,7 @@
 #ifndef RANDGRID_WITCLN
 #define RANDGRID_WITCLN
 
-#include "Randgen.h"
+#include "RandGen.h"
 #include "Grid.h"
 #include "PuzzleEntity.h"
 #include "Utils.h"
@@ -282,6 +282,7 @@ class RandGrid {
 
 
         Grid grid = blankGrid();
+        grid.defaultDiagonal();
 
         for (int i = 0; i < v.size(); i++) {
             auto p = vv[i];
@@ -289,7 +290,8 @@ class RandGrid {
         }
         return grid;
     }
-
+    
+    // ALL NUMBERS ARE UPPER BOUNDS
     GridT randStarsGeneral(int numPairs = 4, int numCuts = 2) {
         pickRandomPath();
         auto cutlocs = getRandomEdges(numCuts, true);
@@ -326,7 +328,6 @@ class RandGrid {
         return grid;
     }
 
-    // ALL NUMBERS ARE UPPER BOUNDS
     // Random maze
     GridT randMaze(int cuts = 10) {
         pickRandomPath();
