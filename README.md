@@ -19,28 +19,28 @@
 - Polynomino region checker - supports fixed and arbitrary rotations AND ALSO subtractive regions!
 - Hexagon dots + colored blobs + triangles + stars + cancellations
 - Verification of a given path - Checks if a path is solved.
-<!-- 
-- Game interface - Wrapper class for grids that can process inputs. (You will have to provide the inputs yourself.)
 - Grid solver - Automatically solves puzzle grids. Be warned that the current algorithm takes a long time to solve boards (grid cells) larger than 4x4.
 - Random puzzle generator - Choose among certain presets.
+<!-- 
+- Game interface - Wrapper class for grids that can process inputs. (You will have to provide the inputs yourself.)
+
 -->
 
 
 # DEFINITIONS
 
-- The grid is composed of Lines and enclosed Cells in a rectangular formation.
-- The solution line/curve is denoted as the Path. The Path will partition the grid into one or more Regions.
-- A Region is a set of grid Cells connected along the cardinal directions such that no two adjacent Cells have the Path as a border.
-- The Path must begin at a Starting Point (usually denoted by a circle) and end at an End Point (usually denoted by a rounded protrusion from the grid).
-- We will assume that the start point is on the edge of the Grid until further notice. (If you wish to place the start point somewhere else you must make Solver::validateRegion always return true.)
+- The grid is composed of Edges (also known as Paths) and enclosed Cells in a rectangular formation. Intersections of edges are special edge points we call Nodes or Intersections. Collectively they refer to as Points or Entries.
+- The solution line/curve is denoted as the Line. The Line will partition the grid into one or more Regions.
+- A Region is a set of grid Cells connected along the cardinal directions such that no two adjacent Cells have the Line as a border.
+- The Line must begin at a Starting Point (usually denoted by a circle) and end at an End Point (usually denoted by a rounded protrusion from the grid). Starts and ends can be located anywhere in the grid on an Edge point.
 
 # THE RULES
 
-- 【HEXAGON DOTS】- The Path must intersect every one.
+- 【PATH DOTS】- The Line must intersect every one. For Grids with multiple Lines, some dots can restrict which Line(s) must go through them.
 - 【COLORED BLOBS】- The color of the blob within a region must be the majority color of blobs in that region. For most cases, this is equivalent to saying each region must only have one color of blob.
 - 【COLORED STARS】- The Region containing the star must have exactly one other object of the star's color. Other colors are disregarded.
-- 【POLYOMINOS】 - Arrange the constituent Polyominoes such that all of their tiles lie within the bounds of the grid. Additive tiles add +1 to the value of a grid tile, subtractive tiles add -1. Tiles can lie outside the region. The region's shape must satisfy the constraint that there exists an arrangement of the Polyominoes such that the total sum of all tiles outside the region is zero, and the total sum of all tiles inside the region is the same across all such tiles, and that this sum is either zero or one.
-- 【TRIANGLES】- The number of triangles denotes the number of sides of the Cell the symbol lies in that must be traversed by the Path.
+- 【POLYOMINOS】 - Arrange the constituent Polyominoes such that all of their tiles lie within the bounds of the grid. Additive tiles add +1 to the value of a grid tile, subtractive tiles add -1. Tiles can lie outside the region. The region's shape must satisfy the constraint that there exists an arrangement of the Polyominoes such that the total sum of all tiles outside the region is zero, and the total sum of all tiles inside the region is the same across all such tiles, and that this sum is either zero or one. (Technically BlockGroups with other values are supported but +1 and -1 are seen most often.)
+- 【TRIANGLES】- The number of triangles denotes the number of sides of the Cell the symbol lies in that must be traversed by the Line.
 - 【CANCELLATION】- A Region containing N cancellations must contain exactly N symbols that would render the solution invalid otherwise. Cancellations CAN nullify each other. Dots are considered symbols if they lie inside the same Region as a cancellation.
 
 # INTERNAL REPRESENTATION
@@ -59,8 +59,8 @@
 
 # TO DO 【IN NO PARTICULAR ORDER】
 
-- Implement the random puzzle generator.
-- Implement the autosolver
+- Make the Python version.
+- Make the game interface.
 
 ---
 
