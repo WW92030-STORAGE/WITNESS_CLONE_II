@@ -7,6 +7,7 @@ Documentation is sorted into the same directory structure, except each file is n
 
 - Some `.md` files have multiple classes.
 - The Python version has the same class/method names and structure. The only difference is the removal of certain namespace things, as Python denotes members of a module as `module.member` analogously to `namespace::member`. Some method names are also removed due to Python having vanilla built-in implementations, and to prevent accidental overloading. When overloading is "forced" names are changed.
+- Certain constants have been changed to methods in the Python version.
 
 ## DEFINITIONS
 

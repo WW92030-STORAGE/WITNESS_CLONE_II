@@ -227,7 +227,7 @@ def validateRegionNoRecur(grid: Grid, region: Utils.pointSet):
 
     convertedregion = set()
     for i in region:
-        convertedregion.add(((i[0] - 1) // 2, (i[1] - 1 // 2)))
+        convertedregion.add(((i[0] - 1) // 2, (i[1] - 1) // 2))
 
     big = BlockGroup.BlockGroup(convertedregion)
     v = []
@@ -320,11 +320,11 @@ def getViolationsNoRecursion(grid: Grid):
         regbgs = Utils.intersection(bgs, region)
         convertedregion = set()
         for i in region:
-            convertedregion.add(((i[0] - 1) // 2, (i[1] - 1 // 2)))
+            convertedregion.add(((i[0] - 1) // 2, (i[1] - 1) // 2))
 
         big = BlockGroup.BlockGroup(convertedregion)
+        big.normalize()
         v = []
-
         for i in regbgs:
             v.append(grid.get(i))
     

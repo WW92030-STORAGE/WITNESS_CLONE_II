@@ -40,6 +40,8 @@ class BlockGroup : public ColorEntity {
         disp = disp + (fixed ? "X" : "O") + std::to_string(clamp(value, -99, 99));
         while (disp.size() < 6) disp = disp + " ";
 
+        if (value < 0) color = EntityColor::RGB_BLUE;
+
         computeBoundingBox();
     }
 
@@ -59,7 +61,7 @@ class BlockGroup : public ColorEntity {
         init();
     }
 
-    BlockGroup(const BlockGroup& other) {
+    BlockGroup(const BlockGroup& other) : ColorEntity(other) {
         for (auto i : other.points) points.insert(i);
         value = other.value;
         fixed = other.fixed;

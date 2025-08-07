@@ -11,11 +11,14 @@ class BlockGroup(PuzzleEntity.ColorEntity):
     boundingbox = Utils.MAXBB
 
     def init(self):
-        type = "BlockGroup"
-        disp = "BG"
-        disp = disp + ("X" if self.fixed else "O") + str(Utils.clamp(self.value, -99, 99))
-        while len(disp) < 6:
-            disp = disp + " "
+        self.type = "BlockGroup"
+        self.disp = "BG"
+        self.disp = self.disp + ("X" if self.fixed else "O") + str(Utils.clamp(self.value, -99, 99))
+        while len(self.disp) < 6:
+            self.disp = self.disp + " "
+
+        if self.value < 0:
+            self.color = PuzzleEntity.Color.RGB_BLUE
         
         self.computeBoundingBox()
     
@@ -99,6 +102,12 @@ class BlockGroup(PuzzleEntity.ColorEntity):
             if not Utils.contains(ab, i):
                 return True
         return False
+    
+    def __str__(self):
+        res = "BlockGroup[fixed=" + str(self.fixed) + ", value="
+        res = res + str(self.value) + ", bb=" + str(self.boundingbox)
+        res = res + "][" + str(self.points) + "]"
+        return res
     
 def getSum(bgs):
     sum = {}
@@ -220,3 +229,29 @@ def checkPlacements(big, small, restriction = Utils.MAXBB, zeroOK = True, preche
         
     placements = []
     return checkPlacementsRecur(big, small, placements, restriction, zeroOK)
+
+def vdomino():
+    return BlockGroup([(0, 0), (0, 1)])
+def hdomino():
+    return BlockGroup([(0, 0), (1, 0)])
+def unit():
+    return BlockGroup([(0, 0)])
+def corner():
+    return BlockGroup([(0, 0), (1, 0), (0, 1)])
+def I3():
+    return BlockGroup([(0, 0), (1, 0), (2, 0)])
+
+def I():
+    return BlockGroup([(0, 0), (1, 0), (2, 0), (3, 0)])
+def O():
+    return BlockGroup([(0, 0), (1, 0), (0, 1), (1, 1)])
+def T():
+    return BlockGroup([(0, 0), (1, 0), (0, 1), (-1, 0)])
+def S():
+    return BlockGroup([(0, 0), (1, 0), (1, 1), (-1, 0)])
+def Z():
+    return BlockGroup([(0, 0), (1, 0), (0, 1), (-1, 1)])
+def J():
+    return BlockGroup([(0, 0), (1, 0), (-1, 1), (-1, 0)])
+def L():
+    return BlockGroup([(0, 0), (1, 0), (1, 1), (-1, 0)])

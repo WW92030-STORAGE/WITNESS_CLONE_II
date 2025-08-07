@@ -7,6 +7,7 @@ import Solver
 import SymmetryGrid
 
 from PuzzleEntity import Color, Endpoint, PathDot, Blob, Star, Triangle, Cancel
+from BlockGroup import BlockGroup
 from Grid import Grid
 from SymmetryGrid import RotationalGrid
 import Render
@@ -39,11 +40,11 @@ def simpleTest():
     Render.render(RENDER_OUTPUT, grid)
 
 def simpleBG():
-    bg1 = BlockGroup.BlockGroup({(0, 0), (0, 1), (0, 2)})
-    bg2 = BlockGroup.BlockGroup({(0, 0), (0, 1), (1, 0)})
-    bg3 = BlockGroup.BlockGroup({(0, 0)})
+    bg1 = BlockGroup({(0, 0), (0, 1), (0, 2)})
+    bg2 = BlockGroup({(0, 0), (0, 1), (1, 0)})
+    bg3 = BlockGroup({(0, 0)})
 
-    bg4 = BlockGroup.BlockGroup({(0, 0), (0, 1)})
+    bg4 = BlockGroup({(0, 0), (0, 1)})
 
     print(BlockGroup.checkPlacements(bg2,[bg3, bg4]))
 
@@ -119,7 +120,35 @@ def rottest3():
 
     Render.render(RENDER_OUTPUT, grid)
 
+def bgtest():
+    grid = Presets.simplebg()
 
+    
+
+    grid.drawPath([(0, 0), (4, 0), (4, 8), (8, 8)])
+    print(GridUtils.validate(grid))
+    print(grid)
+
+def bgsolvertest():
+    grid = Presets.bgwithinv()
+
+    for r in range(grid.R):
+        for c in range(grid.C):
+            if Utils.instanceof(grid.get((r, c)), BlockGroup):
+                print(grid.get((r, c)))
+    
+    print(grid)
+
+
+    solver = Solver.Solver()
+    solver.grid = grid
+    solver.solve(1)
+
+    solver.apply(0)
+
+    print(grid)
+
+    Render.render(RENDER_OUTPUT, grid)
 
 if __name__ == "__main__":
-    rottest3()
+    bgsolvertest()

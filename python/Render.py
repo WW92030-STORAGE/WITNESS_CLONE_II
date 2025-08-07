@@ -68,11 +68,11 @@ def generateBlockGroup(pos, element, block_spacing, angle):
 	if not isinstance(element, BlockGroup):
 		return list
 	
-	bb = element.boundingbox
+	bb = Utils.dims(element.boundingbox)
 	s = math.sin(angle)
 	c = math.cos(angle)
 	
-	for block in element.pairs:
+	for block in element.points:
 		xp = (block[0] - (bb[0] - 1) / 2) * block_spacing
 		yp = (block[1] - (bb[1] - 1) / 2) * block_spacing
 
@@ -111,7 +111,13 @@ def colorize(grid, pos, filter, violations):
 	
 	return diminish(element.color.value, filter)
 
-def render(output, puzzle: Grid, width = 1024, height = 1024, margin = 96, thickness = 48, bg = (128, 128, 128), path = (64, 64, 64), line_colors = [(255, 255, 255), (192, 192, 192)], filter = (255, 255, 255)):
+def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickness = 48, bg = (128, 128, 128), path = (64, 64, 64), line_colors = [(255, 255, 255), (192, 192, 192)], filter = (255, 255, 255)):
+	puzzle = Grid(grid.R, grid.C)
+
+	for r in range(grid.R):
+		for c in range(grid.C):
+			puzzle.board[r][c] = grid.board[grid.R - 1 - r][c]
+	
 	violations = GridUtils.getViolations(puzzle)
 
 	# Set colors
@@ -236,8 +242,9 @@ def render(output, puzzle: Grid, width = 1024, height = 1024, margin = 96, thick
 			# Draw blocks
 
 			if (isinstance(element, BlockGroup)):
-				angle = 0 if element.oriented else math.pi / 6
-				dimension = max(element.boundingbox[0], element.boundingbox[1])
+				angle = 0 if element.fixed else math.pi / 6
+				dim = Utils.dims(element.boundingbox)
+				dimension = max(dim[0], dim[1])
 
 				shape = generateBlockGroup((xpos, ypos), element, grid_spacing / dimension, angle)
 				for s in shape:

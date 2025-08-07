@@ -10,6 +10,33 @@ from SymmetryGrid import RotationalGrid, HSymmetryGrid, VSymmetryGrid
 
 import copy
 
+def simplebg():
+    grid = Grid()
+    grid.defaultDiagonal()
+
+    grid.set((1, 1), BlockGroup.O())
+    grid.set((1, 7), BlockGroup.O())
+    return grid
+
+def bgwithinv():
+    grid = Grid()
+    grid.defaultDiagonal()
+
+    grid.set((1, 1), BlockGroup.J())
+    grid.set((7, 1), BlockGroup.L())
+
+    seven = BlockGroup.L()
+    seven.rotate(1)
+    grid.set((7, 7), seven)
+
+    invO = BlockGroup.O()
+    invO.value = -1
+    grid.set((5, 7), invO)
+
+    return grid
+
+
+
 def canceldotblob():
     grid = Grid(9, 9)
     grid.defaultDiagonal()

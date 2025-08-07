@@ -3,6 +3,8 @@ import collections
 import PuzzleEntity
 import Utils
 
+import copy
+
 class Grid:
     R = 3
     C = 3
@@ -75,7 +77,7 @@ class Grid:
         self.board[r][c] = PuzzleEntity.PuzzleEntity()
 
     def set(self, p: Utils.point, pe: PuzzleEntity.PuzzleEntity):
-        self.board[p[0]][p[1]] = pe
+        self.board[p[0]][p[1]] = copy.deepcopy(pe)
     
     def clearAllPaths(self):
         for r in range(self.R):
