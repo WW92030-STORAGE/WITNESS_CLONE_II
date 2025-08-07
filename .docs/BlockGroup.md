@@ -22,6 +22,8 @@ PuzzleEntity representing a Polyomino
 - `BlockGroup()`
 - `BlockGroup(Utils::pointSet ps)`
 - `BlockGroup(Utils::pointVec ps)`
+- `BlockGroup(Utils::pointSet ps, int val)`
+- `BlockGroup(Utils::pointVec ps, int val)`
 
 ## Functions
 

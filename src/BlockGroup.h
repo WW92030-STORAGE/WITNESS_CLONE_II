@@ -61,6 +61,18 @@ class BlockGroup : public ColorEntity {
         init();
     }
 
+    BlockGroup(Utils::pointSet ps, int val) : ColorEntity() {
+        for (auto i : ps) points.insert(i);
+        value = val;
+        init();
+    }
+
+    BlockGroup(Utils::pointVec ps, int val) : ColorEntity() {
+        for (auto i : ps) points.insert(i);
+        value = val;
+        init();
+    }
+
     BlockGroup(const BlockGroup& other) : ColorEntity(other) {
         for (auto i : other.points) points.insert(i);
         value = other.value;
@@ -345,6 +357,6 @@ const BlockGroup Z = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {0, 1
 const BlockGroup J = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {-1, 1}, {-1, 0}})); // Horizontal J shape with the long side at the bottom
 const BlockGroup L = BlockGroup(std::vector<Utils::point>({{0, 0}, {1, 0}, {1, 1}, {-1, 0}})); // Horizontal L shape with the long side at the bottom
 
-}
+};
 
 #endif

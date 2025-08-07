@@ -62,7 +62,7 @@ def generateSquare(pos, diameter, angle):
 		list.append((xp, yp))
 	return list
 
-def generateBlockGroup(pos, element, block_spacing, angle):
+def generateBlockGroup(pos, element, block_spacing, angle, block_scale = 0.95):
 	element.normalize()
 	list = []
 	if not isinstance(element, BlockGroup):
@@ -78,7 +78,7 @@ def generateBlockGroup(pos, element, block_spacing, angle):
 
 		xpos = pos[0] + xp * c - yp * s
 		ypos = pos[1] - xp * s - yp * c
-		list.append(generateSquare((xpos, ypos), block_spacing * 0.95, -1 * angle))
+		list.append(generateSquare((xpos, ypos), block_spacing * block_scale, -1 * angle))
 	
 	return list
 
@@ -113,13 +113,17 @@ def colorize(grid, pos, filter, violations):
 
 def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickness = 48, bg = (128, 128, 128), path = (64, 64, 64), line_colors = [(255, 255, 255), (192, 192, 192)], filter = (255, 255, 255)):
 	puzzle = Grid(grid.R, grid.C)
+	violations2 = GridUtils.getViolations(grid)
 
 	for r in range(grid.R):
 		for c in range(grid.C):
-			puzzle.board[r][c] = grid.board[grid.R - 1 - r][c]
+			puzzle.board[r][c] = grid.board[c][grid.R - r - 1] # Rotate the grid so it renders where [0][0] is bottom left and the first and second indices are x and y axes
 	
-	violations = GridUtils.getViolations(puzzle)
+	violations = set()
+	for p in violations2:
+		violations.add((p[1], grid.R - p[0] - 1))
 
+	
 	# Set colors
 	bg = diminish(bg, filter)
 	for i in range(len(line_colors)):
@@ -249,6 +253,12 @@ def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickne
 				shape = generateBlockGroup((xpos, ypos), element, grid_spacing / dimension, angle)
 				for s in shape:
 					draw.polygon(s, fill = colorize(puzzle, (i, j), filter, violations))
+				
+				if element.value < 0:
+					shape = generateBlockGroup((xpos, ypos), element, grid_spacing / dimension, angle, 0.7)
+				
+					for s in shape:
+						draw.polygon(s, fill = diminish(bg, filter))
 
 			# Draw cancels
 

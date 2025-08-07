@@ -31,6 +31,7 @@ def bgwithinv():
 
     invO = BlockGroup.O()
     invO.value = -1
+    invO.color = Color.RGB_BLUE
     grid.set((5, 7), invO)
 
     return grid

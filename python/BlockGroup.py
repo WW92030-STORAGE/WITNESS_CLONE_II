@@ -16,17 +16,15 @@ class BlockGroup(PuzzleEntity.ColorEntity):
         self.disp = self.disp + ("X" if self.fixed else "O") + str(Utils.clamp(self.value, -99, 99))
         while len(self.disp) < 6:
             self.disp = self.disp + " "
-
-        if self.value < 0:
-            self.color = PuzzleEntity.Color.RGB_BLUE
         
         self.computeBoundingBox()
     
-    def __init__(self, ps = {(0, 0)}, color = PuzzleEntity.Color.RGB_YELLOW):
+    def __init__(self, ps = {(0, 0)}, color = PuzzleEntity.Color.RGB_YELLOW, value = 1):
         self.points = set()
         for point in ps:
             self.points.add(point)
         self.color = color
+        self.value = value
 
         self.init()
     

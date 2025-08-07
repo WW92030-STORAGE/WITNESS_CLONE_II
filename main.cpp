@@ -538,7 +538,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    symdot2();
+    randrotblocks();
 
 
 
