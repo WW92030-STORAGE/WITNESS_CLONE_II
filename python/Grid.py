@@ -27,6 +27,7 @@ class Grid:
     def __init__(self, A = 9, B = 9):
         self.R = A
         self.C = B
+
         self.init()
     
     def inBounds(self, p: Utils.point):

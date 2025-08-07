@@ -207,7 +207,10 @@ namespace GridUtils {
         for (auto i : intersection(region, getActiveSymbols<PathDot>(grid))) {
             PuzzleEntity* p = grid->get(i);
             if (!instanceof<PathDot>(p)) continue;
-            if (p && !p->hasLine) violations.insert(i);
+            if (p && !p->hasLine) {
+                violations.insert(i);
+                continue;
+            }
             PathDot* pd = dynamic_cast<PathDot*>(p);
             uint64_t restriction = pd->restriction;
             if (restriction == 0) continue; // If restriction = 0 continue else check bits

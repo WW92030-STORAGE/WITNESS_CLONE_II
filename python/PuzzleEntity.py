@@ -1,21 +1,21 @@
 from enum import Enum
 
 class Color(Enum):
-    NIL = 0xFFFFFFFF
+    NIL = (-1, -1, -1)
     
-    RGB_RED = 0xFF0000
-    RGB_GREEN = 0x00FF00
-    RGB_BLUE = 0x0000FF
-    RGB_YELLOW = 0xFFFF00
-    RGB_CYAN = 0x00FFFF
-    RGB_MAGENTA = 0xFF00FF
-    RGB_BLACK = 0
-    RGB_WHITE = 0xFFFFFF
+    RGB_RED = (255, 0, 0)
+    RGB_GREEN = (0, 255, 0)
+    RGB_BLUE = (0, 0, 255)
+    RGB_YELLOW = (255, 255, 0)
+    RGB_CYAN = (0, 255, 255)
+    RGB_MAGENTA = (255, 0, 255)
+    RGB_BLACK = (0, 0, 0)
+    RGB_WHITE = (255, 255, 255)
     
-    RGB_ORANGE = 0xFF8000
-    RGB_GREY = 0x808080
-    RGB_DARK = 0x404040
-    RGB_LIGHT = 0x0C0C0C
+    RGB_ORANGE = (255, 128, 0)
+    RGB_GREY = (128, 128, 128)
+    RGB_DARK = (64, 64, 64)
+    RGB_LIGHT = (192, 192, 192)
 
     # Furries!
 

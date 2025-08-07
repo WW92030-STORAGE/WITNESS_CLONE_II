@@ -255,6 +255,7 @@ def getViolationsNoRecursion(grid: Grid):
 
         if (not p is None) and (p.hasLine == 0):
             violations.add(i)
+            continue
 
         restriction = p.restriction
         if restriction == 0:

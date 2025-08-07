@@ -9,18 +9,20 @@ import SymmetryGrid
 from PuzzleEntity import Color, Endpoint, PathDot, Blob, Star, Triangle, Cancel
 from Grid import Grid
 from SymmetryGrid import RotationalGrid
+import Render
 
 import Presets
 
-import copy
+# Assuming you are invoking this from the base directory using the Makefile
+RENDER_OUTPUT = "grid.png"
 
 def simpleTest():
-    grid = Grid.Grid()
+    grid = Grid()
     grid.defaultDiagonal()
 
     grid.set((5, 1), PuzzleEntity.Star())
     grid.set((5, 3), PuzzleEntity.Star())
-    grid.set((7, 1), PuzzleEntity.Star())
+    # grid.set((7, 1), PuzzleEntity.Star())
 
     grid.drawLine((0, 0), (0, 4))
     grid.drawLine((0, 4), (8, 4))
@@ -33,6 +35,8 @@ def simpleTest():
     print(Utils.instanceof(grid.board[0][0], PuzzleEntity.Endpoint))
 
     print(GridUtils.getViolations(grid))
+
+    Render.render(RENDER_OUTPUT, grid)
 
 def simpleBG():
     bg1 = BlockGroup.BlockGroup({(0, 0), (0, 1), (0, 2)})
@@ -51,6 +55,8 @@ def cancelTest():
     print(grid)
     print(GridUtils.getViolations(grid))
 
+    Render.render(RENDER_OUTPUT, grid)
+
 def solverTest():
     grid = Presets.canceldotblob()
 
@@ -65,6 +71,8 @@ def solverTest():
 
     print(solver.grid)
 
+    Render.render(RENDER_OUTPUT, grid)
+
 def rottest():
     grid = RotationalGrid()
     grid.defaultDiagonal()
@@ -75,11 +83,43 @@ def rottest():
     print(grid)
     solver = Solver.Solver()
     solver.grid = grid
-    solver.solve(Utils.INF)
+    solver.solve(5)
     print(len(solver.solutions))
 
-    solver.apply(492)
+    solver.apply(3)
     print(grid)
 
+    Render.render(RENDER_OUTPUT, grid)
+
+def rottest2():
+    grid = Presets.complexsymdots()
+
+    print(grid)
+    solver = Solver.Solver()
+    solver.grid = grid
+    solver.solve(5)
+    print(len(solver.solutions))
+
+    solver.apply(0)
+    print(grid)
+
+    Render.render(RENDER_OUTPUT, grid)
+
+def rottest3():
+    grid = Presets.simplesymblobs()
+
+    print(grid)
+    solver = Solver.Solver()
+    solver.grid = grid
+    solver.solve(5)
+    print(len(solver.solutions))
+
+    solver.apply(0)
+    print(grid)
+
+    Render.render(RENDER_OUTPUT, grid)
+
+
+
 if __name__ == "__main__":
-    rottest()
+    rottest3()
