@@ -204,7 +204,7 @@ namespace GridUtils {
         */
 
         // Check dots
-        for (auto i : (region, getActiveSymbols<PathDot>(grid))) {
+        for (auto i : intersection(region, getActiveSymbols<PathDot>(grid))) {
             PuzzleEntity* p = grid->get(i);
             if (!instanceof<PathDot>(p)) continue;
             if (p && !p->hasLine) violations.insert(i);

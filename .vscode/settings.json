@@ -90,6 +90,7 @@
         "typeindex": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "climits": "cpp"
     }
 }

@@ -35,7 +35,7 @@ class BlockGroup : public ColorEntity {
     Utils::AABB boundingbox; // Current bounding box of the entity
 
     void init() {
-        type = "Triangle";
+        type = "BlockGroup";
         disp = "BG";
         disp = disp + (fixed ? "X" : "O") + std::to_string(clamp(value, -99, 99));
         while (disp.size() < 6) disp = disp + " ";
@@ -44,6 +44,7 @@ class BlockGroup : public ColorEntity {
     }
 
     BlockGroup() : ColorEntity() {
+        color = EntityColor::RGB_YELLOW;
         points.insert({0, 0});
         init();
     }
@@ -85,6 +86,8 @@ class BlockGroup : public ColorEntity {
             boundingbox.second.first = std::max(boundingbox.second.first, i.first);
             boundingbox.second.second = std::max(boundingbox.second.second, i.second);
         }
+
+        boundingbox = Utils::resetBB(boundingbox);
     }
 
     // Swap corners of the bb if needed
@@ -281,7 +284,7 @@ class BlockGroup : public ColorEntity {
         return false;
     }
 
-    static bool checkPlacements(BlockGroup big, std::vector<BlockGroup> small, Utils::AABB restriction = Utils::MAXBB, bool zeroOK = true, bool precheck = false) {
+    static bool checkPlacements(BlockGroup big, std::vector<BlockGroup> small, Utils::AABB restriction = Utils::MAXBB, bool zeroOK = true, bool precheck = true) {
         int64_t sum = 0;
         for (auto i : small) {
             sum += i.value * i.points.size();

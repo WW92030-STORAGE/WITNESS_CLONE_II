@@ -10,3 +10,6 @@ proof:
 
 compile:
 	g++ -g main.cpp -o main -O3
+
+python:
+	python3 python/main.py
