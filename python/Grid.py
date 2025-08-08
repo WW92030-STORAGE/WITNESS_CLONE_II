@@ -145,7 +145,7 @@ class Grid:
     def clearAllLines(self):
         for r in range(self.R):
             for c in range(self.C):
-                self.setLine(r, c, 0)
+                self.setLine((r, c), 0)
 
     def __repr__(self):
         res = "Grid[" + str(self.R) + ", " + str(self.C) + "]\n"

@@ -38,6 +38,8 @@ class Solver:
                     solution.append(now)
                     solution.reverse()
                     self.solutions.append(solution)
+
+                    self.vis.pop(src)
                 
                 self.grid.setLine(src, 0)
 

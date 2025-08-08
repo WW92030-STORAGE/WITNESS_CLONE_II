@@ -10,6 +10,21 @@ from SymmetryGrid import RotationalGrid, HSymmetryGrid, VSymmetryGrid
 
 import copy
 
+def simplestars():
+    grid = Grid()
+    grid.defaultDiagonal()
+
+    grid.set((1, 3), Star(Color.RGB_GREEN))
+    grid.set((5, 5), Star(Color.RGB_GREEN))
+    grid.set((7, 1), Star(Color.RGB_GREEN))
+    grid.set((7, 3), Star(Color.RGB_GREEN))
+    grid.set((5, 1), Star(Color.RGB_MAGENTA))
+    grid.set((3, 7), Star(Color.RGB_MAGENTA))
+    grid.set((3, 3), Star(Color.RGB_MAGENTA))
+    grid.set((1, 7), Star(Color.RGB_MAGENTA))
+    return grid
+
+
 def simplebg():
     grid = Grid()
     grid.defaultDiagonal()

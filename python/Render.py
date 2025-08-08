@@ -90,7 +90,7 @@ def diminish(color, filter):
 def multiply(color, scale):
 	return (int(color[0] * scale), int(color[0] * scale), int(color[0] * scale))
 
-def colorize(grid, pos, filter, violations):
+def colorize(grid, pos, filter, violations, line_cols = None):
 	element = grid.get(pos)
 	
 	# print(element, " / ", grid.violations)
@@ -100,28 +100,39 @@ def colorize(grid, pos, filter, violations):
 	# Special case for symmetry dots
 	if Utils.instanceof(element, PathDot):
 		if element.restriction != 0:
-			G = 1
-			R = element.restriction % 2
-			B = (element.restriction + 1) % 2
-			col = (R * 255, G * 255, B * 255)
-			return diminish(col, filter)
+			if line_cols == None:
+				G = 1
+				R = element.restriction % 2
+				B = (element.restriction + 1) % 2
+				col = (R * 255, G * 255, B * 255)
+				return diminish(col, filter)
+			else:
+				restr = element.restriction
+				count = 0
+				while (restr % 2 == 0 and restr > 0):
+					count += 1
+					restr //= 2
+				return diminish(line_cols[count % len(line_cols)], filter)
 
 	if (element.color == Color.NIL):
 		return 0
 	
 	return diminish(element.color.value, filter)
 
-def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickness = 48, bg = (128, 128, 128), path = (64, 64, 64), line_colors = [(255, 255, 255), (192, 192, 192)], filter = (255, 255, 255)):
+def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickness = 48, bg = (128, 128, 128), path = (64, 64, 64), line_colors = [(255, 255, 255), (0, 255, 255), (255, 0, 255), (255, 255, 0)], filter = (255, 255, 255), getViolations = False):
 	puzzle = Grid(grid.R, grid.C)
-	violations2 = GridUtils.getViolations(grid)
+	
 
 	for r in range(grid.R):
 		for c in range(grid.C):
 			puzzle.board[r][c] = grid.board[c][grid.R - r - 1] # Rotate the grid so it renders where [0][0] is bottom left and the first and second indices are x and y axes
 	
 	violations = set()
-	for p in violations2:
-		violations.add((p[1], grid.R - p[0] - 1))
+
+	violations2 = GridUtils.getViolations(grid)
+	if getViolations:
+		for p in violations2:
+			violations.add((p[1], grid.R - p[0] - 1))
 
 	
 	# Set colors
@@ -220,7 +231,10 @@ def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickne
 			# Draw dots on the path
 			if (isinstance(element, PathDot)):
 				hex = generateHexagon((xpos, ypos), thickness * 0.9)
-				draw.polygon(hex, fill = colorize(puzzle, (i, j), filter, violations))
+				color = puzzle.board[i][j].color
+				draw.polygon(hex, fill = colorize(puzzle, (i, j), filter, violations, line_colors))
+
+				puzzle.board[i][j].color = color
 			
 			# Draw blobs
 			if (isinstance(element, Blob)):

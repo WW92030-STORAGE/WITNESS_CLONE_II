@@ -273,6 +273,7 @@ class RandGrid {
 
 
     // 8 random stars. Any more than that and there might be unsolvable ones.
+    // This always generates a 9x9 diagonal grid
     Grid randStars() {
         std::vector<bool> v({0, 0, 0, 0, 1, 1, 1, 1});
         std::shuffle(v.begin(), v.end(), PRNG.gen);
@@ -281,7 +282,7 @@ class RandGrid {
         auto cols = getRandomColors(2);
 
 
-        Grid grid = blankGrid();
+        Grid grid = Grid(9, 9);
         grid.defaultDiagonal();
 
         for (int i = 0; i < v.size(); i++) {
@@ -305,7 +306,7 @@ class RandGrid {
 
         std::vector<int> regioncuts; 
         for (int rno = 0; rno < nReg; rno++) {
-            for (int i = 0; i < regions[rno].size(); i += 2) regioncuts.push_back(rno);
+            for (int i = 0; i < regions[rno].size() - 1; i += 2) regioncuts.push_back(rno);
         }
 
         std::shuffle(regioncuts.begin(), regioncuts.end(), PRNG.gen);
@@ -319,7 +320,7 @@ class RandGrid {
             Utils::pointVec region;
             for (auto i : regions[rno]) region.push_back(i);
             std::shuffle(region.begin(), region.end(), PRNG.gen);
-            for (int i = 0; i < pairsPerRegion[rno]; i++) {
+            for (int i = 0; i < pairsPerRegion[rno] && i < colors.size(); i++) {
                 grid.set(region[i<<1], new Star(colors[i]));
                 grid.set(region[1 + (i<<1)], new Star(colors[i]));
             }
@@ -349,7 +350,7 @@ class RandGrid {
         applyChosenPath(&grid);
         for (auto i : cutlocs) grid.setPath(i, false);
         for (auto i : symbols) {
-            if (PRNG() < threshold) {
+            if (auxiliaryPaths.size() && PRNG() < threshold) {
                 grid.set(i, new PathDot((1<<(-1 + grid.get(i)->hasLine))));
             }
             else grid.set(i, new PathDot());
@@ -380,7 +381,7 @@ class RandGrid {
             for (int r = 0; r < regions.size(); r++) {
                 if (Utils::contains(regions[r], i)) region = r;
             }
-            grid.set(i, new Blob(colors[region % numCols]));
+            grid.set(i, new Blob(colors[region % colors.size()]));
         }
 
         return grid;

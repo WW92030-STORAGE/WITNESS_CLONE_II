@@ -11,11 +11,13 @@ from BlockGroup import BlockGroup
 from Grid import Grid
 from SymmetryGrid import RotationalGrid
 import Render
+from RandGrid import RandGrid
 
 import Presets
 
 # Assuming you are invoking this from the base directory using the Makefile
 RENDER_OUTPUT = "grid.png"
+RENDER_SOLVED = "solution.png"
 
 def simpleTest():
     grid = Grid()
@@ -59,7 +61,7 @@ def cancelTest():
     Render.render(RENDER_OUTPUT, grid)
 
 def solverTest():
-    grid = Presets.canceldotblob()
+    grid = Presets.simplestars()
 
     solver = Solver.Solver()
     solver.grid = grid
@@ -150,5 +152,25 @@ def bgsolvertest():
 
     Render.render(RENDER_OUTPUT, grid)
 
+def randtest():
+    N = 13
+    randgrid = RandGrid(11, 11, GridT = RotationalGrid)
+    randgrid.pathfind()
+    print(len(randgrid.storedpaths))
+
+    grid = randgrid.randDots(12)
+
+    solver = Solver.Solver()
+    solver.grid = grid
+    solver.solve(1)
+
+    # solver.apply(0)
+
+    print(grid)
+
+    Render.render(RENDER_OUTPUT, grid)
+    solver.apply(0)
+    Render.render(RENDER_SOLVED, grid)
+
 if __name__ == "__main__":
-    bgsolvertest()
+    randtest()
