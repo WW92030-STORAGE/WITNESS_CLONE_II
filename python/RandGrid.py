@@ -1,5 +1,5 @@
 import BlockGroup, Grid, GridUtils, PuzzleEntity, Solver, SymmetryGrid, Utils
-import math, random
+import math, random, collections
 
 class RandGrid:
     storedpaths = []
@@ -346,4 +346,179 @@ class RandGrid:
             if cc != 0:
                 grid.set(i, PuzzleEntity.Triangle(cc))
         grid.clearAllLines()
+        return grid
+    
+    def randBlocks(self, numSymbols = 3, numRegions = 2, numCuts = 2, rotation = 0.1):
+        self.pickRandomPath()
+        cutlocs = self.getRandomEdges(numCuts, True)
+        
+        grid = self.blankGrid()
+        self.applyChosenPath(grid)
+        regions = GridUtils.getRegionsCells(grid)
+        grid.clearAllLines()
+
+        for i in cutlocs:
+            grid.setPath(i, False)
+        
+        regionindices = self.randomChoice(len(regions), numRegions)
+
+        vv = []
+        for i in regionindices:
+            region = regions[i]
+            for p in region:
+                vv.append(p)
+
+        choice = self.randomChoice(len(vv), numSymbols)
+
+        seeds = set()
+        for i in choice:
+            seeds.add(vv[i])
+
+        for i in regionindices:
+            region = regions[i]
+
+            blockseeds = Utils.intersection(seeds, region)
+
+            if len(blockseeds) <= 0:
+                continue
+
+            blockNo = {}
+            seedblock = []
+            q = collections.deque()
+
+            index = 0
+            for i in blockseeds:
+                blockNo[i] = index
+                index += 1
+                seedblock.append(i)
+            
+            for i in blockseeds:
+                q.append(i)
+
+            while len(q) > 0:
+                p = q.popleft()
+                number = blockNo[p]
+
+                nexts = []
+                for d in range(4):
+                    next = (p[0] + 2 * Utils.dx[d], p[1] + 2 * Utils.dy[d])
+                    nexts.append(next)
+                
+                random.shuffle(nexts)
+                for dd in range(len(nexts)):
+                    next = nexts[dd]
+                    if not grid.inBounds(next):
+                        continue
+                    if next in blockNo:
+                        continue
+                    if not next in region:
+                        continue
+
+                    blockNo[next] = number
+                    q.append(next)
+            
+            random.shuffle(seedblock)
+
+            for i in range(len(seedblock)):
+                transformed = []
+                for p in blockNo:
+                    if blockNo[p] == i:
+                        x = p[0] - 1
+                        y = p[1] - 1
+                        transformed.append((x // 2, y // 2))
+
+                bg = BlockGroup.BlockGroup(transformed)
+                if random.random() < rotation:
+                    bg.fixed = False
+                    bg.rotate(random.randint(0, 3))
+                bg.normalize()
+                grid.set(seedblock[i], bg)
+            
+        return grid
+
+    def randBlocksByRegion(self, maxBlocksPerSymbol = 5, numRegions = 2, numCuts = 2, rotation = 0.1):
+        self.pickRandomPath()
+        cutlocs = self.getRandomEdges(numCuts, True)
+        
+        grid = self.blankGrid()
+        self.applyChosenPath(grid)
+        regions = GridUtils.getRegionsCells(grid)
+        grid.clearAllLines()
+
+        for i in cutlocs:
+            grid.setPath(i, False)
+        
+        regionindices = self.randomChoice(len(regions), numRegions)
+
+        for i in regionindices:
+            region = regions[i]
+
+            totalBlocks = len(region)
+            numSymbols = totalBlocks // maxBlocksPerSymbol
+            if (totalBlocks % maxBlocksPerSymbol != 0):
+                numSymbols += 1
+            
+            vv = []
+            for p in region:
+                vv.append(p)
+            choice = self.randomChoice(len(vv), numSymbols)
+            blockseeds = set()
+            for p in choice:
+                blockseeds.add(vv[p])
+
+            # print(i, totalBlocks, numSymbols, vv, blockseeds)
+
+            # Begin FloodFill
+            blockNo = {}
+            seedblock = []
+            q = collections.deque()
+
+            index = 0
+            for i in blockseeds:
+                blockNo[i] = index
+                index += 1
+                seedblock.append(i)
+            
+            for i in blockseeds:
+                q.append(i)
+
+            while len(q) > 0:
+                p = q.popleft()
+                number = blockNo[p]
+
+                nexts = []
+                for d in range(4):
+                    next = (p[0] + 2 * Utils.dx[d], p[1] + 2 * Utils.dy[d])
+                    nexts.append(next)
+                
+                random.shuffle(nexts)
+                for dd in range(len(nexts)):
+                    next = nexts[dd]
+                    if not grid.inBounds(next):
+                        continue
+                    if next in blockNo:
+                        continue
+                    if not next in region:
+                        continue
+
+                    blockNo[next] = number
+                    q.append(next)
+            
+            random.shuffle(seedblock)
+
+            for i in range(len(seedblock)):
+                transformed = []
+                for p in blockNo:
+                    if blockNo[p] == i:
+                        x = p[0] - 1
+                        y = p[1] - 1
+                        transformed.append((x // 2, y // 2))
+
+                bg = BlockGroup.BlockGroup(transformed)
+                if random.random() < rotation:
+                    bg.fixed = False
+                    bg.rotate(random.randint(0, 3))
+                bg.normalize()
+                grid.set(seedblock[i], bg)
+            
         return grid

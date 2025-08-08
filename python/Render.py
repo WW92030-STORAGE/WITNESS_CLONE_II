@@ -119,7 +119,7 @@ def colorize(grid, pos, filter, violations, line_cols = None):
 	
 	return diminish(element.color.value, filter)
 
-def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickness = 48, bg = (128, 128, 128), path = (64, 64, 64), line_colors = [(255, 255, 255), (0, 255, 255), (255, 0, 255), (255, 255, 0)], filter = (255, 255, 255), getViolations = False):
+def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickness = 48, bg_ = (128, 128, 128), path_ = (64, 64, 64), line = [(255, 255, 255), (0, 255, 255), (255, 0, 255), (255, 255, 0)], filter = (255, 255, 255), getViolations = False):
 	puzzle = Grid(grid.R, grid.C)
 	
 
@@ -136,10 +136,11 @@ def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickne
 
 	
 	# Set colors
-	bg = diminish(bg, filter)
-	for i in range(len(line_colors)):
-		line_colors[i] = diminish(line_colors[i], filter)
-	path = diminish(path, filter)
+	bg = diminish(bg_, filter)
+	line_colors = []
+	for i in range(len(line)):
+		line_colors.append(diminish(line[i], filter))
+	path = diminish(path_, filter)
 
 	image = Image.new("RGB", (width, height), bg)
 	

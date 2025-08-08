@@ -479,14 +479,94 @@ class RandGrid {
                 Utils::pointVec transformed;
                 for (auto p : blockNo) {
                     if (p.second == i) transformed.push_back({(p.first.first - 1) / 2, (p.first.second - 1) / 2 });
-                    BlockGroup bg(transformed);
-                    if (PRNG() < rotation) {
-                        bg.fixed = false;
-                        bg.rotate(PRNG.randint(4));
-                    }
-                    bg.normalize();
-                    grid.set(seedblock[i], new BlockGroup(bg));
                 }
+                BlockGroup bg(transformed);
+                if (PRNG() < rotation) {
+                    bg.fixed = false;
+                    bg.rotate(PRNG.randint(4));
+                }
+                bg.normalize();
+                grid.set(seedblock[i], new BlockGroup(bg));
+            }
+        }
+
+        return grid;
+        
+    }
+
+        GridT randBlocksByRegion(int maxBlocksPerSymbol = 5, int numRegions = 2, int numCuts = 2, double rotation = 0.1) {
+        pickRandomPath();
+        auto cutlocs = getRandomEdges(numCuts, true);
+
+        GridT grid = blankGrid();
+        applyChosenPath(&grid);
+        auto regions = GridUtils::getRegionsCells(&grid);
+        grid.clearAllLines();
+
+        for (auto i : cutlocs) grid.setPath(i, 0);
+
+        auto regionindices = randomChoice(regions.size(), numRegions);
+
+        for (auto i : regionindices) {
+            auto region = regions[i];
+
+            int totalBlocks = region.size();
+            int numSymbols = totalBlocks / maxBlocksPerSymbol;
+            if (totalBlocks % maxBlocksPerSymbol) numSymbols++;
+
+            Utils::pointVec vv;
+            for (auto p : region) vv.push_back(p);
+            auto choice = randomChoice(vv.size(), numSymbols);
+            Utils::pointSet blockseeds;
+            for (auto p : choice) blockseeds.insert(vv[p]);
+
+            // Use a simple random flood fill to decide what goes where 
+            std::map<Utils::point, int> blockNo; // What block each point goes
+            Utils::pointVec seedblock; // Placement locations of blocks in the region
+            std::queue<Utils::point> q;
+            int index = 0;
+            for (auto i : blockseeds) {
+                blockNo.insert({i, index++});
+                seedblock.push_back(i);
+            }
+            for (auto i : blockseeds) q.push(i);
+
+            while (q.size()) {
+                auto p = q.front();
+                auto number = blockNo[p];
+                q.pop();
+                std::vector<Utils::point> nexts;
+                for (int d = 0; d < 4; d++) {
+                    Utils::point next = {p.first + 2 * Utils::dx[d], p.second + 2 * Utils::dy[d]};
+                    nexts.push_back(next);
+                }
+                std::shuffle(nexts.begin(), nexts.end(), PRNG.gen);
+                for (int dd = 0; dd < 4; dd++) {
+                    Utils::point next = nexts[dd];
+                    if (!grid.inBounds(next)) continue;
+                    if (blockNo.find(next) != blockNo.end()) continue;
+                    if (region.find(next) == region.end()) continue;
+
+                    blockNo.insert({next, number});
+                    q.push(next);
+                }
+            }
+
+            std::shuffle(seedblock.begin(), seedblock.end(), PRNG.gen);
+
+            // Do the thing
+            for (int i = 0; i < seedblock.size(); i++) {
+                Utils::pointVec transformed;
+                for (auto p : blockNo) {
+                    if (p.second == i) transformed.push_back({(p.first.first - 1) / 2, (p.first.second - 1) / 2 });
+                }
+                BlockGroup bg(transformed);
+                if (PRNG() < rotation) {
+                    bg.fixed = false;
+                    bg.rotate(PRNG.randint(4));
+                }
+                bg.normalize();
+                grid.set(seedblock[i], new BlockGroup(bg));
             }
         }
 

@@ -112,11 +112,11 @@ class Grid {
     }
 
     // Get the neighbors of a point. This might include non adjacent points.
-    virtual Utils::pointSet neighbors(std::pair<int, int> p) {
+    virtual Utils::pointSet neighbors(std::pair<int, int> p, int i = 1) {
         Utils::pointSet res;
 
         for (int d = 0; d < 4; d++) {
-            Utils::point next = {p.first + Utils::dx[d], p.second + Utils::dy[d]};
+            Utils::point next = {p.first + i * Utils::dx[d], p.second + i * Utils::dy[d]};
             if (!inBounds(next)) continue;
             res.insert(next);
         }

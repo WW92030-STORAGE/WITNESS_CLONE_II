@@ -510,7 +510,7 @@ void randrotblocks() {
     RRG.pickRandomPath();
     std::cout << Utils::disp(RRG.chosenpath) << "\n";
 
-    auto grid = RRG.randBlocks();
+    auto grid = RRG.randBlocksByRegion();
     std::cout << grid.to_string() << "\n";
 
     for (int r = 1; r < grid.R; r++) {

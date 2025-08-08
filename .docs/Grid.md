@@ -35,7 +35,7 @@ Grids that contain `PuzzleEntity` objects. This documentation encompasses all fo
 - `PuzzleEntity* get(std::pair<int, int> p)`
 - `EntityColor::Color getColor(int x, int y)`
 - `EntityColor::Color getColor(std::pair<int, int> p)`
-- `virtual Utils::pointSet neighbors(std::pair<int, int> p)` - Gets neighbors that are inside the bounds
+- `virtual Utils::pointSet neighbors(std::pair<int, int> p, int i = 1)` - Gets neighbors that are inside the bounds: Travel in the four directions `i` steps and record all inBounds points.
 - `void reset(int r, int c)` - Reset `board[r][c]` to an empty `PuzzleEntity` (Because this changes the pointer address but not the values in pointesr, the original value is deleted)
 - `set(int r, int c, PuzzleEntity* p)` - Set to entity
 - `void clearAllPaths()` - Clear all paths (except endpoints) and path dots from the board

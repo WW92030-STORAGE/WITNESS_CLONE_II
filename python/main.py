@@ -9,15 +9,17 @@ import SymmetryGrid
 from PuzzleEntity import Color, Endpoint, PathDot, Blob, Star, Triangle, Cancel
 from BlockGroup import BlockGroup
 from Grid import Grid
-from SymmetryGrid import RotationalGrid
+from SymmetryGrid import RotationalGrid, HSymmetryGrid, VSymmetryGrid
 import Render
 from RandGrid import RandGrid
 
 import Presets
 
 # Assuming you are invoking this from the base directory using the Makefile
-RENDER_OUTPUT = "grid.png"
-RENDER_SOLVED = "solution.png"
+RENDER_OUTPUT = "grid"
+RENDER_SOLVED = "solution"
+
+FILE_FORMAT = ".png" # Must have period
 
 def simpleTest():
     grid = Grid()
@@ -39,7 +41,7 @@ def simpleTest():
 
     print(GridUtils.getViolations(grid))
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
 def simpleBG():
     bg1 = BlockGroup({(0, 0), (0, 1), (0, 2)})
@@ -58,7 +60,7 @@ def cancelTest():
     print(grid)
     print(GridUtils.getViolations(grid))
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
 def solverTest():
     grid = Presets.simplestars()
@@ -74,7 +76,7 @@ def solverTest():
 
     print(solver.grid)
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
 def rottest():
     grid = RotationalGrid()
@@ -92,7 +94,7 @@ def rottest():
     solver.apply(3)
     print(grid)
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
 def rottest2():
     grid = Presets.complexsymdots()
@@ -106,7 +108,7 @@ def rottest2():
     solver.apply(0)
     print(grid)
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
 def rottest3():
     grid = Presets.simplesymblobs()
@@ -120,7 +122,7 @@ def rottest3():
     solver.apply(0)
     print(grid)
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
 def bgtest():
     grid = Presets.simplebg()
@@ -150,15 +152,15 @@ def bgsolvertest():
 
     print(grid)
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
-def randtest():
-    N = 13
-    randgrid = RandGrid(11, 11, GridT = RotationalGrid)
+def randrottest():
+    N = 9
+    randgrid = RandGrid(N, N, GridT = Grid)
     randgrid.pathfind()
     print(len(randgrid.storedpaths))
 
-    grid = randgrid.randTriangles(12)
+    grid = randgrid.randBlocksByRegion(numRegions = 1)
 
     solver = Solver.Solver()
     solver.grid = grid
@@ -168,9 +170,34 @@ def randtest():
 
     print(grid)
 
-    Render.render(RENDER_OUTPUT, grid)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
     solver.apply(0)
-    Render.render(RENDER_SOLVED, grid)
+    Render.render(RENDER_SOLVED + FILE_FORMAT, grid)
+
+def rgb():
+    N = 11
+    randgrid = RandGrid(N, N, GridT = RotationalGrid)
+    randgrid.pathfind()
+    print(len(randgrid.storedpaths))
+
+    grid = randgrid.randStarsGeneral(100)
+
+    solver = Solver.Solver()
+    solver.grid = grid
+    solver.solve(1)
+
+    # solver.apply(0)
+
+    print(grid)
+
+    Render.render(RENDER_OUTPUT + "_R" + FILE_FORMAT, grid, filter = Color.RGB_RED.value)
+    Render.render(RENDER_OUTPUT + "_G" + FILE_FORMAT, grid, filter = Color.RGB_GREEN.value)
+    Render.render(RENDER_OUTPUT + "_B" + FILE_FORMAT, grid, filter = Color.RGB_BLUE.value)
+    Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
+    solver.apply(0)
+    Render.render(RENDER_SOLVED + FILE_FORMAT, grid, line = [Color.RGB_WHITE.value, Color.RGB_WHITE.value])
+
+
 
 if __name__ == "__main__":
-    randtest()
+    rgb()

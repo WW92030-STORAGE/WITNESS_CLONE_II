@@ -53,3 +53,4 @@ Generator of random grids. The type `GridT` is assumed to be a subclass of `Grid
 - `GridT randBlobs(int numSymbols = 10, int numCols = 3, int numCuts = 2)` - At most `numSymbols` blobs, in at most `numCols` colors.
 - `randTriangles(int numSymbols = 10, int numCuts = 2)` - At most `numSymbols` triangle cells.
 - `GridT randBlocks(int numSymbols = 3, int numRegions = 2, int numCuts = 2, double rotation = 0.1)` - At most `numSymbols` symbols, divided among at most `numRegions` regions. Each BlockGroup has probability `rotation` of being non-fixed.
+- `GridT randBlocksByRegion(int maxBlocksPerRegion = 5, int numRegions = 2, int numCuts = 2, double rotation = 0.1)` - Tries to divide the blocks so each block has on average at most `maxBlocksPerRegion`
