@@ -193,7 +193,7 @@ def validateRegionNoRecur(grid: Grid, region: Utils.pointSet):
                 cc += 1
         
         if (cc != pp.count):
-            violations.insert(i)
+            violations.add(i)
 
     entities = Utils.intersection(region, getActiveSymbols(grid, PuzzleEntity.ColorEntity))
 
@@ -278,7 +278,7 @@ def getViolationsNoRecursion(grid: Grid):
                 cc += 1
         
         if (cc != pp.count):
-            violations.insert(i)
+            violations.add(i)
 
     regions = getRegions(grid)
     regionsCells = getRegionsCells(grid)

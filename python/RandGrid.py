@@ -328,3 +328,22 @@ class RandGrid:
                     region = r
             grid.set(i, PuzzleEntity.Blob(colors[region % len(colors)]))
         return grid
+    
+    def randTriangles(self, numSymbols = 10, numCuts = 2):
+        self.pickRandomPath()
+        cutlocs = self.getRandomEdges(numCuts, True)
+        symbols = self.getRandomCells(numSymbols)
+
+        grid = self.blankGrid()
+        self.applyChosenPath(grid)
+
+        for i in symbols:
+            pp = grid.neighbors(i)
+            cc = 0
+            for p in pp:
+                if grid.get(p).hasLine != 0:
+                    cc += 1
+            if cc != 0:
+                grid.set(i, PuzzleEntity.Triangle(cc))
+        grid.clearAllLines()
+        return grid

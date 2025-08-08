@@ -158,7 +158,7 @@ def randtest():
     randgrid.pathfind()
     print(len(randgrid.storedpaths))
 
-    grid = randgrid.randDots(12)
+    grid = randgrid.randTriangles(12)
 
     solver = Solver.Solver()
     solver.grid = grid

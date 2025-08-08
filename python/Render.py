@@ -252,8 +252,8 @@ def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickne
 			# Draw triangles
 
 			if (isinstance(element, Triangle)):
-				for ii in range(element.x):
-					xpos2 = xpos + (ii + 0.5 - element.x / 2) * (grid_spacing / 2)
+				for ii in range(element.count):
+					xpos2 = xpos + (ii + 0.5 - element.count / 2) * (grid_spacing / 2)
 					shape = generateTriangle((xpos2, ypos), grid_spacing / 2)
 					draw.polygon(shape, fill = colorize(puzzle, (i, j), filter, violations))
 			
