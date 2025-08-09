@@ -155,12 +155,12 @@ def bgsolvertest():
     Render.render(RENDER_OUTPUT + FILE_FORMAT, grid)
 
 def randrottest():
-    N = 9
-    randgrid = RandGrid(N, N, GridT = Grid)
+    N = 11
+    randgrid = RandGrid(N, N, GridT = RotationalGrid)
     randgrid.pathfind()
     print(len(randgrid.storedpaths))
 
-    grid = randgrid.randBlocksByRegion(numRegions = 1)
+    grid = randgrid.randDots()
 
     solver = Solver.Solver()
     solver.grid = grid
@@ -200,4 +200,4 @@ def rgb():
 
 
 if __name__ == "__main__":
-    rgb()
+    randrottest()

@@ -337,6 +337,9 @@ class RandGrid:
         grid = self.blankGrid()
         self.applyChosenPath(grid)
 
+        for i in cutlocs:
+            grid.setPath(i, False)
+
         for i in symbols:
             pp = grid.neighbors(i)
             cc = 0
