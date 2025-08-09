@@ -5,7 +5,7 @@ import BlockGroup
 
 from collections import deque
 
-def getSymbols(g: Grid, T):
+def getSymbols(g: Grid.Grid, T):
     s = set()
     for r in range(g.R):
         for c in range(g.C):
@@ -15,7 +15,7 @@ def getSymbols(g: Grid, T):
     
     return s
 
-def getActiveSymbols(g: Grid, T):
+def getActiveSymbols(g: Grid.Grid, T):
     s = getSymbols(g, T)
     res = set()
 
@@ -25,7 +25,7 @@ def getActiveSymbols(g: Grid, T):
     
     return res
 
-def getSymbolsColor(g: Grid, c: PuzzleEntity.Color):
+def getSymbolsColor(g: Grid.Grid, c: PuzzleEntity.Color):
     res = set()
     for r in range(g.R):
         for c in range(g.C):
@@ -35,7 +35,7 @@ def getSymbolsColor(g: Grid, c: PuzzleEntity.Color):
 
     return res
 
-def getColors(g: Grid, s: Utils.pointSet, NotNil = True):
+def getColors(g: Grid.Grid, s: Utils.pointSet, NotNil = True):
     res = {}
     for i in s:
         if (not g.get(i) is None):
@@ -45,7 +45,7 @@ def getColors(g: Grid, s: Utils.pointSet, NotNil = True):
             Utils.push(res, g.get(i).color)
     return res
 
-def getActiveColors(g: Grid, s: Utils.pointSet, NotNil = True):
+def getActiveColors(g: Grid.Grid, s: Utils.pointSet, NotNil = True):
     res = {}
     for i in s:
         if (not g.get(i) is None):
@@ -57,7 +57,7 @@ def getActiveColors(g: Grid, s: Utils.pointSet, NotNil = True):
             Utils.push(res, g.get(i).color)
     return res
 
-def isFFable(g: Grid, next: Utils.point):
+def isFFable(g: Grid.Grid, next: Utils.point):
     if (not g.inBounds(next)):
         return False
     if (g.get(next).isBlocker):
@@ -66,7 +66,7 @@ def isFFable(g: Grid, next: Utils.point):
         return False
     return True
 
-def floodfill(g: Grid, p: Utils.point):
+def floodfill(g: Grid.Grid, p: Utils.point):
     vis = set()
     q = deque()
     if (not isFFable(g, p)):
@@ -88,7 +88,7 @@ def floodfill(g: Grid, p: Utils.point):
 
     return vis
 
-def floodfillCells(g: Grid, p: Utils.point):
+def floodfillCells(g: Grid.Grid, p: Utils.point):
     vis = set()
     res = set()
     q = deque()
@@ -115,7 +115,7 @@ def floodfillCells(g: Grid, p: Utils.point):
 
     return res
 
-def getRegions(g: Grid):
+def getRegions(g: Grid.Grid):
     v = []
     s = set()
     for r in range(g.R):
@@ -135,7 +135,7 @@ def getRegions(g: Grid):
     
     return v
 
-def getRegionsCells(g: Grid):
+def getRegionsCells(g: Grid.Grid):
     v = []
     s = set()
     for r in range(g.R):
@@ -157,7 +157,7 @@ def getRegionsCells(g: Grid):
     
     return v
 
-def validateRegionNoRecur(grid: Grid, region: Utils.pointSet):
+def validateRegionNoRecur(grid: Grid.Grid, region: Utils.pointSet):
     violations = set()
 
     # Local neighborhood checks
@@ -241,7 +241,7 @@ def validateRegionNoRecur(grid: Grid, region: Utils.pointSet):
 
     return violations
 
-def getViolationsNoRecursion(grid: Grid):
+def getViolationsNoRecursion(grid: Grid.Grid):
     violations = set()
 
     # Local neighborhood checks
@@ -334,7 +334,7 @@ def getViolationsNoRecursion(grid: Grid):
 
     return violations
     
-def getViolations(grid: Grid):
+def getViolations(grid: Grid.Grid):
     # Check recursives here
 
     violations = getViolationsNoRecursion(grid)
@@ -386,11 +386,11 @@ def getViolations(grid: Grid):
     
     return res
 
-def Validate(grid: Grid):
+def Validate(grid: Grid.Grid):
     if (not grid.validatePath()):
         return False
     
     return len(getViolations(grid)) <= 0
 
-def validate(grid: Grid):
+def validate(grid: Grid.Grid):
     return Validate(grid)

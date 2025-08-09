@@ -13,3 +13,6 @@ compile:
 
 python:
 	python3 python/main.py
+
+pythonpaths:
+	python3 python/GeneratePaths.py
