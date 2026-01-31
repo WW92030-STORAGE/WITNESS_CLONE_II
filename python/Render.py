@@ -314,4 +314,4 @@ def render(output, grid: Grid, width = 1024, height = 1024, margin = 96, thickne
 					draw.line((xpos, ypos - grid_spacing, xpos, ypos + grid_spacing), fill=LINECOL, width=thickness)
 
 	image.save(output)
-	
+	image.close()
