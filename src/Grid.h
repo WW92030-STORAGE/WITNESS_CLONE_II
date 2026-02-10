@@ -56,6 +56,16 @@ class Grid {
         init();
     }
 
+    Grid(const Grid& other) {
+        R = other.R;
+        C = other.C;
+        init();
+
+        for (int r = 0; r < R; r++) {
+            for (int c = 0; c < C; c++) set({r, c}, other.board[r][c]);
+        }
+    }
+
     virtual ~Grid() {
         for (int i = 0; i < R; i++) {
             for (int j = 0; j < C; j++) delete board[i][j];
