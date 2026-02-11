@@ -209,8 +209,8 @@ const AABB MAXBB = {MINPT, MAXPT};
     }
 
 template <typename AGAINST, typename TEST>
-bool instanceof(const TEST* test) {
-    return dynamic_cast<const AGAINST*>(test) != nullptr;
+const AGAINST* instanceof(const TEST* test) {
+    return dynamic_cast<const AGAINST*>(test);
 }
 
 template <typename T>

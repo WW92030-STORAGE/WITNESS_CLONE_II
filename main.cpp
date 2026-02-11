@@ -490,7 +490,7 @@ void randrottest() {
     RRG.pickRandomPath();
     std::cout << Utils::disp(RRG.chosenpath) << "\n";
 
-    auto grid = RRG.randStarsGeneral();
+    auto grid = RRG.randTriangles();
     std::cout << grid.to_string() << "\n";
 
     Solver s;
