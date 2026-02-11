@@ -319,9 +319,9 @@ class Grid {
         Utils::pointSet activeStarts, activeEnds;
         for (auto i : line) {
             PuzzleEntity* pp = get(i);
-            if (instanceof<Endpoint>(pp)) {
+            if (auto ep = instanceof<Endpoint>(pp)) {
                 if (intersection<Utils::point>(neighbors(i), line).size() != 1) continue;
-                if (dynamic_cast<Endpoint*>(pp)->isStart) activeStarts.insert(i);
+                if (ep->isStart) activeStarts.insert(i);
                 else activeEnds.insert(i);
             }
         }

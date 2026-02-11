@@ -56,8 +56,7 @@ class Solver {
         // std::cout << Utils::disp(src) << "\n";
         // Reached an endpoint? Try to solve but you can continue
         auto landmark = grid->get(src);
-        if (instanceof<Endpoint, PuzzleEntity>(landmark)) {
-            Endpoint* ep = dynamic_cast<Endpoint*>(landmark);
+        if (auto ep = instanceof<Endpoint, PuzzleEntity>(landmark)) {
             if (!ep->isStart) {
                 grid->setLine(src, true);
                 if (GridUtils::Validate(grid)) {

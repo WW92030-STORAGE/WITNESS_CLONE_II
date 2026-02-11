@@ -306,26 +306,26 @@ namespace GridUtils {
         // Check dots
         for (auto i : getActiveSymbols<PathDot>(grid)) {
             PuzzleEntity* p = grid->get(i);
-            if (!instanceof<PathDot>(p)) continue;
-            if (p && !p->hasLine) violations.insert(i);
-            PathDot* pd = dynamic_cast<PathDot*>(p);
-            uint64_t restriction = pd->restriction;
-            if (restriction == 0) continue; // If restriction = 0 continue else check bits
-            // std::cout << restriction << " " << (int)(p->hasLine) << "\n";
-            if (restriction & (1<<(p->hasLine - 1))) continue;
-            violations.insert(i);
+            if (auto pd = instanceof<PathDot>(p)) {
+                if (p && !p->hasLine) violations.insert(i);
+                uint64_t restriction = pd->restriction;
+                if (restriction == 0) continue; // If restriction = 0 continue else check bits
+                // std::cout << restriction << " " << (int)(p->hasLine) << "\n";
+                if (restriction & (1<<(p->hasLine - 1))) continue;
+                violations.insert(i);
+            }
         }
 
         // Check triangles
         for (auto i : getActiveSymbols<Triangle>(grid)) {
             PuzzleEntity* pp = grid->get(i);
-            if (!instanceof<Triangle>(pp)) continue;
-            Triangle* trix = dynamic_cast<Triangle*>(pp);
-            int cc = 0;
-            for (auto n : grid->neighbors(i)) {
-                if (grid->get(n) && grid->get(n)->hasLine) cc++;
+            if (auto trix = instanceof<Triangle>(pp)) {
+                int cc = 0;
+                for (auto n : grid->neighbors(i)) {
+                    if (grid->get(n) && grid->get(n)->hasLine) cc++;
+                }
+                if (cc != trix->count) violations.insert(i);
             }
-            if (cc != trix->count) violations.insert(i);
         }
 
         std::vector<Utils::pointSet> regionsCells = getRegionsCells(grid);
