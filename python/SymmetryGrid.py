@@ -14,7 +14,7 @@ class RotationalGrid(Grid.Grid):
 
     def isPathable(self, x, y):
         for i in range(2):
-            if (not self.inBounds(x, y)):
+            if (not self.inBounds((x, y))):
                 return False
             p = self.board[x][y]
             if not p.isPath:
@@ -44,7 +44,7 @@ class VSymmetryGrid(Grid.Grid):
 
     def isPathable(self, x, y):
         for i in range(2):
-            if (not self.inBounds(x, y)):
+            if (not self.inBounds((x, y))):
                 return False
             p = self.board[x][y]
             if not p.isPath:
@@ -81,7 +81,7 @@ class HSymmetryGrid(Grid.Grid):
 
     def isPathable(self, x, y):
         for i in range(2):
-            if (not self.inBounds(x, y)):
+            if (not self.inBounds((x, y))):
                 return False
             p = self.board[x][y]
             if not p.isPath:

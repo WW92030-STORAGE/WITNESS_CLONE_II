@@ -9,7 +9,7 @@ proof:
 	./test
 
 compile:
-	g++ -g main.cpp -o main -O3
+	g++ -g main.cpp -o main -O0
 
 python:
 	python3 python/main.py

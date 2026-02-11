@@ -160,7 +160,7 @@ def randrottest():
     randgrid.pathfind()
     print(len(randgrid.storedpaths))
 
-    grid = randgrid.randDots()
+    grid = randgrid.randTriangles();
 
     solver = Solver.Solver()
     solver.grid = grid
@@ -186,7 +186,7 @@ def rgb():
     solver.grid = grid
     solver.solve(1)
 
-    # solver.apply(0)
+    solver.apply(0)
 
     print(grid)
 

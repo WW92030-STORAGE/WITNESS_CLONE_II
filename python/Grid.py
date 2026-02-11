@@ -31,14 +31,16 @@ class Grid:
         self.C = B
 
         self.init()
-    
+
     def inBounds(self, p: Utils.point):
         if p[0] < 0 or p[1] < 0 or p[0] >= self.R or p[1] >= self.C:
             return False
         return True
     
+
+    
     def isPathable(self, x, y):
-        if (not self.inBounds(x, y)):
+        if (not self.inBounds((x, y))):
             return False
         p = self.board[x][y]
         if not p.isPath:

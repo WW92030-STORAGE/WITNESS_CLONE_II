@@ -59,7 +59,7 @@ class Solver:
 
             if not self.grid.inBounds(next):
                 continue
-            if not (self.grid.isPathable(next)):
+            if not (self.grid.isPathable(next[0], next[1])):
                 continue
             if next in self.vis:
                 continue
