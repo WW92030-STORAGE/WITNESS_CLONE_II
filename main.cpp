@@ -482,7 +482,7 @@ void randrotgridtest() {
 }
 
 void randrottest() {
-    RandGrid<RotationalGrid> RRG(11, 11, 287432);
+    RandGrid<RotationalGrid> RRG(9, 9, 287432);
 
     RRG.pathfind();
     std::cout << RRG.storedpaths.size() << "\n";
@@ -538,7 +538,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    randblocktest();
+    randrottest();
 
 
 

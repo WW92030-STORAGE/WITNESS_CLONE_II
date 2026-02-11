@@ -10,6 +10,7 @@
 #include <cstdint>
 
 #include "PuzzleEntity.h"
+#include "BlockGroup.h"
 #include "Utils.h"
 
 /*
@@ -18,6 +19,21 @@ Class representing a grid of PuzzleEntity objects. For inheritance checks (e.g. 
 All entries with any even index are denoted as edges. All others (entries with both odd indices) are denoted as cells.
 
 */
+
+// Copy things
+
+PuzzleEntity* clonePuzzleEntity(PuzzleEntity* p) {
+    if (auto ptr = dynamic_cast<Endpoint*>(p)) return new Endpoint(*ptr);
+    if (auto ptr = dynamic_cast<PathDot*>(p)) return new PathDot(*ptr);
+    if (auto ptr = dynamic_cast<Blob*>(p)) return new Blob(*ptr);
+    if (auto ptr = dynamic_cast<Star*>(p)) return new Star(*ptr);
+    if (auto ptr = dynamic_cast<Triangle*>(p)) return new Triangle(*ptr);
+    if (auto ptr = dynamic_cast<Cancel*>(p)) return new Cancel(*ptr);
+    if (auto ptr = dynamic_cast<BlockGroup*>(p)) return new BlockGroup(*ptr);
+
+    if (auto ptr = dynamic_cast<ColorEntity*>(p)) return new ColorEntity(*ptr);
+    return new PuzzleEntity(*p);
+}
 
 // You can make different kinds of grids later. The base grid class represents a closed grid in which one line can be drawn at a time.
 class Grid {
@@ -54,6 +70,17 @@ class Grid {
         R = A;
         C = B;
         init();
+    }
+
+    Grid(const Grid& other) {
+        R = other.R;
+        C = other.C;
+        init();
+        for (int r = 0; r < R; r++) {
+            for (int c = 0; c < C; c++) {
+                set({r, c}, clonePuzzleEntity(other.board[r][c]));
+            }
+        }
     }
 
     virtual ~Grid() {
