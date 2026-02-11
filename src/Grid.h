@@ -107,7 +107,7 @@ class Grid {
     }
 
     // Can I draw a line here where there was not?
-    bool isPathable(int x, int y) {
+    virtual bool isPathable(int x, int y) {
         if (!inBounds(x, y)) return false;
         auto p = board[x][y];
         if (!p->isPath) return false;

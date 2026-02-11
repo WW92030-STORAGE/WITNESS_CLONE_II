@@ -39,6 +39,19 @@ class RotationalGrid : public Grid {
     }
     */
 
+    virtual bool isPathable(int x, int y) {
+        for (int i = 0; i < 2; i++) {
+            if (!inBounds(x, y)) return false;
+            auto p = board[x][y];
+            if (!p->isPath) return false;
+            if (p->isBlocker) return false;
+            if (p->hasLine) return false;
+            x = R - x - 1;
+            y = C - y - 1;
+        }
+        return true;
+    }
+
     virtual void defaultDiagonal() {
         set(0, 0, new Endpoint(true));
         set(R - 1, C - 1, new Endpoint(true));
@@ -70,6 +83,19 @@ class VSymmetryGrid : public Grid {
     }
     */
 
+    virtual bool isPathable(int x, int y) {
+        for (int i = 0; i < 2; i++) {
+            if (!inBounds(x, y)) return false;
+            auto p = board[x][y];
+            if (!p->isPath) return false;
+            if (p->isBlocker) return false;
+            if (p->hasLine) return false;
+            // x = R - x - 1;
+            y = C - y - 1;
+        }
+        return true;
+    }
+
     virtual void defaultDiagonal() {
         set(0, 0, new Endpoint(true));
         set(R - 1, C - 1, new Endpoint(false));
@@ -99,6 +125,19 @@ class HSymmetryGrid : public Grid {
         Grid::drawLine(R - x1 - 1, y1, R - x2 - 1, y2, (index == 0) ? (index) : (index + 1));
     }
     */
+
+    virtual bool isPathable(int x, int y) {
+        for (int i = 0; i < 2; i++) {
+            if (!inBounds(x, y)) return false;
+            auto p = board[x][y];
+            if (!p->isPath) return false;
+            if (p->isBlocker) return false;
+            if (p->hasLine) return false;
+            x = R - x - 1;
+            // y = C - y - 1;
+        }
+        return true;
+    }
 
     virtual void defaultDiagonal() {
         set(0, 0, new Endpoint(true));

@@ -99,7 +99,7 @@ class Solver {
             Utils::point next = nn[d];
 
             if (!grid->inBounds(next)) continue;
-            if (!(grid->get(next)->isPath)) continue;
+            if (!(grid->isPathable(next))) continue;
             if (vis.find(next) != vis.end()) continue;
             if ((grid->get(next)->hasLine)) continue;
 
