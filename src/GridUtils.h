@@ -142,7 +142,7 @@ namespace GridUtils {
 
             for (int d = 0; d < 4; d++) {
                 Utils::point next = {now.first + Utils::dx[d], now.second + Utils::dy[d]};
-                if (!isFFable(g, next) || !isFFable(g, hit)) continue;
+                if (!isFFable(g, next) || !isFFable(g, next)) continue;
                 if (Utils::contains(vis, next)) continue;
                 vis.insert(next);
                 q.push(next);
