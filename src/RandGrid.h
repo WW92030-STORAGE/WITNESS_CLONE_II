@@ -97,9 +97,13 @@ class RandGrid {
     virtual void applyChosenPath(GridT* grid) {
         for (int r = 0; r < grid->R; r++) {
             for (int c = 0; c < grid->C; c++) {
+                grid->setLine(r, c, 0);
+            }
+        }
+        for (int r = 0; r < grid->R; r++) {
+            for (int c = 0; c < grid->C; c++) {
                 Utils::point p = {r, c};
                 if (chosenpath.find(p) != chosenpath.end()) grid->setLine(r, c, 1);
-                else grid->setLine(r, c, 0);
             }
         }
     }
@@ -404,7 +408,7 @@ class RandGrid {
             auto pp = grid.neighbors(i);
             int cc = 0;
             for (auto p : pp) {
-                if (grid.get(p)->hasLine) cc++;
+                if (isOnAnyPath(p)) cc++;
             }
             if (cc) grid.set(i, new Triangle(cc));
         }

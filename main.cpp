@@ -492,13 +492,19 @@ void randrottest() {
 
     RRG.pickRandomPath();
     std::cout << Utils::disp(RRG.chosenpath) << "\n";
+    RotationalGrid testgrid(11, 11);
+    testgrid.defaultDiagonal();
+    RRG.applyChosenPath(&testgrid);
+    std::cout << testgrid.to_string() << "\n";
+    
 
-    auto grid = RRG.randDots(1);
+    auto grid = RRG.randDots(10);
     std::cout << grid.to_string() << "\n";
 
     Solver s;
     s.grid = &grid;
     s.solve();
+    std::cout << Utils::disp(s.solutions[0]) << "\n";
     s.apply(0);    
 
     std::cout << grid.to_string() << "\n";
@@ -541,7 +547,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    randgridtest();
+    randrottest();
 
 
 
