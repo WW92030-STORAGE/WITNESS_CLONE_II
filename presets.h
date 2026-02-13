@@ -1,3 +1,6 @@
+#ifndef PRESETS_AWHGQE9GHEBG9PEBGEQBNIBOQNGBPQ
+#define PRESETS_AWHGQE9GHEBG9PEBGEQBNIBOQNGBPQ
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -266,3 +269,100 @@ RotationalGrid weirddualshapes() {
     grid.set(7, 11, new BlockGroup(corner));
     return grid;
 }
+
+// Starting here a preset is of the form {Grid, N} where N is the number of solutions to the Grid (Grid can be of any type)
+
+std::pair<Grid, int> testcase1() {
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(1, 1, new Star(EntityColor::RGB_WHITE));
+    grid.set(1, 5, new Star(EntityColor::RGB_WHITE));
+    grid.set(5, 5, new Star(EntityColor::RGB_WHITE));
+    grid.set(5, 1, new Star(EntityColor::RGB_WHITE));
+
+    grid.set(3, 3, new Blob(EntityColor::RGB_RED));
+    grid.set(7, 7, new Blob(EntityColor::RGB_RED));
+    grid.set(7, 3, new Blob(EntityColor::RGB_CYAN));
+    grid.set(3, 7, new Blob(EntityColor::RGB_CYAN));
+
+    return {grid, 380};
+}
+
+std::pair<Grid, int> testcase2() {
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    BlockGroup lshape(BGS::L);
+    lshape.fixed = false;
+
+    grid.set(3, 3, new BlockGroup(lshape));
+
+    return {grid, 68};
+}
+
+std::pair<Grid, int> testcase3() {
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    for (int i = 0; i <= 4; i++) {
+        for (int j = 0; j <= 4; j++) {
+            if ((i + j) & 1) grid.set(2 * i, 2 * j, new PathDot());
+        }
+    }
+
+    grid.set(3, 3, new Cancel());
+
+    return {grid, 288};
+}
+
+std::pair<Grid, int> testcase4() {
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    for (int i = 0; i <= 4; i++) {
+        for (int j = 0; j <= 4; j++) {
+            if ((i + j) & 1) grid.set(2 * i, 2 * j, new PathDot());
+        }
+    }
+
+    grid.set(3, 3, new Cancel());
+
+    return {grid, 288};
+}
+
+// Rotational grid tests
+
+std::pair<RotationalGrid, int> rotcase1() {
+    RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    grid.set(5, 3, new Triangle(2));
+    grid.set(3, 7, new Triangle(2));
+    grid.set(7, 9, new Triangle(1));
+    grid.set(9, 5, new Triangle(1));
+
+    return {grid, 68};
+}
+
+std::pair<RotationalGrid, int> rotcase2() {
+    RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    BlockGroup rotcorner(BGS::corner);
+    rotcorner.fixed = false;
+    grid.set(3, 1, new BlockGroup(rotcorner));
+
+    return {grid, 152};
+}
+
+std::pair<RotationalGrid, int> rotcase3() {
+    RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    return {grid, 3340};
+}
+
+
+
+#endif

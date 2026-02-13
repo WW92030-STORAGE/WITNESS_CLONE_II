@@ -5,8 +5,8 @@ test: compile
 	valgrind ./main
 
 proof:
-	g++ test.cpp -o test -O3
-	./test
+	g++ exhaustivesearch.cpp -o exhaustivesearch -O3
+	./exhaustivesearch
 
 compile:
 	g++ main.cpp -o main -O3

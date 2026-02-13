@@ -18,7 +18,7 @@ def runTest():
     return float(result[-10]) # -10 for us, -6 for ms, -2 for sec
 
 NUM_TESTS = 16
-NUM_WARMUP = 4
+NUM_WARMUP = 2
 
 
 if __name__ == "__main__":
