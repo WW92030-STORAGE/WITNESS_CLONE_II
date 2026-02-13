@@ -101,10 +101,16 @@ namespace GridUtils {
 
     // Flood fill a region, adhering to any blockers.
     Utils::pointSet floodfill(Grid* g, Utils::point p) {
+        bool* vis2 = new bool[g->R * g->C];
+        for (int i = 0; i < g->R * g->C; i++) vis2[i] = 0;
         Utils::pointSet vis;
         Utils::pointQueue q;
-        if (!isFFable(g, p)) return vis;
+        if (!isFFable(g, p)) {
+            delete[] vis2;
+            return vis;
+        }
         q.push(p);
+        vis2[p.first * g->C + p.second] = 1;
         vis.insert(p);
 
         while (q.size()) {
@@ -114,11 +120,13 @@ namespace GridUtils {
             for (int d = 0; d < 4; d++) {
                 Utils::point next = {now.first + Utils::dx[d], now.second + Utils::dy[d]};
                 if (!isFFable(g, next)) continue;
-                if (Utils::contains(vis, next)) continue;
+                if (vis2[next.first * g->C + next.second]) continue;
+                vis2[next.first * g->C + next.second] = 1;
                 vis.insert(next);
                 q.push(next);
             }
         }
+        delete[] vis2;
         return vis;
     }
 
@@ -129,12 +137,16 @@ namespace GridUtils {
     // Flood fill a region, adhering to any blockers. This time the flood fill extends only across non-edges and will skip over any edges. 
     // Cells that share an edge as neighbor are considered adjacent in this model.
     Utils::pointSet floodfillCells(Grid* g, Utils::point p) {
-        Utils::pointSet vis;
+        bool* vis2 = new bool[g->R * g->C];
+        for (int i = 0; i < g->R * g->C; i++) vis2[i] = 0;
         Utils::pointSet res;
         Utils::pointQueue q;
-        if (!isFFable(g, p)) return vis;
+        if (!isFFable(g, p)) {
+            delete[] vis2;
+            return res;
+        }
         q.push(p);
-        vis.insert(p);
+        vis2[p.first * g->C + p.second] = 1;
 
         while (q.size()) {
             Utils::point now = q.front();
@@ -142,15 +154,19 @@ namespace GridUtils {
 
             for (int d = 0; d < 4; d++) {
                 Utils::point next = {now.first + Utils::dx[d], now.second + Utils::dy[d]};
-                if (!isFFable(g, next) || !isFFable(g, next)) continue;
-                if (Utils::contains(vis, next)) continue;
-                vis.insert(next);
+                if (!isFFable(g, next)) continue;
+                if (vis2[next.first * g->C + next.second]) continue;
+                vis2[next.first * g->C + next.second] = 1;
                 q.push(next);
             }
         }
-        for (auto i : vis) {
-            if ((i.first & 1) && (i.second & 1)) res.insert(i);
+        for (int i = 0; i < g->R * g->C; i++) {
+            if (!vis2[i]) continue;
+            int r = i / g->C;
+            int c = i % g->C;
+            if ((r & 1) && (c & 1)) res.insert({r, c});
         }
+        delete[] vis2;
         return res;
     }
 
@@ -386,6 +402,8 @@ namespace GridUtils {
         if (verbose) std::cout << "CHECK BGS\n";
         auto bgs = getActiveSymbols<BlockGroup>(grid);
         if (bgs.size()) {
+
+        if (verbose) std::cout << "REGION COUNT " << regionsCells.size() << "\n";
 
         for (auto region : regionsCells) {
             if (verbose) std::cout << grid->highlightCells(region) << "\n";

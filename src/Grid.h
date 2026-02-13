@@ -387,6 +387,19 @@ class Grid {
         }
         return res;
     }
+
+    std::string highlight(Utils::pointSet s, bool dl = true) {
+        std::string res = "";
+        for (int c = C - 1; c >= 0; c --) {
+            for (int r = 0; r < R; r ++) {
+                if (dl && get(r, c)->hasLine) res.push_back('O');
+                else if (Utils::contains(s, {r, c})) res.push_back('#');
+                else res.push_back('.');
+            }
+            res.push_back('\n');
+        }
+        return res;
+    }
 };
 
 #endif

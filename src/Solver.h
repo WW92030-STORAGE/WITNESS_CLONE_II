@@ -157,11 +157,15 @@ class Solver {
                 bool b3 = !grid->inBounds(p1) || !(grid->isPathable(p1)) || containsVis(p1) || (grid->get(p1)->hasLine);
                 bool b4 = !grid->inBounds(p2) || !(grid->isPathable(p2)) || containsVis(p2) || (grid->get(p2)->hasLine);
                 if (b1 && !b3 && !b4) {
-                    if (verbose) std::cout << "PRUNING ALLOWED\n";
+                    if (verbose) std::cout << "PRUNING ALLOWED\n" << Utils::to_string(src) << " " << Utils::to_string(p0) << " | " << Utils::to_string(p1) << "\n";
+
+                    grid->setLine(src, 1);
 
                     Utils::pointSet r1 = GridUtils::floodfill(grid, p1);
+                    if (verbose) std::cout << grid->highlight(r1) << "\n" << Utils::to_string(p2) << "\n";
                     if (Utils::contains(r1, p2)) {
                         if (verbose) std::cout << "PRUNING HALTED!!!\n";
+                        grid->setLine(src, 0);
                         continue;
                     }
                     Utils::pointSet r2 = GridUtils::floodfill(grid, p2);
@@ -169,13 +173,20 @@ class Solver {
                     
                     bool v1 = regionPruningValidation(r1);
                     if (verbose) std::cout << "v1 " << v1 << "\n";
-                    if (!v1) continue;
+                    if (!v1) {
+                        grid->setLine(src, 0);
+                        continue;
+                    }
                     bool v2 = regionPruningValidation(r2);
                     if (verbose) std::cout << "v2 " << v2 << "\n";
-                    if (!v2) continue;
+                    if (!v2) {
+                        grid->setLine(src, 0);
+                        continue;
+                    }
                     
                     // both v1, v2 bad
                     if (reachedEndInCurStep) endsVisited--;
+                    grid->setLine(src, 0);
                     return;
                 } 
             }

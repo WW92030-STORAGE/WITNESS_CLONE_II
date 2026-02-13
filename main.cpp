@@ -236,7 +236,6 @@ void canceldot() {
     std::cout << "VERDICT: " << GridUtils::Validate(&grid) << "\n";
 }
 
-
 void canceldot2() {
     Grid grid = canceldotblob();
 
