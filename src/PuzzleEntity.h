@@ -67,6 +67,10 @@ class PuzzleEntity {
         init();
     }
 
+    virtual PuzzleEntity* clone() {
+        return new PuzzleEntity(*this);
+    }
+
     PuzzleEntity clear() {
         return PuzzleEntity();
     }
@@ -116,6 +120,10 @@ class Endpoint : public PuzzleEntity {
         isStart = other.isStart;
         init();
     }
+
+    Endpoint* clone() override {
+        return new Endpoint(*this);
+    }
 };
 
 class PathDot : public PuzzleEntity {
@@ -143,6 +151,10 @@ class PathDot : public PuzzleEntity {
         restriction = other.restriction;
         init();
     }
+
+    PathDot* clone() override {
+        return new PathDot(*this);
+    }
 };
 
 class ColorEntity : public PuzzleEntity {
@@ -167,6 +179,10 @@ class ColorEntity : public PuzzleEntity {
         color = other.color;
         init();
     }
+
+    virtual ColorEntity* clone() override {
+        return new ColorEntity(*this);
+    }
 };
 
 class Blob : public ColorEntity {
@@ -188,6 +204,10 @@ class Blob : public ColorEntity {
     Blob(const Blob& other) : ColorEntity(other) {
         init();
     }
+
+    Blob* clone() override {
+        return new Blob(*this);
+    }
 };
 
 class Star : public ColorEntity {
@@ -208,6 +228,10 @@ class Star : public ColorEntity {
 
     Star(const Star& other) : ColorEntity(other) {
         init();
+    }
+
+    Star* clone() override {
+        return new Star(*this);
     }
 };
 
@@ -246,6 +270,10 @@ class Triangle : public ColorEntity {
         count = other.count;
         init();
     }
+
+    Triangle* clone() override {
+        return new Triangle(*this);
+    }
 };
 
 class Cancel : public ColorEntity {
@@ -269,6 +297,10 @@ class Cancel : public ColorEntity {
     Cancel(const Cancel& other) : ColorEntity(other) {
         color = other.color;
         init();
+    }
+
+    Cancel* clone() override {
+        return new Cancel(*this);
     }
 };
 

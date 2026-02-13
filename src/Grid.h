@@ -22,19 +22,6 @@ All entries with any even index are denoted as edges. All others (entries with b
 
 // Copy things
 
-PuzzleEntity* clonePuzzleEntity(PuzzleEntity* p) {
-    if (auto ptr = dynamic_cast<Endpoint*>(p)) return new Endpoint(*ptr);
-    if (auto ptr = dynamic_cast<PathDot*>(p)) return new PathDot(*ptr);
-    if (auto ptr = dynamic_cast<Blob*>(p)) return new Blob(*ptr);
-    if (auto ptr = dynamic_cast<Star*>(p)) return new Star(*ptr);
-    if (auto ptr = dynamic_cast<Triangle*>(p)) return new Triangle(*ptr);
-    if (auto ptr = dynamic_cast<Cancel*>(p)) return new Cancel(*ptr);
-    if (auto ptr = dynamic_cast<BlockGroup*>(p)) return new BlockGroup(*ptr);
-
-    if (auto ptr = dynamic_cast<ColorEntity*>(p)) return new ColorEntity(*ptr);
-    return new PuzzleEntity(*p);
-}
-
 // You can make different kinds of grids later. The base grid class represents a closed grid in which one line can be drawn at a time.
 class Grid {
     public:
@@ -78,7 +65,7 @@ class Grid {
         init();
         for (int r = 0; r < R; r++) {
             for (int c = 0; c < C; c++) {
-                set({r, c}, clonePuzzleEntity(other.board[r][c]));
+                set({r, c}, other.board[r][c]->clone());
             }
         }
     }
@@ -97,12 +84,12 @@ class Grid {
     
     */
 
-    bool inBounds(int x, int y) {
+    inline bool inBounds(int x, int y) {
         if (x < 0 || y < 0 || x >= R || y >= C) return false;
         return true;
     }
 
-    bool inBounds(std::pair<int, int> p) {
+    inline bool inBounds(Utils::point p) {
         return inBounds(p.first, p.second);
     }
 
@@ -116,30 +103,30 @@ class Grid {
         return true;
     }
 
-    bool isPathable(std::pair<int, int> p) {
+    inline bool isPathable(Utils::point p) {
         return isPathable(p.first, p.second);
     }
 
-    PuzzleEntity* get(int x, int y) {
+    inline PuzzleEntity* get(int x, int y) {
         if (!inBounds(x, y)) return nullptr;
         return board[x][y];
     }
 
-    PuzzleEntity* get(std::pair<int, int> p) {
+    inline PuzzleEntity* get(Utils::point p) {
         return get(p.first, p.second);
     }
 
-    EntityColor::Color getColor(int x, int y) {
+    inline EntityColor::Color getColor(int x, int y) {
         if (!get(x, y)) return EntityColor::NIL;
         return get(x, y)->color;
     }
 
-    EntityColor::Color getColor(std::pair<int, int> p) {
+    inline EntityColor::Color getColor(Utils::point p) {
         return getColor(p.first, p.second);
     }
 
     // Get the neighbors of a point. This might include non adjacent points.
-    virtual Utils::pointSet neighbors(std::pair<int, int> p, int i = 1) {
+    virtual Utils::pointSet neighbors(Utils::point p, int i = 1) {
         Utils::pointSet res;
 
         for (int d = 0; d < 4; d++) {
@@ -157,7 +144,7 @@ class Grid {
     */
 
     // Resets a cell
-    void reset(int r, int c) {
+    inline void reset(int r, int c) {
         PuzzleEntity* pe = board[r][c];
         board[r][c] = new PuzzleEntity();
 
@@ -165,13 +152,13 @@ class Grid {
     }
 
     // Sets a cell to some thing. IT IS HIGHLY RECOMMENDED TO USE THIS INSTEAD OF SIMPLY SAYING board[r][c] = ...
-    void set(int r, int c, PuzzleEntity* p) {
+    inline void set(int r, int c, PuzzleEntity* p) {
         PuzzleEntity* pe = board[r][c]; // remember that `pe` is simply a number which is the address of the original object in memory
         board[r][c] = p; // place the address of our new object into the board
         delete pe; // delete the original object
     }
 
-    void set(std::pair<int, int> p, PuzzleEntity* pe) {
+    inline void set(Utils::point p, PuzzleEntity* pe) {
         set(p.first, p.second, pe);
     }
 
@@ -209,12 +196,12 @@ class Grid {
 
     // Set the isPath of a cell
 
-    virtual void setPath(int x, int y, bool z) {
+    inline void setPath(int x, int y, bool z) {
         if (x < 0 || y < 0 || x >= R || y >= C) return;
         board[x][y]->isPath = z;
     }
 
-    virtual void setPath(std::pair<int, int> p, bool z) {
+    inline void setPath(Utils::point p, bool z) {
         setPath(p.first, p.second, z);
     }
 
@@ -225,7 +212,7 @@ class Grid {
         board[x][y]->hasLine = z;
     }
 
-    void setLine(std::pair<int, int> p, uint8_t z) {
+    void setLine(Utils::point p, uint8_t z) {
         setLine(p.first, p.second, z);
     }
 
@@ -234,7 +221,7 @@ class Grid {
         board[x][y]->isBlocker = z;
     }
 
-    void setBlocker(std::pair<int, int> p, bool z) {
+    void setBlocker(Utils::point p, bool z) {
         setBlocker(p.first, p.second, z);
     }
 
@@ -249,12 +236,12 @@ class Grid {
         }
     }
 
-    virtual void drawLine(std::pair<int, int> a, std::pair<int, int> b, uint8_t index = 1) {
+    virtual void drawLine(Utils::point a, Utils::point b, uint8_t index = 1) {
         drawLine(a.first, a.second, b.first, b.second, index);
     }
     
     // Draw a path between points
-    virtual void drawPath(std::vector<std::pair<int, int>> path, uint8_t index = 1) {
+    virtual void drawPath(std::vector<Utils::point> path, uint8_t index = 1) {
         for (int i = 0; i < path.size() - 1; i++) drawLine(path[i], path[i + 1], index);
     }
 
@@ -275,22 +262,16 @@ class Grid {
     
     */
 
-    // Get a single line, the line containing a specified point
+    // Get a single line, the line containing a specified point. This selects all points with a specified color. 
     
     Utils::pointSet getSingleLine(Utils::point p) {
         Utils::pointSet res; 
-        Utils::pointQueue q;
-        q.push(p);
-        while (q.size()) {
-            Utils::point pp = q.front();
-            q.pop();
-            res.insert(pp);
-            auto nn = neighbors(pp);
-            for (auto i : nn) {
-                if (!get(i)->hasLine) continue;
-                if (res.find(i) != res.end()) continue;
-                q.push(i);
-                res.insert(i);
+        int lineColor = get(p)->hasLine;
+        if (!lineColor) return res;
+
+        for (int r = 0; r < R; r++) {
+            for (int c = 0; c < C; c++) {
+                if (board[r][c]->hasLine == lineColor) res.insert({r, c});
             }
         }
         return res;
@@ -317,39 +298,41 @@ class Grid {
     bool validateSinglePath(Utils::point p) {
         auto line = getSingleLine(p);
         Utils::pointSet activeStarts, activeEnds;
+        // grab the start and end points of the grid, that are also on this line
+        Utils::point theStart; // ideally only one here. 
+        Utils::point theEnd;
         for (auto i : line) {
             PuzzleEntity* pp = get(i);
             if (auto ep = instanceof<Endpoint>(pp)) {
+                // endpoints must have degree 1
                 if (intersection<Utils::point>(neighbors(i), line).size() != 1) continue;
-                if (ep->isStart) activeStarts.insert(i);
-                else activeEnds.insert(i);
-            }
+                if (ep->isStart) {
+                    theStart = i;
+                    activeStarts.insert(i);
+                }
+                else {
+                    activeEnds.insert(i);
+                    theEnd = i;
+                }
+            } // Start/ends on the path are not counted since their degree is not 1.
         }
         if (activeStarts.size() != 1 || activeEnds.size() != 1) return 0;
 
+        // make sure all other nodes have degree 2
         for (auto i : line) {
             if (Utils::contains(activeStarts, i)) continue;
             if (Utils::contains(activeEnds, i)) continue;
             if (intersection<Utils::point>(neighbors(i), line).size() != 2) return 0;
         }
 
-        // Ensure the graph is connected
-        Utils::pointQueue q;
-        Utils::pointSet ps;
-        q.push(*(activeStarts.begin()));
-        while (q.size()) {
-            Utils::point now = q.front();
-            q.pop();
+        // Now, at this point, there are two remaining types of graphs. One is a path. The other is a pair, and a cycle.
+        // Luckily for us in most cases (unless you do something really stupid) the condition is actually really simple
+        // If there are no degree 2 nodes, then check if the start connects to the end.
+        // Otherwise check if the start connects to an internal node.
 
-            for (auto i : neighbors(now)) {
-                if (Utils::contains<Utils::point>(ps, i)) continue;
-                if (!get(i)->hasLine) continue;
-                ps.insert(i);
-                q.push(i);
-            }
-        }
+        if (line.size() > 2) return intersection<Utils::point>(neighbors(theStart), line).size();
 
-        return Utils::contains<Utils::point>(ps, *(activeEnds.begin()));
+        return Utils::contains(neighbors(theEnd), theStart);
     }
 
     bool validatePath() {
@@ -387,6 +370,20 @@ class Grid {
                 res = res + delim + board[r][c]->disp + delim + " ";
             }
             res = res + "\n";
+        }
+        return res;
+    }
+
+    // Highlight region
+
+    std::string highlightCells(Utils::pointSet s) {
+        std::string res = "";
+        for (int c = C - 2; c >= 0; c -= 2) {
+            for (int r = 1; r < R; r += 2) {
+                if (Utils::contains(s, {r, c})) res.push_back('#');
+                else res.push_back('.');
+            }
+            res.push_back('\n');
         }
         return res;
     }

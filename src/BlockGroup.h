@@ -80,6 +80,10 @@ class BlockGroup : public ColorEntity {
         init();
     }
 
+    BlockGroup* clone() override {
+        return new BlockGroup(*this);
+    }
+
     bool operator<(const BlockGroup& other) const {
         if (value != other.value) return value < other.value;
         if (fixed != other.fixed) return fixed < other.fixed;

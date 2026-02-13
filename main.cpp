@@ -387,9 +387,8 @@ void symshape() {
     grid.drawPath(Utils::pointVec({{0, 0}, {4, 0}, {4, 2}, {2, 2}, {2, 6}, {4, 6}, {4, 4}, {6, 4}, {6, 2}, {8, 2}, {8, 4}, {10, 4}, {10, 0}, {12, 0}}));
 
     std::cout << grid.to_string() << "\n";
-    std::cout << GridUtils::validate(&grid) << "\n";
+    std::cout << GridUtils::validate(&grid, true) << "\n";
 }
-
 
 void badpaths() {
     RotationalGrid grid(9, 9);
@@ -403,28 +402,31 @@ void badpaths() {
 }
 
 void randgridtest() {
-    RandGrid randgrid(9, 9, 42069);
+    RandGrid randgrid(9, 9);
 
     randgrid.pathfind();
-    std::cout << randgrid.storedpaths.size() << "\n";
+    std::cout << "FOUND " << randgrid.storedpaths.size() << "\n";
 
-    auto grid = randgrid.randTriangles(10);
+    auto grid = randgrid.randBlobs(10);
     std::cout << grid.to_string() << "\n";
 
     Solver s;
     s.grid = &grid;
 
-    s.solve();
+    s.solve(4, true, true);
+    std::cout << "SOLVED " << s.solutions.size() << "\n";
     s.apply(0);
 
     std::cout << grid.to_string() << "\n";
 }
 
 void randblocktest() {
-    RandGrid randgrid(2);
+    RandGrid randgrid(9, 9);
 
-    randgrid.pathfind();
-    std::cout << randgrid.storedpaths.size() << "\n";
+    randgrid.pathfind(100);
+    std::cout << "FOUND " << randgrid.storedpaths.size() << "\n";
+    randgrid.pickRandomPath();
+    std::cout << "path: " << Utils::disp(randgrid.chosenpath) << "\n";
 
     auto grid = randgrid.randBlocks();
     std::cout << grid.to_string() << "\n";
@@ -443,6 +445,7 @@ void randblocktest() {
     s.grid = &grid;
 
     s.solve();
+    std::cout << Utils::disp(s.solutions[0]);
     s.apply(0);
 
     std::cout << grid.to_string() << "\n";

@@ -26,8 +26,8 @@ Automatic solver for all kinds of Grids.
 
 ## Functions
 
-- `void path(Utils::point src, Utils::point prev, int numsol = 1)` - Recursive path function. `src` is the current point, `prev` the most recent point in our current path stub, `numsol` is at most how many solutions will be discovered.
-- `void solve(int numsol = 1)` - Populate `solutions` with at most `numsol` solutions. Be aware the complexity for this increases exponentially with grid size.
+- `void path(Utils::point src, Utils::point prev, int numsol = 1, bool prune = true, bool verbose = false)` - Recursive path function. `src` is the current point, `prev` the most recent point in our current path stub, `numsol` is at most how many solutions will be discovered. `prune` toggles a pruning strategy.
+- `void solve(int numsol = 1, bool verbose = false)` - Populate `solutions` with at most `numsol` solutions. Be aware the complexity for this increases exponentially with grid size.
 - `void apply(int x = 0)` - Given a populated `solutions` vector, apply the `x`th solution to the stored `grid`.
 
 ## Deprecated/Unused Functions

@@ -41,8 +41,8 @@ Grids that contain `PuzzleEntity` objects. This documentation encompasses all fo
 - `void clearAllPaths()` - Clear all paths (except endpoints) and path dots from the board
 - `void defaultPaths()` - Put paths on all coordinates with at least one even coordinate
 - `virtual void defaultDiagonal()` - Put paths on all possible coordinates, a start point at (0, 0), and an end point at the top right.
-- `virtual void setPath(int x, int y, bool z)` - Set the `isPath` of an entry.
-- `virtual void setPath(std::pair<int, int> p, bool z)` 
+- `void setPath(int x, int y, bool z)` - Set the `isPath` of an entry.
+- `void setPath(std::pair<int, int> p, bool z)` 
 - `virtual void setLine(int x, int y, uint8_t z)` - Set the `hasLine` of an entry.
 - `virtual void setLine(std::pair<int, int> p, uint8_t z)` 
 - `void setBlocker(int x, int y, bool z)` - Set the `isBlocker` of an entry.

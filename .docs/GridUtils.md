@@ -24,7 +24,7 @@ Grid utils and solution checking
 - `std::vector<Utils::pointSet> getRegions(Grid* g)` - Get a list of points, separated by region. Line points and blockers are excluded.
 - `std::vector<Utils::pointSet> getRegionsCells(Grid* g)` - Get a list of grid cells separated by region.
 
-- `bool validateRegionNoRecur(Grid* grid, Utils::pointSet region)` - Validate all symbols except those that rely on recursively doing more sub-validations and those that rely on other points outside their region, in a region. 
-- `Utils::pointSet getViolationsNoRecursion(Grid* grid)` - Validate all symbols except those that rely on recursively doing more sub-validations. Returns a set of violating points.
+- `Utils::pointSet validateRegionNoRecur(Grid* grid, Utils::pointSet region)` - Validate all symbols except those that rely on recursively doing more sub-validations and those that rely on other points outside their region, in a region. 
+- `Utils::pointSet getViolationsNoRecursion(Grid* grid, bool verbose = false)` - Validate all symbols except those that rely on recursively doing more sub-validations. Returns a set of violating points.
 - `Utils::pointSet getViolations(Grid* grid)` - Validate everything including recursive. Returns a list of violating points.
 - `bool Validate(Grid* grid)` - Returns if the grid has a valid solution.

@@ -10,7 +10,7 @@
 
 namespace Utils {
 
-typedef std::pair<int, int> point; // Also can be an interval
+typedef std::pair<int, int> point;
 typedef std::set<point> pointSet;
 typedef std::queue<point> pointQueue;
 typedef std::vector<point> pointVec;

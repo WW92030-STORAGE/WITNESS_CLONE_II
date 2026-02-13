@@ -193,7 +193,7 @@ namespace GridUtils {
 
     // Retrieve a set of wrong symbol positions, ignoring cancels.
 
-    Utils::pointSet validateRegionNoRecur(Grid* grid, Utils::pointSet region) {
+    Utils::pointSet validateRegionNoRecur(Grid* grid, Utils::pointSet& region) {
         Utils::pointSet violations;
 
         /*
@@ -271,6 +271,7 @@ namespace GridUtils {
 
         // Check BlockGroups
         auto bgs = intersection(region, getActiveSymbols<BlockGroup>(grid));
+
         // Make the region into a shape
         Utils::pointSet convertedregion;
         for (auto i : region) convertedregion.insert({(i.first - 1) / 2, (i.second - 1) / 2});
@@ -293,7 +294,7 @@ namespace GridUtils {
         return violations;
     }
 
-    Utils::pointSet getViolationsNoRecursion(Grid* grid) {
+    Utils::pointSet getViolationsNoRecursion(Grid* grid, bool verbose = false) {
         Utils::pointSet violations;
 
         /*
@@ -304,6 +305,7 @@ namespace GridUtils {
         */
 
         // Check dots
+        if (verbose) std::cout << "CHECK DOTS\n";
         for (auto i : getActiveSymbols<PathDot>(grid)) {
             PuzzleEntity* p = grid->get(i);
             if (auto pd = instanceof<PathDot>(p)) {
@@ -317,6 +319,7 @@ namespace GridUtils {
         }
 
         // Check triangles
+        if (verbose) std::cout << "CHECK TRIANGLES\n";
         for (auto i : getActiveSymbols<Triangle>(grid)) {
             PuzzleEntity* pp = grid->get(i);
             if (auto trix = instanceof<Triangle>(pp)) {
@@ -328,10 +331,10 @@ namespace GridUtils {
             }
         }
 
-        std::vector<Utils::pointSet> regionsCells = getRegionsCells(grid);
-        std::vector<Utils::pointSet> regions = getRegions(grid);
         auto entities = getActiveSymbols<ColorEntity>(grid); // All colored symbols in the grid
+        if (!entities.size()) return violations;
 
+        auto regionsCells = getRegionsCells(grid);
 
         /*
         
@@ -341,6 +344,7 @@ namespace GridUtils {
         */
 
         // Check blobs
+        if (verbose) std::cout << "CHECK BLOBS\n";
         auto blobs = getActiveSymbols<Blob>(grid);
         for (auto region : regionsCells) {
             auto p = intersection(blobs, region);
@@ -353,6 +357,7 @@ namespace GridUtils {
         }
 
         // Check stars
+        if (verbose) std::cout << "CHECK STARS\n";
         auto stars = getActiveSymbols<Star>(grid);
         for (auto region : regionsCells) {
             auto regstars = intersection(stars, region);
@@ -376,9 +381,15 @@ namespace GridUtils {
         */
 
         // Check BlockGroups
+        if (verbose) std::cout << "CHECK BGS\n";
         auto bgs = getActiveSymbols<BlockGroup>(grid);
+        if (bgs.size()) {
+
         for (auto region : regionsCells) {
+            if (verbose) std::cout << grid->highlightCells(region) << "\n";
             auto regbgs = intersection(bgs, region);
+            if (verbose) std::cout << "BGS in region: " << regbgs.size() << "\n";
+            if (!regbgs.size()) continue;
 
 
             // Make the region into a shape
@@ -390,8 +401,11 @@ namespace GridUtils {
             for (auto i : regbgs) v.push_back(BlockGroup(*(dynamic_cast<BlockGroup*>(grid->get(i)))));
 
             if (!BlockGroup::checkPlacements(big, v, {{0, 0}, {grid->R / 2, grid->C / 2}})) {
+                if (verbose) std::cout << "BAD BLOCKGROUP\n";
                 for (auto i : regbgs) violations.insert(i);
             }
+        }
+
         }
 
         /*
@@ -404,7 +418,7 @@ namespace GridUtils {
         return violations;
     }
 
-    Utils::pointSet getViolations(Grid* grid) {
+    Utils::pointSet getViolations(Grid* grid, bool verbose = false) {
         
         // IN ACCORDANCE WITH THE FOUR STEP PROTOCOL
         // ALL SYMBOLS THAT CAN MODIFY OTHER SYMBOLS WITHIN ITS REGION (OR ARE MODIFIED BY OTHER SYMBOLS IN ITS REGION) SHOULD BE CHECKED IN THIS METHOD
@@ -424,10 +438,9 @@ namespace GridUtils {
         
         */
 
-        Utils::pointSet violations = getViolationsNoRecursion(grid);
+        Utils::pointSet violations = getViolationsNoRecursion(grid, verbose);
 
-        auto regions = getRegions(grid);
-        auto regionsCells = getRegionsCells(grid);
+        if (verbose) std::cout << "Validated non-recursive stuff\n";
 
         Utils::pointSet res; // Final violations list
 
@@ -435,6 +448,17 @@ namespace GridUtils {
         Utils::pointSet deactivated;
         auto cancels = getActiveSymbols<Cancel>(grid);
         if (cancels.size() > 0) {
+            auto regions = getRegions(grid);
+            std::vector<Utils::pointSet> regionsCells;
+
+            for (auto region : regions) {
+                regionsCells.push_back(Utils::pointSet());
+                for (auto p : region) {
+                    if (p.first & 1 && p.second & 1) regionsCells[regionsCells.size() - 1].insert(p);
+                }
+            }
+            if (verbose) std::cout << "Got regions\n";
+            
             for (auto region : regions) { // For each region...
                 auto cancelsInRegion = intersection<Utils::point>(region, cancels);
                 auto violationsInRegion = intersection<Utils::point>(region, violations); // This is the set of violations in the region
@@ -494,14 +518,19 @@ namespace GridUtils {
 
     // Validate the entire fucking grid
 
-    bool Validate(Grid* grid) {
-        if (!grid->validatePath()) return false;
+    bool Validate(Grid* grid, bool verbose = false) {
+        if (!grid->validatePath()) {
+            if (verbose) std::cout << "BAD PATH\n";
+            return false;
+        }
+
+        if (verbose) std::cout << "Path validated\n";
         
-        return getViolations(grid).size() == 0; // Tentative!!!!
+        return getViolations(grid, verbose).size() == 0; // Tentative!!!!
     }
 
-    bool validate(Grid* grid) {
-        return Validate(grid);
+    bool validate(Grid* grid, bool verbose = false) {
+        return Validate(grid, verbose);
     }
 }  
 

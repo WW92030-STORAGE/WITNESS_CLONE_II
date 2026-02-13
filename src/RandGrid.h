@@ -7,6 +7,8 @@
 #include "Utils.h"
 #include "Solver.h"
 
+#include <iostream>
+
 /*
 
 Customizable random grid generator. This one is a bit more robust than the original.
@@ -93,9 +95,12 @@ class RandGrid {
     }
 
     virtual void applyChosenPath(GridT* grid) {
-        grid->clearAllLines();
-        for (auto i : chosenpath) {
-            grid->setLine(i.first, i.second, 1);
+        for (int r = 0; r < grid->R; r++) {
+            for (int c = 0; c < grid->C; c++) {
+                Utils::point p = {r, c};
+                if (chosenpath.find(p) != chosenpath.end()) grid->setLine(r, c, 1);
+                else grid->setLine(r, c, 0);
+            }
         }
     }
 
@@ -125,7 +130,7 @@ class RandGrid {
     }
 
     // Pathfind
-    void pathfind(int numPaths = INT_MAX, int see = 0) {
+    void pathfind(int numPaths = INT_MAX >> 1, int see = 0) {
         GridT g = blankGrid();
         Solver solver;
         if (see) solver.seed(see);
@@ -341,7 +346,7 @@ class RandGrid {
     }
 
     // Random dots
-    GridT randDots(int numSymbols = 8, int numCuts = 2, double threshold = 0.5) {
+    GridT randDots(int numSymbols = 8, int numCuts = 8, double threshold = 0.5) {
         pickRandomPath();
         auto cutlocs = getRandomEdges(numCuts, true);
         auto symbols = getRandomPaths(numSymbols, false, true);

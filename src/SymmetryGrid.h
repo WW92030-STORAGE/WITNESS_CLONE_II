@@ -28,6 +28,7 @@ class RotationalGrid : public Grid {
     }
 
     virtual void setLine(int x, int y, uint8_t z) {
+        if (x < 0 || y < 0 || x >= R || y >= C) return;
         Grid::setLine(x, y, z);
         Grid::setLine(R - x - 1, C - y - 1, (z == 0) ? (z) : (z + 1));
     }
@@ -72,6 +73,7 @@ class VSymmetryGrid : public Grid {
     }
 
     virtual void setLine(int x, int y, uint8_t z) {
+        if (x < 0 || y < 0 || x >= R || y >= C) return;
         Grid::setLine(x, y, z);
         Grid::setLine(x, C - y - 1, (z == 0) ? (z) : (z + 1));
     }
@@ -116,6 +118,7 @@ class HSymmetryGrid : public Grid {
     }
 
     virtual void setLine(int x, int y, uint8_t z) {
+        if (x < 0 || y < 0 || x >= R || y >= C) return;
         Grid::setLine(x, y, z);
         Grid::setLine(R - x - 1, y, (z == 0) ? (z) : (z + 1));
     }

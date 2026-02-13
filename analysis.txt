@@ -1,0 +1,1084 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 20.83      0.05     0.05                             _init
+ 16.67      0.09     0.04    16580     0.00     0.01  GridUtils::floodfill(Grid*, std::pair<int, int>)
+ 12.50      0.12     0.03  3526984     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_get_insert_unique_pos(std::pair<int, int> const&)
+ 12.50      0.15     0.03  2420556     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*)
+ 10.42      0.17     0.03  1515142     0.00     0.00  std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&)
+  8.33      0.20     0.02  3502586     0.00     0.00  std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&)
+  4.17      0.20     0.01   368113     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*, std::_Rb_tree_node_base*, std::pair<int, int> const&)
+  4.17      0.21     0.01   306386     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::find(std::pair<int, int> const&)
+  4.17      0.23     0.01     3400     0.00     0.00  BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool)
+  2.08      0.23     0.01  2075734     0.00     0.00  Grid::get(int, int)
+  2.08      0.23     0.01     3400     0.00     0.00  BlockGroup::checkPlacementsFixed(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, bool)
+  2.08      0.24     0.01                             PathDot::init()
+  0.00      0.24     0.00  1797303     0.00     0.00  GridUtils::isFFable(Grid*, std::pair<int, int>)
+  0.00      0.24     0.00  1706256     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&)
+  0.00      0.24     0.00  1338018     0.00     0.00  Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>)
+  0.00      0.24     0.00   693017     0.00     0.00  Grid::neighbors(std::pair<int, int>, int)
+  0.00      0.24     0.00   523102     0.00     0.00  Grid::isPathable(int, int)
+  0.00      0.24     0.00   271434     0.00     0.00  void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> const&>(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int> const&)
+  0.00      0.24     0.00   181977     0.00     0.00  Grid::setLine(int, int, unsigned char)
+  0.00      0.24     0.00   147247     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) const
+  0.00      0.24     0.00   134333     0.00     0.00  Endpoint const* instanceof<Endpoint, PuzzleEntity>(PuzzleEntity const*)
+  0.00      0.24     0.00   119296     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Rb_tree(std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&)
+  0.00      0.24     0.00    93372     0.00     0.00  Triangle const* instanceof<Triangle, PuzzleEntity>(PuzzleEntity const*)
+  0.00      0.24     0.00    90515     0.00     0.00  std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector()
+  0.00      0.24     0.00    90500     0.00     0.00  std::pair<std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_insert_unique<std::pair<std::pair<int, int> const, std::pair<int, int> > >(std::pair<std::pair<int, int> const, std::pair<int, int> >&&)
+  0.00      0.24     0.00    90072     0.00     0.00  BlockGroup const* instanceof<BlockGroup, PuzzleEntity>(PuzzleEntity const*)
+  0.00      0.24     0.00    90072     0.00     0.00  PathDot const* instanceof<PathDot, PuzzleEntity>(PuzzleEntity const*)
+  0.00      0.24     0.00    89734     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  0.00      0.24     0.00    89715     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase_aux(std::_Rb_tree_const_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >)
+  0.00      0.24     0.00    63206     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&)
+  0.00      0.24     0.00    54572     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&)
+  0.00      0.24     0.00    31255     0.00     0.00  std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::push_back(std::pair<int, int> const&)
+  0.00      0.24     0.00    27908     0.00     0.00  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  0.00      0.24     0.00    26716     0.00     0.00  std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_initialize_map(unsigned long)
+  0.00      0.24     0.00    26716     0.00     0.00  std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~_Deque_base()
+  0.00      0.24     0.00    24398     0.00     0.00  std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&)
+  0.00      0.24     0.00    17000     0.00     0.00  std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&)
+  0.00      0.24     0.00    13626     0.00     0.00  std::__cxx11::to_string(int)
+  0.00      0.24     0.00    13614     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)
+  0.00      0.24     0.00    13612     0.00     0.00  BlockGroup::init()
+  0.00      0.24     0.00    13612     0.00     0.00  Utils::resetBB(std::pair<std::pair<int, int>, std::pair<int, int> >)
+  0.00      0.24     0.00    13600     0.00     0.00  BlockGroup::~BlockGroup()
+  0.00      0.24     0.00    13552     0.00     0.00  void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&)
+  0.00      0.24     0.00    10200     0.00     0.00  BlockGroup::BlockGroup(BlockGroup const&)
+  0.00      0.24     0.00    10200     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, int>, std::_Select1st<std::pair<std::pair<int, int> const, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, int> >*)
+  0.00      0.24     0.00     6800     0.00     0.00  GridUtils::floodfillCells(Grid*, std::pair<int, int>)
+  0.00      0.24     0.00     6600     0.00     0.00  std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::find(EntityColor::Color const&)
+  0.00      0.24     0.00     4890     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::erase[abi:cxx11](std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >)
+  0.00      0.24     0.00     3400     0.00     0.00  BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool)
+  0.00      0.24     0.00     3400     0.00     0.00  BlockGroup::getSum(std::vector<BlockGroup, std::allocator<BlockGroup> >)
+  0.00      0.24     0.00     3400     0.00     0.00  GridUtils::getActiveColors(Grid*, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, bool)
+  0.00      0.24     0.00     3400     0.00     0.00  std::vector<BlockGroup, std::allocator<BlockGroup> >::~vector()
+  0.00      0.24     0.00     3400     0.00     0.00  std::_Rb_tree<EntityColor::Color, EntityColor::Color, std::_Identity<EntityColor::Color>, std::less<EntityColor::Color>, std::allocator<EntityColor::Color> >::_M_erase(std::_Rb_tree_node<EntityColor::Color>*)
+  0.00      0.24     0.00     3400     0.00     0.00  std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<EntityColor::Color const, int> >*)
+  0.00      0.24     0.00     3300     0.00     0.00  void Utils::push<EntityColor::Color>(std::map<EntityColor::Color, int, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >&, EntityColor::Color)
+  0.00      0.24     0.00     2224     0.00     0.00  Grid::getSingleLine(std::pair<int, int>)
+  0.00      0.24     0.00     2224     0.00     0.02  GridUtils::getRegions(Grid*)
+  0.00      0.24     0.00     2224     0.00     0.01  GridUtils::getRegionsCells(Grid*)
+  0.00      0.24     0.00     2224     0.00     0.00  std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::~vector()
+  0.00      0.24     0.00     1112     0.00     0.02  Grid::validateSinglePath(std::pair<int, int>)
+  0.00      0.24     0.00     1112     0.00     0.00  Grid::getLines()
+  0.00      0.24     0.00     1112     0.00     0.07  GridUtils::getViolations(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<BlockGroup>(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<ColorEntity>(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Blob>(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Star>(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Cancel>(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<PathDot>(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.00  std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.04  GridUtils::getViolationsNoRecursion(Grid*)
+  0.00      0.24     0.00     1112     0.00     0.09  GridUtils::Validate(Grid*)
+  0.00      0.24     0.00      927     0.00     0.00  std::pair<std::_Rb_tree_iterator<std::pair<EntityColor::Color const, int> >, bool> std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_insert_unique<std::pair<EntityColor::Color const, int> >(std::pair<EntityColor::Color const, int>&&)
+  0.00      0.24     0.00      784     0.00     0.00  std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&)
+  0.00      0.24     0.00      324     0.00     0.00  PuzzleEntity::~PuzzleEntity()
+  0.00      0.24     0.00      146     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  0.00      0.24     0.00       40     0.00     0.00  Grid::drawLine(std::pair<int, int>, std::pair<int, int>, unsigned char)
+  0.00      0.24     0.00       40     0.00     0.00  Grid::drawLine(int, int, int, int, unsigned char)
+  0.00      0.24     0.00       36     0.00     0.00  std::pair<int, int>& std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::emplace_back<std::pair<int, int> >(std::pair<int, int>&&)
+  0.00      0.24     0.00       21     0.00     0.00  std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_pop_front_aux()
+  0.00      0.24     0.00       21     0.00     0.00  void std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_push_back_aux<std::pair<int, int> const&>(std::pair<int, int> const&)
+  0.00      0.24     0.00       18     0.00     0.00  unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&)
+  0.00      0.24     0.00       16     0.00     0.00  std::pair<unsigned long, unsigned long> std::__gen_two_uniform_ints<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(unsigned long, unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  0.00      0.24     0.00       12     0.00     0.00  BlockGroup::BlockGroup(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >)
+  0.00      0.24     0.00       12     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long)
+  0.00      0.24     0.00       12     0.00     0.00  void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&)
+  0.00      0.24     0.00       12     0.00     0.00  std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::initializer_list<std::pair<int, int> >, std::allocator<std::pair<int, int> > const&)
+  0.00      0.24     0.00       11     0.00     0.00  Grid::set(int, int, PuzzleEntity*)
+  0.00      0.24     0.00       11     0.00     0.00  void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&)
+  0.00      0.24     0.00       10     0.00     0.00  Triangle::~Triangle()
+  0.00      0.24     0.00        8     0.00     0.00  Endpoint::Endpoint(bool)
+  0.00      0.24     0.00        8     0.00     0.00  Endpoint::~Endpoint()
+  0.00      0.24     0.00        4     0.00     0.00  Grid::init()
+  0.00      0.24     0.00        4     0.00     0.00  Grid::~Grid()
+  0.00      0.24     0.00        4     0.00     0.00  RandGrid<Grid>::blankGrid()
+  0.00      0.24     0.00        4     0.00     0.00  std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*)
+  0.00      0.24     0.00        2     0.00     0.00  Grid::to_string[abi:cxx11]()
+  0.00      0.24     0.00        2     0.00    92.50  Solver::path(std::pair<int, int>, std::pair<int, int>, int)
+  0.00      0.24     0.00        2     0.00    92.50  Solver::solve(int)
+  0.00      0.24     0.00        2     0.00     0.00  Solver::Solver()
+  0.00      0.24     0.00        2     0.00     0.00  Solver::~Solver()
+  0.00      0.24     0.00        2     0.00     0.00  RandGrid<Grid>::randomChoice(int, int)
+  0.00      0.24     0.00        2     0.00     0.00  RandGrid<Grid>::applyChosenPath(Grid*)
+  0.00      0.24     0.00        2     0.00     0.00  std::_Rb_tree<int, std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > >, std::_Select1st<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >, std::less<int>, std::allocator<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >::_M_erase(std::_Rb_tree_node<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >*)
+  0.00      0.24     0.00        2     0.00     0.00  void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  0.00      0.24     0.00        1     0.00   185.00  randgridtest()
+  0.00      0.24     0.00        1     0.00     0.00  __static_initialization_and_destruction_0()
+  0.00      0.24     0.00        1     0.00     0.00  Grid::defaultDiagonal()
+  0.00      0.24     0.00        1     0.00     0.00  Grid::drawPath(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, unsigned char)
+  0.00      0.24     0.00        1     0.00     0.00  Solver::apply(int)
+  0.00      0.24     0.00        1     0.00     0.00  RandGrid<Grid>::randTriangles(int, int)
+  0.00      0.24     0.00        1     0.00     0.00  RandGrid<Grid>::setChosenPath(int)
+  0.00      0.24     0.00        1     0.00     0.00  RandGrid<Grid>::getRandomCells(int)
+  0.00      0.24     0.00        1     0.00     0.00  RandGrid<Grid>::getRandomEdges(int, bool, bool)
+  0.00      0.24     0.00        1     0.00     0.00  RandGrid<Grid>::init()
+  0.00      0.24     0.00        1     0.00     0.00  RandGrid<Grid>::~RandGrid()
+  0.00      0.24     0.00        1     0.00     0.00  std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::operator=(std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > const&)
+  0.00      0.24     0.00        1     0.00     0.00  std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >* std::__do_uninit_copy<__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, __gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 4.17% of 0.24 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     77.1    0.00    0.18                 main [1]
+                0.00    0.18       1/1           randgridtest() [2]
+-----------------------------------------------
+                0.00    0.18       1/1           main [1]
+[2]     77.1    0.00    0.18       1         randgridtest() [2]
+                0.00    0.18       2/2           Solver::solve(int) [3]
+                0.00    0.00       1/1           RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00       1/1           RandGrid<Grid>::init() [50]
+                0.00    0.00       1/1           RandGrid<Grid>::~RandGrid() [51]
+                0.00    0.00       2/2           Solver::~Solver() [52]
+                0.00    0.00       4/12          std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [103]
+                0.00    0.00       2/2           Solver::Solver() [116]
+                0.00    0.00       2/4           Grid::~Grid() [112]
+                0.00    0.00       2/2           Grid::to_string[abi:cxx11]() [115]
+                0.00    0.00       1/4           RandGrid<Grid>::blankGrid() [113]
+                0.00    0.00       1/1           std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::operator=(std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > const&) [124]
+                0.00    0.00       1/1           Solver::apply(int) [123]
+-----------------------------------------------
+                0.00    0.18       2/2           randgridtest() [2]
+[3]     77.1    0.00    0.18       2         Solver::solve(int) [3]
+                0.00    0.18       2/2           Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+                0.00    0.00       4/24398       std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&) [34]
+                0.00    0.00       2/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00       1/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00     165/134333      Endpoint const* instanceof<Endpoint, PuzzleEntity>(PuzzleEntity const*) [66]
+                0.00    0.00       2/4           std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*) [114]
+                0.00    0.00       2/90500       std::pair<std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_insert_unique<std::pair<std::pair<int, int> const, std::pair<int, int> > >(std::pair<std::pair<int, int> const, std::pair<int, int> >&&) [69]
+-----------------------------------------------
+                               89714             Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+                0.00    0.18       2/2           Solver::solve(int) [3]
+[4]     77.1    0.00    0.18       2+89714   Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+                0.00    0.10    1112/1112        GridUtils::Validate(Grid*) [5]
+                0.02    0.03    9780/16580       GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+                0.01    0.01  306386/306386      std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::find(std::pair<int, int> const&) [17]
+                0.00    0.00   89715/693017      Grid::neighbors(std::pair<int, int>, int) [12]
+                0.00    0.00   61727/368113      std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*, std::_Rb_tree_node_base*, std::pair<int, int> const&) [21]
+                0.00    0.00   99495/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00  275131/2075734     Grid::get(int, int) [24]
+                0.00    0.00  523102/523102      Grid::isPathable(int, int) [62]
+                0.00    0.00  266023/271434      void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> const&>(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int> const&) [63]
+                0.00    0.00  181654/181977      Grid::setLine(int, int, unsigned char) [64]
+                0.00    0.00   90498/90500       std::pair<std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_insert_unique<std::pair<std::pair<int, int> const, std::pair<int, int> > >(std::pair<std::pair<int, int> const, std::pair<int, int> >&&) [69]
+                0.00    0.00   90498/90515       std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector() [68]
+                0.00    0.00   89715/134333      Endpoint const* instanceof<Endpoint, PuzzleEntity>(PuzzleEntity const*) [66]
+                0.00    0.00   89715/89734       std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [72]
+                0.00    0.00   84825/89715       std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase_aux(std::_Rb_tree_const_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >) [73]
+                0.00    0.00   31255/31255       std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::push_back(std::pair<int, int> const&) [74]
+                0.00    0.00    4890/4890        std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::erase[abi:cxx11](std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >) [85]
+                0.00    0.00     771/784         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&) [93]
+                0.00    0.00      12/12          void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&) [104]
+                               89714             Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+-----------------------------------------------
+                0.00    0.10    1112/1112        Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[5]     42.8    0.00    0.10    1112         GridUtils::Validate(Grid*) [5]
+                0.00    0.08    1112/1112        GridUtils::getViolations(Grid*) [7]
+                0.00    0.02    1112/1112        Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00    1112/1112        Grid::getLines() [27]
+                0.00    0.00    3336/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00    1112/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+-----------------------------------------------
+                0.02    0.02    6800/16580       GridUtils::getRegions(Grid*) [11]
+                0.02    0.03    9780/16580       Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[6]     39.4    0.04    0.05   16580         GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+                0.00    0.02  330002/693017      Grid::neighbors(std::pair<int, int>, int) [12]
+                0.02    0.00 1228760/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.01    0.00  898758/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                0.00    0.00  313422/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00 1228757/1797303     GridUtils::isFFable(Grid*, std::pair<int, int>) [28]
+                0.00    0.00   16580/63206       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&) [31]
+                0.00    0.00  898758/1338018     Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+                0.00    0.00   16580/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_initialize_map(unsigned long) [76]
+                0.00    0.00   16580/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~_Deque_base() [77]
+                0.00    0.00      15/21          std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_pop_front_aux() [99]
+                0.00    0.00      15/21          void std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_push_back_aux<std::pair<int, int> const&>(std::pair<int, int> const&) [100]
+-----------------------------------------------
+                0.00    0.08    1112/1112        GridUtils::Validate(Grid*) [5]
+[7]     32.7    0.00    0.08    1112         GridUtils::getViolations(Grid*) [7]
+                0.00    0.05    1112/1112        GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.02    1112/2224        GridUtils::getRegions(Grid*) [11]
+                0.00    0.01    1112/2224        GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00   11248/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00    1112/1112        std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Cancel>(Grid*) [42]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]     20.8    0.05    0.00                 _init [8]
+-----------------------------------------------
+                0.00    0.00       1/3502586     Solver::solve(int) [3]
+                0.00    0.00      39/3502586     BlockGroup::BlockGroup(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >) [47]
+                0.00    0.00      40/3502586     RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00      41/3502586     RandGrid<Grid>::setChosenPath(int) [46]
+                0.00    0.00    3300/3502586     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<ColorEntity>(Grid*) [36]
+                0.00    0.00    3300/3502586     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*) [37]
+                0.00    0.00   17792/3502586     GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   35584/3502586     GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00   44372/3502586     Grid::getLines() [27]
+                0.00    0.00   44372/3502586     Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00   53376/3502586     BlockGroup::BlockGroup(BlockGroup const&) [32]
+                0.00    0.00   63206/3502586     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&) [31]
+                0.00    0.00   84600/3502586     GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00   86520/3502586     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [30]
+                0.00    0.00   91400/3502586     GridUtils::getRegions(Grid*) [11]
+                0.00    0.00  175264/3502586     Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00  313422/3502586     GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+                0.01    0.02 2485957/3502586     Grid::neighbors(std::pair<int, int>, int) [12]
+[9]     20.7    0.02    0.03 3502586         std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.03    0.00 3502586/3526984     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_get_insert_unique_pos(std::pair<int, int> const&) [14]
+-----------------------------------------------
+                0.00    0.05    1112/1112        GridUtils::getViolations(Grid*) [7]
+[10]    20.1    0.00    0.05    1112         GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.02    1112/2224        GridUtils::getRegions(Grid*) [11]
+                0.01    0.01    3400/3400        BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool) [19]
+                0.00    0.01    1112/2224        GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00   40572/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00   10200/54572       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [30]
+                0.00    0.00   17000/119296      std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Rb_tree(std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [29]
+                0.00    0.00   17792/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00    3400/10200       BlockGroup::BlockGroup(BlockGroup const&) [32]
+                0.00    0.00    3300/693017      Grid::neighbors(std::pair<int, int>, int) [12]
+                0.00    0.00   17792/24398       std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&) [34]
+                0.00    0.00    1112/1112        std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*) [37]
+                0.00    0.00    1112/1112        std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<ColorEntity>(Grid*) [36]
+                0.00    0.00    6800/13600       BlockGroup::~BlockGroup() [35]
+                0.00    0.00    2224/2224        std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::~vector() [38]
+                0.00    0.00    2018/63206       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&) [31]
+                0.00    0.00    1112/1112        std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<PathDot>(Grid*) [43]
+                0.00    0.00    1112/1112        std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Blob>(Grid*) [40]
+                0.00    0.00    1112/1112        std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Star>(Grid*) [41]
+                0.00    0.00    1112/1112        std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<BlockGroup>(Grid*) [39]
+                0.00    0.00    3300/2075734     Grid::get(int, int) [24]
+                0.00    0.00    6800/27908       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [75]
+                0.00    0.00    3400/3400        std::_Rb_tree<EntityColor::Color, EntityColor::Color, std::_Identity<EntityColor::Color>, std::less<EntityColor::Color>, std::allocator<EntityColor::Color> >::_M_erase(std::_Rb_tree_node<EntityColor::Color>*) [89]
+                0.00    0.00    3400/3400        GridUtils::getActiveColors(Grid*, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, bool) [87]
+                0.00    0.00    3400/3400        std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<EntityColor::Color const, int> >*) [90]
+                0.00    0.00    3400/13612       BlockGroup::init() [81]
+                0.00    0.00    3400/17000       std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&) [78]
+                0.00    0.00    3300/93372       Triangle const* instanceof<Triangle, PuzzleEntity>(PuzzleEntity const*) [67]
+-----------------------------------------------
+                0.00    0.02    1112/2224        GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.02    1112/2224        GridUtils::getViolations(Grid*) [7]
+[11]    18.1    0.00    0.04    2224         GridUtils::getRegions(Grid*) [11]
+                0.02    0.02    6800/16580       GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+                0.00    0.00   89756/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                0.00    0.00   91400/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00  100424/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00  180144/1797303     GridUtils::isFFable(Grid*, std::pair<int, int>) [28]
+                0.00    0.00    6220/13552       void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [33]
+                0.00    0.00   91400/1338018     Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+-----------------------------------------------
+                0.00    0.00    3300/693017      GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   88744/693017      Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00   89715/693017      Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+                0.00    0.00   89856/693017      Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00   91400/693017      GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.02  330002/693017      GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[12]    14.7    0.00    0.04  693017         Grid::neighbors(std::pair<int, int>, int) [12]
+                0.01    0.02 2485957/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+-----------------------------------------------
+                             30315533             std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00       1/2420556     RandGrid<Grid>::getRandomCells(int) [53]
+                0.00    0.00       1/2420556     RandGrid<Grid>::setChosenPath(int) [46]
+                0.00    0.00       2/2420556     Solver::~Solver() [52]
+                0.00    0.00       2/2420556     RandGrid<Grid>::init() [50]
+                0.00    0.00       2/2420556     Solver::solve(int) [3]
+                0.00    0.00       3/2420556     RandGrid<Grid>::~RandGrid() [51]
+                0.00    0.00      10/2420556     RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00      81/2420556     RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00    1112/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<BlockGroup>(Grid*) [39]
+                0.00    0.00    1112/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Cancel>(Grid*) [42]
+                0.00    0.00    1112/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Star>(Grid*) [41]
+                0.00    0.00    1112/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<ColorEntity>(Grid*) [36]
+                0.00    0.00    1112/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Blob>(Grid*) [40]
+                0.00    0.00    1112/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<PathDot>(Grid*) [43]
+                0.00    0.00    1112/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*) [37]
+                0.00    0.00    2224/2420556     Grid::getLines() [27]
+                0.00    0.00    3336/2420556     GridUtils::Validate(Grid*) [5]
+                0.00    0.00    6800/2420556     std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::~vector() [38]
+                0.00    0.00   11248/2420556     GridUtils::getViolations(Grid*) [7]
+                0.00    0.00   11820/2420556     void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [33]
+                0.00    0.00   13612/2420556     BlockGroup::~BlockGroup() [35]
+                0.00    0.00   40572/2420556     GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   44608/2420556     GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00   54572/2420556     std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [30]
+                0.00    0.00   88744/2420556     Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00   99495/2420556     Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+                0.00    0.00  100424/2420556     GridUtils::getRegions(Grid*) [11]
+                0.00    0.00  329564/2420556     GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00  376891/2420556     Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.02    0.00 1228760/2420556     GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[13]    12.5    0.03    0.00 2420556+30315533 std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                             30315533             std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00   24398/3526984     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&) [34]
+                0.03    0.00 3502586/3526984     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+[14]    12.5    0.03    0.00 3526984         std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_get_insert_unique_pos(std::pair<int, int> const&) [14]
+-----------------------------------------------
+                             12925013             std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                0.00    0.00      80/1515142     RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00    1112/1515142     GridUtils::Validate(Grid*) [5]
+                0.00    0.00   33940/1515142     GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00   89756/1515142     GridUtils::getRegions(Grid*) [11]
+                0.00    0.00  119296/1515142     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Rb_tree(std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [29]
+                0.00    0.00  147636/1515142     Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00  224564/1515142     GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.01    0.00  898758/1515142     GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[15]    10.4    0.03    0.00 1515142+12925013 std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                             12925013             std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+-----------------------------------------------
+                0.00    0.02    1112/1112        GridUtils::Validate(Grid*) [5]
+[16]     8.1    0.00    0.02    1112         Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00  376891/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00   89856/693017      Grid::neighbors(std::pair<int, int>, int) [12]
+                0.00    0.00    1112/2224        Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00  147636/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                0.00    0.00   44372/54572       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [30]
+                0.00    0.00   88744/119296      std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Rb_tree(std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [29]
+                0.00    0.00   44372/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00    2224/63206       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&) [31]
+                0.00    0.00  150583/1706256     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) [60]
+                0.00    0.00   87632/1338018     Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+                0.00    0.00   44372/134333      Endpoint const* instanceof<Endpoint, PuzzleEntity>(PuzzleEntity const*) [66]
+                0.00    0.00    1112/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_initialize_map(unsigned long) [76]
+                0.00    0.00    1112/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~_Deque_base() [77]
+-----------------------------------------------
+                0.01    0.01  306386/306386      Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[17]     7.6    0.01    0.01  306386         std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::find(std::pair<int, int> const&) [17]
+                0.01    0.00  306386/368113      std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*, std::_Rb_tree_node_base*, std::pair<int, int> const&) [21]
+-----------------------------------------------
+                0.00    0.01    1112/2224        GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.01    1112/2224        GridUtils::getViolations(Grid*) [7]
+[18]     7.1    0.00    0.02    2224         GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.02    6800/6800        GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00   33940/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                0.00    0.00   44608/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00   35584/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00    6220/13552       void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [33]
+                0.00    0.00   35584/1797303     GridUtils::isFFable(Grid*, std::pair<int, int>) [28]
+                0.00    0.00   35584/1338018     Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+-----------------------------------------------
+                0.01    0.01    3400/3400        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[19]     6.5    0.01    0.01    3400         BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool) [19]
+                0.00    0.01    3400/3400        BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [23]
+                0.00    0.00    3400/10200       BlockGroup::BlockGroup(BlockGroup const&) [32]
+                0.00    0.00    3400/13600       BlockGroup::~BlockGroup() [35]
+                0.00    0.00    3400/17000       std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&) [78]
+-----------------------------------------------
+                0.00    0.02    6800/6800        GridUtils::getRegionsCells(Grid*) [18]
+[20]     6.3    0.00    0.02    6800         GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00   91400/693017      Grid::neighbors(std::pair<int, int>, int) [12]
+                0.00    0.00  329564/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00  224564/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                0.00    0.00   84600/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00  352818/1797303     GridUtils::isFFable(Grid*, std::pair<int, int>) [28]
+                0.00    0.00   42384/63206       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&) [31]
+                0.00    0.00  224564/1338018     Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+                0.00    0.00    6800/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_initialize_map(unsigned long) [76]
+                0.00    0.00    6800/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~_Deque_base() [77]
+                0.00    0.00       6/21          std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_pop_front_aux() [99]
+                0.00    0.00       6/21          void std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_push_back_aux<std::pair<int, int> const&>(std::pair<int, int> const&) [100]
+-----------------------------------------------
+                0.00    0.00   61727/368113      Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+                0.01    0.00  306386/368113      std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::find(std::pair<int, int> const&) [17]
+[21]     4.2    0.01    0.00  368113         std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*, std::_Rb_tree_node_base*, std::pair<int, int> const&) [21]
+-----------------------------------------------
+                0.00    0.00    1112/2224        Grid::getLines() [27]
+                0.00    0.00    1112/2224        Grid::validateSinglePath(std::pair<int, int>) [16]
+[22]     3.4    0.00    0.01    2224         Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00   88744/693017      Grid::neighbors(std::pair<int, int>, int) [12]
+                0.00    0.00  175264/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00   88744/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00  173040/1706256     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) [60]
+                0.00    0.00    2224/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_initialize_map(unsigned long) [76]
+                0.00    0.00    2224/26716       std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~_Deque_base() [77]
+-----------------------------------------------
+                0.00    0.01    3400/3400        BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool) [19]
+[23]     2.2    0.00    0.01    3400         BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [23]
+                0.01    0.00    3400/3400        BlockGroup::checkPlacementsFixed(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, bool) [25]
+                0.00    0.00    3400/10200       BlockGroup::BlockGroup(BlockGroup const&) [32]
+                0.00    0.00    3400/13600       BlockGroup::~BlockGroup() [35]
+                0.00    0.00    3400/17000       std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&) [78]
+                0.00    0.00    3400/3400        std::vector<BlockGroup, std::allocator<BlockGroup> >::~vector() [88]
+-----------------------------------------------
+                0.00    0.00    3300/2075734     GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00  275131/2075734     Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+                0.00    0.00 1797303/2075734     GridUtils::isFFable(Grid*, std::pair<int, int>) [28]
+[24]     2.1    0.01    0.00 2075734         Grid::get(int, int) [24]
+-----------------------------------------------
+                0.01    0.00    3400/3400        BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [23]
+[25]     2.1    0.01    0.00    3400         BlockGroup::checkPlacementsFixed(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, bool) [25]
+                0.00    0.00    3400/17000       std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&) [78]
+                0.00    0.00    3400/3400        BlockGroup::getSum(std::vector<BlockGroup, std::allocator<BlockGroup> >) [86]
+                0.00    0.00    3400/10200       std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, int>, std::_Select1st<std::pair<std::pair<int, int> const, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, int> >*) [83]
+-----------------------------------------------
+                                                 <spontaneous>
+[26]     2.1    0.01    0.00                 PathDot::init() [26]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::Validate(Grid*) [5]
+[27]     2.0    0.00    0.00    1112         Grid::getLines() [27]
+                0.00    0.00    1112/2224        Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00   44372/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00    1112/13552       void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [33]
+                0.00    0.00    2224/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00   44372/1706256     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) [60]
+-----------------------------------------------
+                0.00    0.00   35584/1797303     GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00  180144/1797303     GridUtils::getRegions(Grid*) [11]
+                0.00    0.00  352818/1797303     GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00 1228757/1797303     GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[28]     1.8    0.00    0.00 1797303         GridUtils::isFFable(Grid*, std::pair<int, int>) [28]
+                0.00    0.00 1797303/2075734     Grid::get(int, int) [24]
+-----------------------------------------------
+                0.00    0.00   13552/119296      void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [33]
+                0.00    0.00   17000/119296      GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   88744/119296      Grid::validateSinglePath(std::pair<int, int>) [16]
+[29]     0.8    0.00    0.00  119296         std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Rb_tree(std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [29]
+                0.00    0.00  119296/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+-----------------------------------------------
+                0.00    0.00   10200/54572       GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   44372/54572       Grid::validateSinglePath(std::pair<int, int>) [16]
+[30]     0.8    0.00    0.00   54572         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [30]
+                0.00    0.00   86520/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00   54572/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00  147247/147247      std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) const [65]
+-----------------------------------------------
+                0.00    0.00    2018/63206       GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00    2224/63206       Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00   16580/63206       GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+                0.00    0.00   42384/63206       GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+[31]     0.4    0.00    0.00   63206         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&) [31]
+                0.00    0.00   63206/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+-----------------------------------------------
+                0.00    0.00    3400/10200       GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00    3400/10200       BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [23]
+                0.00    0.00    3400/10200       BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool) [19]
+[32]     0.3    0.00    0.00   10200         BlockGroup::BlockGroup(BlockGroup const&) [32]
+                0.00    0.00   53376/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00   20400/27908       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [75]
+                0.00    0.00   10200/13612       BlockGroup::init() [81]
+-----------------------------------------------
+                0.00    0.00    1112/13552       Grid::getLines() [27]
+                0.00    0.00    6220/13552       GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00    6220/13552       GridUtils::getRegions(Grid*) [11]
+[33]     0.2    0.00    0.00   13552         void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [33]
+                0.00    0.00   13552/119296      std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Rb_tree(std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [29]
+                0.00    0.00   11820/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00       2/24398       RandGrid<Grid>::init() [50]
+                0.00    0.00       4/24398       Solver::solve(int) [3]
+                0.00    0.00    3300/24398       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<ColorEntity>(Grid*) [36]
+                0.00    0.00    3300/24398       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*) [37]
+                0.00    0.00   17792/24398       GridUtils::getViolationsNoRecursion(Grid*) [10]
+[34]     0.1    0.00    0.00   24398         std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&) [34]
+                0.00    0.00   24398/3526984     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_get_insert_unique_pos(std::pair<int, int> const&) [14]
+-----------------------------------------------
+                0.00    0.00    3400/13600       BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [23]
+                0.00    0.00    3400/13600       BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool) [19]
+                0.00    0.00    6800/13600       GridUtils::getViolationsNoRecursion(Grid*) [10]
+[35]     0.1    0.00    0.00   13600         BlockGroup::~BlockGroup() [35]
+                0.00    0.00   13612/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[36]     0.0    0.00    0.00    1112         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<ColorEntity>(Grid*) [36]
+                0.00    0.00    3300/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00    3300/24398       std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&) [34]
+                0.00    0.00    1112/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[37]     0.0    0.00    0.00    1112         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*) [37]
+                0.00    0.00    3300/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00    3300/24398       std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&) [34]
+                0.00    0.00    1112/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00   90072/93372       Triangle const* instanceof<Triangle, PuzzleEntity>(PuzzleEntity const*) [67]
+-----------------------------------------------
+                0.00    0.00    2224/2224        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[38]     0.0    0.00    0.00    2224         std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::~vector() [38]
+                0.00    0.00    6800/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[39]     0.0    0.00    0.00    1112         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<BlockGroup>(Grid*) [39]
+                0.00    0.00    1112/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00   90072/90072       BlockGroup const* instanceof<BlockGroup, PuzzleEntity>(PuzzleEntity const*) [70]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[40]     0.0    0.00    0.00    1112         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Blob>(Grid*) [40]
+                0.00    0.00    1112/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[41]     0.0    0.00    0.00    1112         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Star>(Grid*) [41]
+                0.00    0.00    1112/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::getViolations(Grid*) [7]
+[42]     0.0    0.00    0.00    1112         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Cancel>(Grid*) [42]
+                0.00    0.00    1112/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+-----------------------------------------------
+                0.00    0.00    1112/1112        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[43]     0.0    0.00    0.00    1112         std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<PathDot>(Grid*) [43]
+                0.00    0.00    1112/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00   90072/90072       PathDot const* instanceof<PathDot, PuzzleEntity>(PuzzleEntity const*) [71]
+-----------------------------------------------
+                0.00    0.00       1/1           randgridtest() [2]
+[44]     0.0    0.00    0.00       1         RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00       1/1           RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00       1/1           RandGrid<Grid>::setChosenPath(int) [46]
+                0.00    0.00      40/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00      10/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00       1/1           RandGrid<Grid>::getRandomCells(int) [53]
+                0.00    0.00      81/181977      Grid::setLine(int, int, unsigned char) [64]
+                0.00    0.00      20/27908       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [75]
+                0.00    0.00      10/13626       std::__cxx11::to_string(int) [79]
+                0.00    0.00      10/11          Grid::set(int, int, PuzzleEntity*) [106]
+                0.00    0.00       2/90515       std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector() [68]
+                0.00    0.00       1/89734       std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [72]
+                0.00    0.00       1/4           RandGrid<Grid>::blankGrid() [113]
+                0.00    0.00       1/2           RandGrid<Grid>::applyChosenPath(Grid*) [118]
+-----------------------------------------------
+                0.00    0.00       1/1           RandGrid<Grid>::randTriangles(int, int) [44]
+[45]     0.0    0.00    0.00       1         RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00      80/1515142     std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&) [15]
+                0.00    0.00      81/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00      81/1706256     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) [60]
+                0.00    0.00      80/1338018     Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+                0.00    0.00      20/36          std::pair<int, int>& std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::emplace_back<std::pair<int, int> >(std::pair<int, int>&&) [98]
+                0.00    0.00       2/271434      void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> const&>(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int> const&) [63]
+                0.00    0.00       1/2           RandGrid<Grid>::randomChoice(int, int) [117]
+                0.00    0.00       1/90515       std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector() [68]
+-----------------------------------------------
+                0.00    0.00       1/1           RandGrid<Grid>::randTriangles(int, int) [44]
+[46]     0.0    0.00    0.00       1         RandGrid<Grid>::setChosenPath(int) [46]
+                0.00    0.00      41/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00       1/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00       1/2           std::_Rb_tree<int, std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > >, std::_Select1st<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >, std::less<int>, std::allocator<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >::_M_erase(std::_Rb_tree_node<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >*) [119]
+                0.00    0.00       1/4           RandGrid<Grid>::blankGrid() [113]
+                0.00    0.00       1/2           RandGrid<Grid>::applyChosenPath(Grid*) [118]
+                0.00    0.00       1/4           Grid::~Grid() [112]
+-----------------------------------------------
+                0.00    0.00      12/12          __static_initialization_and_destruction_0() [48]
+[47]     0.0    0.00    0.00      12         BlockGroup::BlockGroup(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >) [47]
+                0.00    0.00      39/3502586     std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&) [9]
+                0.00    0.00      24/27908       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [75]
+                0.00    0.00      12/13612       BlockGroup::init() [81]
+-----------------------------------------------
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN11EntityColor6COLORSE [49]
+[48]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0() [48]
+                0.00    0.00      12/12          BlockGroup::BlockGroup(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >) [47]
+                0.00    0.00      12/12          std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::initializer_list<std::pair<int, int> >, std::allocator<std::pair<int, int> > const&) [105]
+                0.00    0.00      12/90515       std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector() [68]
+-----------------------------------------------
+                                                 <spontaneous>
+[49]     0.0    0.00    0.00                 _GLOBAL__sub_I__ZN11EntityColor6COLORSE [49]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0() [48]
+-----------------------------------------------
+                0.00    0.00       1/1           randgridtest() [2]
+[50]     0.0    0.00    0.00       1         RandGrid<Grid>::init() [50]
+                0.00    0.00       2/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00       2/24398       std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&) [34]
+                0.00    0.00      81/134333      Endpoint const* instanceof<Endpoint, PuzzleEntity>(PuzzleEntity const*) [66]
+                0.00    0.00       1/4           RandGrid<Grid>::blankGrid() [113]
+                0.00    0.00       1/1           Grid::defaultDiagonal() [121]
+                0.00    0.00       1/4           Grid::~Grid() [112]
+-----------------------------------------------
+                0.00    0.00       1/1           randgridtest() [2]
+[51]     0.0    0.00    0.00       1         RandGrid<Grid>::~RandGrid() [51]
+                0.00    0.00       3/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00       1/2           std::_Rb_tree<int, std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > >, std::_Select1st<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >, std::less<int>, std::allocator<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >::_M_erase(std::_Rb_tree_node<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >*) [119]
+-----------------------------------------------
+                0.00    0.00       2/2           randgridtest() [2]
+[52]     0.0    0.00    0.00       2         Solver::~Solver() [52]
+                0.00    0.00       2/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00       2/4           std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*) [114]
+-----------------------------------------------
+                0.00    0.00       1/1           RandGrid<Grid>::randTriangles(int, int) [44]
+[53]     0.0    0.00    0.00       1         RandGrid<Grid>::getRandomCells(int) [53]
+                0.00    0.00       1/2420556     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*) [13]
+                0.00    0.00      16/36          std::pair<int, int>& std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::emplace_back<std::pair<int, int> >(std::pair<int, int>&&) [98]
+                0.00    0.00       5/271434      void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> const&>(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int> const&) [63]
+                0.00    0.00       1/2           RandGrid<Grid>::randomChoice(int, int) [117]
+                0.00    0.00       1/90515       std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector() [68]
+-----------------------------------------------
+                0.00    0.00      81/1706256     RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00     162/1706256     RandGrid<Grid>::applyChosenPath(Grid*) [118]
+                0.00    0.00   44372/1706256     Grid::getLines() [27]
+                0.00    0.00  150583/1706256     Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00  173040/1706256     Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00 1338018/1706256     Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+[60]     0.0    0.00    0.00 1706256         std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) [60]
+-----------------------------------------------
+                0.00    0.00      80/1338018     RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00   35584/1338018     GridUtils::getRegionsCells(Grid*) [18]
+                0.00    0.00   87632/1338018     Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00   91400/1338018     GridUtils::getRegions(Grid*) [11]
+                0.00    0.00  224564/1338018     GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00  898758/1338018     GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[61]     0.0    0.00    0.00 1338018         Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [61]
+                0.00    0.00 1338018/1706256     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) [60]
+-----------------------------------------------
+                0.00    0.00  523102/523102      Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[62]     0.0    0.00    0.00  523102         Grid::isPathable(int, int) [62]
+-----------------------------------------------
+                0.00    0.00       2/271434      RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00       5/271434      RandGrid<Grid>::getRandomCells(int) [53]
+                0.00    0.00    5404/271434      std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::push_back(std::pair<int, int> const&) [74]
+                0.00    0.00  266023/271434      Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[63]     0.0    0.00    0.00  271434         void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> const&>(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int> const&) [63]
+-----------------------------------------------
+                0.00    0.00      80/181977      Grid::drawLine(int, int, int, int, unsigned char) [97]
+                0.00    0.00      81/181977      RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00     162/181977      RandGrid<Grid>::applyChosenPath(Grid*) [118]
+                0.00    0.00  181654/181977      Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[64]     0.0    0.00    0.00  181977         Grid::setLine(int, int, unsigned char) [64]
+-----------------------------------------------
+                0.00    0.00  147247/147247      std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [30]
+[65]     0.0    0.00    0.00  147247         std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) const [65]
+-----------------------------------------------
+                0.00    0.00      81/134333      RandGrid<Grid>::init() [50]
+                0.00    0.00     165/134333      Solver::solve(int) [3]
+                0.00    0.00   44372/134333      Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00   89715/134333      Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[66]     0.0    0.00    0.00  134333         Endpoint const* instanceof<Endpoint, PuzzleEntity>(PuzzleEntity const*) [66]
+-----------------------------------------------
+                0.00    0.00    3300/93372       GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   90072/93372       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*) [37]
+[67]     0.0    0.00    0.00   93372         Triangle const* instanceof<Triangle, PuzzleEntity>(PuzzleEntity const*) [67]
+-----------------------------------------------
+                0.00    0.00       1/90515       Solver::apply(int) [123]
+                0.00    0.00       1/90515       RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00       1/90515       RandGrid<Grid>::getRandomCells(int) [53]
+                0.00    0.00       2/90515       RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00      12/90515       __static_initialization_and_destruction_0() [48]
+                0.00    0.00   90498/90515       Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[68]     0.0    0.00    0.00   90515         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector() [68]
+-----------------------------------------------
+                0.00    0.00       2/90500       Solver::solve(int) [3]
+                0.00    0.00   90498/90500       Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[69]     0.0    0.00    0.00   90500         std::pair<std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_insert_unique<std::pair<std::pair<int, int> const, std::pair<int, int> > >(std::pair<std::pair<int, int> const, std::pair<int, int> >&&) [69]
+-----------------------------------------------
+                0.00    0.00   90072/90072       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<BlockGroup>(Grid*) [39]
+[70]     0.0    0.00    0.00   90072         BlockGroup const* instanceof<BlockGroup, PuzzleEntity>(PuzzleEntity const*) [70]
+-----------------------------------------------
+                0.00    0.00   90072/90072       std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<PathDot>(Grid*) [43]
+[71]     0.0    0.00    0.00   90072         PathDot const* instanceof<PathDot, PuzzleEntity>(PuzzleEntity const*) [71]
+-----------------------------------------------
+                0.00    0.00       1/89734       RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00      18/89734       unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [101]
+                0.00    0.00   89715/89734       Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[72]     0.0    0.00    0.00   89734         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [72]
+                0.00    0.00     146/146         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [95]
+-----------------------------------------------
+                0.00    0.00    4890/89715       std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::erase[abi:cxx11](std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >) [85]
+                0.00    0.00   84825/89715       Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[73]     0.0    0.00    0.00   89715         std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase_aux(std::_Rb_tree_const_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >) [73]
+-----------------------------------------------
+                0.00    0.00   31255/31255       Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[74]     0.0    0.00    0.00   31255         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::push_back(std::pair<int, int> const&) [74]
+                0.00    0.00    5404/271434      void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> const&>(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int> const&) [63]
+-----------------------------------------------
+                0.00    0.00      16/27908       Endpoint::Endpoint(bool) [109]
+                0.00    0.00      20/27908       RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00      24/27908       BlockGroup::BlockGroup(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >) [47]
+                0.00    0.00     648/27908       Grid::init() [111]
+                0.00    0.00    6800/27908       GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   20400/27908       BlockGroup::BlockGroup(BlockGroup const&) [32]
+[75]     0.0    0.00    0.00   27908         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [75]
+-----------------------------------------------
+                0.00    0.00    1112/26716       Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00    2224/26716       Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00    6800/26716       GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00   16580/26716       GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[76]     0.0    0.00    0.00   26716         std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_initialize_map(unsigned long) [76]
+-----------------------------------------------
+                0.00    0.00    1112/26716       Grid::validateSinglePath(std::pair<int, int>) [16]
+                0.00    0.00    2224/26716       Grid::getSingleLine(std::pair<int, int>) [22]
+                0.00    0.00    6800/26716       GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00   16580/26716       GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[77]     0.0    0.00    0.00   26716         std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~_Deque_base() [77]
+-----------------------------------------------
+                0.00    0.00    3400/17000       GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00    3400/17000       BlockGroup::getSum(std::vector<BlockGroup, std::allocator<BlockGroup> >) [86]
+                0.00    0.00    3400/17000       BlockGroup::checkPlacementsFixed(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, bool) [25]
+                0.00    0.00    3400/17000       BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [23]
+                0.00    0.00    3400/17000       BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool) [19]
+[78]     0.0    0.00    0.00   17000         std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&) [78]
+-----------------------------------------------
+                0.00    0.00       4/13626       Grid::to_string[abi:cxx11]() [115]
+                0.00    0.00      10/13626       RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00   13612/13626       BlockGroup::init() [81]
+[79]     0.0    0.00    0.00   13626         std::__cxx11::to_string(int) [79]
+-----------------------------------------------
+                0.00    0.00       2/13614       Grid::to_string[abi:cxx11]() [115]
+                0.00    0.00   13612/13614       BlockGroup::init() [81]
+[80]     0.0    0.00    0.00   13614         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) [80]
+-----------------------------------------------
+                0.00    0.00      12/13612       BlockGroup::BlockGroup(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >) [47]
+                0.00    0.00    3400/13612       GridUtils::getViolationsNoRecursion(Grid*) [10]
+                0.00    0.00   10200/13612       BlockGroup::BlockGroup(BlockGroup const&) [32]
+[81]     0.0    0.00    0.00   13612         BlockGroup::init() [81]
+                0.00    0.00   13612/13626       std::__cxx11::to_string(int) [79]
+                0.00    0.00   13612/13614       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) [80]
+                0.00    0.00   13612/13612       Utils::resetBB(std::pair<std::pair<int, int>, std::pair<int, int> >) [82]
+-----------------------------------------------
+                0.00    0.00   13612/13612       BlockGroup::init() [81]
+[82]     0.0    0.00    0.00   13612         Utils::resetBB(std::pair<std::pair<int, int>, std::pair<int, int> >) [82]
+-----------------------------------------------
+                0.00    0.00    3400/10200       BlockGroup::checkPlacementsFixed(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, bool) [25]
+                0.00    0.00    6800/10200       BlockGroup::getSum(std::vector<BlockGroup, std::allocator<BlockGroup> >) [86]
+[83]     0.0    0.00    0.00   10200         std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, int>, std::_Select1st<std::pair<std::pair<int, int> const, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, int> >*) [83]
+-----------------------------------------------
+                0.00    0.00    6600/6600        void Utils::push<EntityColor::Color>(std::map<EntityColor::Color, int, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >&, EntityColor::Color) [91]
+[84]     0.0    0.00    0.00    6600         std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::find(EntityColor::Color const&) [84]
+-----------------------------------------------
+                0.00    0.00    4890/4890        Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[85]     0.0    0.00    0.00    4890         std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::erase[abi:cxx11](std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >) [85]
+                0.00    0.00    4890/89715       std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase_aux(std::_Rb_tree_const_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >) [73]
+-----------------------------------------------
+                0.00    0.00    3400/3400        BlockGroup::checkPlacementsFixed(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, bool) [25]
+[86]     0.0    0.00    0.00    3400         BlockGroup::getSum(std::vector<BlockGroup, std::allocator<BlockGroup> >) [86]
+                0.00    0.00    6800/10200       std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, int>, std::_Select1st<std::pair<std::pair<int, int> const, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, int> >*) [83]
+                0.00    0.00    3400/17000       std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&) [78]
+-----------------------------------------------
+                0.00    0.00    3400/3400        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[87]     0.0    0.00    0.00    3400         GridUtils::getActiveColors(Grid*, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, bool) [87]
+                0.00    0.00    3300/3300        void Utils::push<EntityColor::Color>(std::map<EntityColor::Color, int, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >&, EntityColor::Color) [91]
+-----------------------------------------------
+                0.00    0.00    3400/3400        BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [23]
+[88]     0.0    0.00    0.00    3400         std::vector<BlockGroup, std::allocator<BlockGroup> >::~vector() [88]
+-----------------------------------------------
+                0.00    0.00    3400/3400        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[89]     0.0    0.00    0.00    3400         std::_Rb_tree<EntityColor::Color, EntityColor::Color, std::_Identity<EntityColor::Color>, std::less<EntityColor::Color>, std::allocator<EntityColor::Color> >::_M_erase(std::_Rb_tree_node<EntityColor::Color>*) [89]
+-----------------------------------------------
+                                 927             std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<EntityColor::Color const, int> >*) [90]
+                0.00    0.00    3400/3400        GridUtils::getViolationsNoRecursion(Grid*) [10]
+[90]     0.0    0.00    0.00    3400+927     std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<EntityColor::Color const, int> >*) [90]
+                                 927             std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<EntityColor::Color const, int> >*) [90]
+-----------------------------------------------
+                0.00    0.00    3300/3300        GridUtils::getActiveColors(Grid*, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, bool) [87]
+[91]     0.0    0.00    0.00    3300         void Utils::push<EntityColor::Color>(std::map<EntityColor::Color, int, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >&, EntityColor::Color) [91]
+                0.00    0.00    6600/6600        std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::find(EntityColor::Color const&) [84]
+                0.00    0.00     927/927         std::pair<std::_Rb_tree_iterator<std::pair<EntityColor::Color const, int> >, bool> std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_insert_unique<std::pair<EntityColor::Color const, int> >(std::pair<EntityColor::Color const, int>&&) [92]
+-----------------------------------------------
+                0.00    0.00     927/927         void Utils::push<EntityColor::Color>(std::map<EntityColor::Color, int, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >&, EntityColor::Color) [91]
+[92]     0.0    0.00    0.00     927         std::pair<std::_Rb_tree_iterator<std::pair<EntityColor::Color const, int> >, bool> std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_insert_unique<std::pair<EntityColor::Color const, int> >(std::pair<EntityColor::Color const, int>&&) [92]
+-----------------------------------------------
+                0.00    0.00       1/784         Solver::apply(int) [123]
+                0.00    0.00      12/784         void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&) [104]
+                0.00    0.00     771/784         Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[93]     0.0    0.00    0.00     784         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&) [93]
+-----------------------------------------------
+                0.00    0.00       1/324         Grid::defaultDiagonal() [121]
+                0.00    0.00       6/324         RandGrid<Grid>::blankGrid() [113]
+                0.00    0.00      11/324         Grid::set(int, int, PuzzleEntity*) [106]
+                0.00    0.00     306/324         Grid::~Grid() [112]
+[94]     0.0    0.00    0.00     324         PuzzleEntity::~PuzzleEntity() [94]
+-----------------------------------------------
+                0.00    0.00     146/146         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [72]
+[95]     0.0    0.00    0.00     146         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [95]
+-----------------------------------------------
+                0.00    0.00      40/40          Grid::drawPath(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, unsigned char) [122]
+[96]     0.0    0.00    0.00      40         Grid::drawLine(std::pair<int, int>, std::pair<int, int>, unsigned char) [96]
+                0.00    0.00      40/40          Grid::drawLine(int, int, int, int, unsigned char) [97]
+-----------------------------------------------
+                0.00    0.00      40/40          Grid::drawLine(std::pair<int, int>, std::pair<int, int>, unsigned char) [96]
+[97]     0.0    0.00    0.00      40         Grid::drawLine(int, int, int, int, unsigned char) [97]
+                0.00    0.00      80/181977      Grid::setLine(int, int, unsigned char) [64]
+-----------------------------------------------
+                0.00    0.00      16/36          RandGrid<Grid>::getRandomCells(int) [53]
+                0.00    0.00      20/36          RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+[98]     0.0    0.00    0.00      36         std::pair<int, int>& std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::emplace_back<std::pair<int, int> >(std::pair<int, int>&&) [98]
+                0.00    0.00      11/11          void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&) [107]
+-----------------------------------------------
+                0.00    0.00       6/21          GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00      15/21          GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[99]     0.0    0.00    0.00      21         std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_pop_front_aux() [99]
+-----------------------------------------------
+                0.00    0.00       6/21          GridUtils::floodfillCells(Grid*, std::pair<int, int>) [20]
+                0.00    0.00      15/21          GridUtils::floodfill(Grid*, std::pair<int, int>) [6]
+[100]    0.0    0.00    0.00      21         void std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_push_back_aux<std::pair<int, int> const&>(std::pair<int, int> const&) [100]
+-----------------------------------------------
+                0.00    0.00       2/18          void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [120]
+                0.00    0.00      16/18          std::pair<unsigned long, unsigned long> std::__gen_two_uniform_ints<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(unsigned long, unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [102]
+[101]    0.0    0.00    0.00      18         unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [101]
+                0.00    0.00      18/89734       std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [72]
+-----------------------------------------------
+                0.00    0.00      16/16          void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [120]
+[102]    0.0    0.00    0.00      16         std::pair<unsigned long, unsigned long> std::__gen_two_uniform_ints<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(unsigned long, unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [102]
+                0.00    0.00      16/18          unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [101]
+-----------------------------------------------
+                0.00    0.00       4/12          randgridtest() [2]
+                0.00    0.00       8/12          Solver::Solver() [116]
+[103]    0.0    0.00    0.00      12         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [103]
+-----------------------------------------------
+                0.00    0.00      12/12          Solver::path(std::pair<int, int>, std::pair<int, int>, int) [4]
+[104]    0.0    0.00    0.00      12         void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&) [104]
+                0.00    0.00      12/784         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&) [93]
+-----------------------------------------------
+                0.00    0.00      12/12          __static_initialization_and_destruction_0() [48]
+[105]    0.0    0.00    0.00      12         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::initializer_list<std::pair<int, int> >, std::allocator<std::pair<int, int> > const&) [105]
+-----------------------------------------------
+                0.00    0.00       1/11          Grid::defaultDiagonal() [121]
+                0.00    0.00      10/11          RandGrid<Grid>::randTriangles(int, int) [44]
+[106]    0.0    0.00    0.00      11         Grid::set(int, int, PuzzleEntity*) [106]
+                0.00    0.00      11/324         PuzzleEntity::~PuzzleEntity() [94]
+-----------------------------------------------
+                0.00    0.00      11/11          std::pair<int, int>& std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::emplace_back<std::pair<int, int> >(std::pair<int, int>&&) [98]
+[107]    0.0    0.00    0.00      11         void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&) [107]
+-----------------------------------------------
+                0.00    0.00      10/10          Grid::~Grid() [112]
+[108]    0.0    0.00    0.00      10         Triangle::~Triangle() [108]
+-----------------------------------------------
+                0.00    0.00       2/8           Grid::defaultDiagonal() [121]
+                0.00    0.00       6/8           RandGrid<Grid>::blankGrid() [113]
+[109]    0.0    0.00    0.00       8         Endpoint::Endpoint(bool) [109]
+                0.00    0.00      16/27908       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [75]
+-----------------------------------------------
+                0.00    0.00       8/8           Grid::~Grid() [112]
+[110]    0.0    0.00    0.00       8         Endpoint::~Endpoint() [110]
+-----------------------------------------------
+                0.00    0.00       4/4           RandGrid<Grid>::blankGrid() [113]
+[111]    0.0    0.00    0.00       4         Grid::init() [111]
+                0.00    0.00     648/27908       void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) [75]
+-----------------------------------------------
+                0.00    0.00       1/4           RandGrid<Grid>::init() [50]
+                0.00    0.00       1/4           RandGrid<Grid>::setChosenPath(int) [46]
+                0.00    0.00       2/4           randgridtest() [2]
+[112]    0.0    0.00    0.00       4         Grid::~Grid() [112]
+                0.00    0.00     306/324         PuzzleEntity::~PuzzleEntity() [94]
+                0.00    0.00      10/10          Triangle::~Triangle() [108]
+                0.00    0.00       8/8           Endpoint::~Endpoint() [110]
+-----------------------------------------------
+                0.00    0.00       1/4           randgridtest() [2]
+                0.00    0.00       1/4           RandGrid<Grid>::init() [50]
+                0.00    0.00       1/4           RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00       1/4           RandGrid<Grid>::setChosenPath(int) [46]
+[113]    0.0    0.00    0.00       4         RandGrid<Grid>::blankGrid() [113]
+                0.00    0.00       6/8           Endpoint::Endpoint(bool) [109]
+                0.00    0.00       6/324         PuzzleEntity::~PuzzleEntity() [94]
+                0.00    0.00       4/4           Grid::init() [111]
+-----------------------------------------------
+                0.00    0.00       2/4           Solver::~Solver() [52]
+                0.00    0.00       2/4           Solver::solve(int) [3]
+[114]    0.0    0.00    0.00       4         std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*) [114]
+-----------------------------------------------
+                0.00    0.00       2/2           randgridtest() [2]
+[115]    0.0    0.00    0.00       2         Grid::to_string[abi:cxx11]() [115]
+                0.00    0.00       4/13626       std::__cxx11::to_string(int) [79]
+                0.00    0.00       2/13614       std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) [80]
+-----------------------------------------------
+                0.00    0.00       2/2           randgridtest() [2]
+[116]    0.0    0.00    0.00       2         Solver::Solver() [116]
+                0.00    0.00       8/12          std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [103]
+-----------------------------------------------
+                0.00    0.00       1/2           RandGrid<Grid>::getRandomEdges(int, bool, bool) [45]
+                0.00    0.00       1/2           RandGrid<Grid>::getRandomCells(int) [53]
+[117]    0.0    0.00    0.00       2         RandGrid<Grid>::randomChoice(int, int) [117]
+                0.00    0.00       2/2           void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [120]
+-----------------------------------------------
+                0.00    0.00       1/2           RandGrid<Grid>::randTriangles(int, int) [44]
+                0.00    0.00       1/2           RandGrid<Grid>::setChosenPath(int) [46]
+[118]    0.0    0.00    0.00       2         RandGrid<Grid>::applyChosenPath(Grid*) [118]
+                0.00    0.00     162/181977      Grid::setLine(int, int, unsigned char) [64]
+                0.00    0.00     162/1706256     std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) [60]
+-----------------------------------------------
+                0.00    0.00       1/2           RandGrid<Grid>::~RandGrid() [51]
+                0.00    0.00       1/2           RandGrid<Grid>::setChosenPath(int) [46]
+[119]    0.0    0.00    0.00       2         std::_Rb_tree<int, std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > >, std::_Select1st<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >, std::less<int>, std::allocator<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >::_M_erase(std::_Rb_tree_node<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >*) [119]
+-----------------------------------------------
+                0.00    0.00       2/2           RandGrid<Grid>::randomChoice(int, int) [117]
+[120]    0.0    0.00    0.00       2         void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [120]
+                0.00    0.00      16/16          std::pair<unsigned long, unsigned long> std::__gen_two_uniform_ints<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(unsigned long, unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [102]
+                0.00    0.00       2/18          unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [101]
+-----------------------------------------------
+                0.00    0.00       1/1           RandGrid<Grid>::init() [50]
+[121]    0.0    0.00    0.00       1         Grid::defaultDiagonal() [121]
+                0.00    0.00       2/8           Endpoint::Endpoint(bool) [109]
+                0.00    0.00       1/324         PuzzleEntity::~PuzzleEntity() [94]
+                0.00    0.00       1/11          Grid::set(int, int, PuzzleEntity*) [106]
+-----------------------------------------------
+                0.00    0.00       1/1           Solver::apply(int) [123]
+[122]    0.0    0.00    0.00       1         Grid::drawPath(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, unsigned char) [122]
+                0.00    0.00      40/40          Grid::drawLine(std::pair<int, int>, std::pair<int, int>, unsigned char) [96]
+-----------------------------------------------
+                0.00    0.00       1/1           randgridtest() [2]
+[123]    0.0    0.00    0.00       1         Solver::apply(int) [123]
+                0.00    0.00       1/1           Grid::drawPath(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, unsigned char) [122]
+                0.00    0.00       1/784         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&) [93]
+                0.00    0.00       1/90515       std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector() [68]
+-----------------------------------------------
+                0.00    0.00       1/1           randgridtest() [2]
+[124]    0.0    0.00    0.00       1         std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::operator=(std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > const&) [124]
+                0.00    0.00       1/1           std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >* std::__do_uninit_copy<__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, __gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*) [125]
+-----------------------------------------------
+                0.00    0.00       1/1           std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::operator=(std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > const&) [124]
+[125]    0.0    0.00    0.00       1         std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >* std::__do_uninit_copy<__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, __gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*) [125]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [70] BlockGroup const* instanceof<BlockGroup, PuzzleEntity>(PuzzleEntity const*) [26] PathDot::init() [78] std::vector<BlockGroup, std::allocator<BlockGroup> >::vector(std::vector<BlockGroup, std::allocator<BlockGroup> > const&)
+  [71] PathDot const* instanceof<PathDot, PuzzleEntity>(PuzzleEntity const*) [109] Endpoint::Endpoint(bool) [88] std::vector<BlockGroup, std::allocator<BlockGroup> >::~vector()
+  [66] Endpoint const* instanceof<Endpoint, PuzzleEntity>(PuzzleEntity const*) [110] Endpoint::~Endpoint() [104] void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&)
+  [67] Triangle const* instanceof<Triangle, PuzzleEntity>(PuzzleEntity const*) [117] RandGrid<Grid>::randomChoice(int, int) [124] std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::operator=(std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > const&)
+  [30] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > intersection<std::pair<int, int> >(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&) [44] RandGrid<Grid>::randTriangles(int, int) [33] void std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&>(__gnu_cxx::__normal_iterator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >*, std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&)
+   [2] randgridtest()         [46] RandGrid<Grid>::setChosenPath(int) [38] std::vector<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::allocator<std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >::~vector()
+  [48] __static_initialization_and_destruction_0() [53] RandGrid<Grid>::getRandomCells(int) [98] std::pair<int, int>& std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::emplace_back<std::pair<int, int> >(std::pair<int, int>&&)
+  [19] BlockGroup::checkPlacements(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::pair<std::pair<int, int>, std::pair<int, int> >, bool, bool) [45] RandGrid<Grid>::getRandomEdges(int, bool, bool) [63] void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> const&>(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int> const&)
+  [25] BlockGroup::checkPlacementsFixed(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, bool) [118] RandGrid<Grid>::applyChosenPath(Grid*) [107] void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&)
+  [23] BlockGroup::checkPlacementsRecur(BlockGroup, std::vector<BlockGroup, std::allocator<BlockGroup> >, std::vector<BlockGroup, std::allocator<BlockGroup> >&, std::pair<std::pair<int, int>, std::pair<int, int> >, bool) [50] RandGrid<Grid>::init() [74] std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::push_back(std::pair<int, int> const&)
+  [81] BlockGroup::init()    [113] RandGrid<Grid>::blankGrid() [105] std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::initializer_list<std::pair<int, int> >, std::allocator<std::pair<int, int> > const&)
+  [86] BlockGroup::getSum(std::vector<BlockGroup, std::allocator<BlockGroup> >) [51] RandGrid<Grid>::~RandGrid() [93] std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::vector(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const&)
+  [32] BlockGroup::BlockGroup(BlockGroup const&) [108] Triangle::~Triangle() [68] std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~vector()
+  [47] BlockGroup::BlockGroup(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >) [11] GridUtils::getRegions(Grid*) [75] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag)
+  [35] BlockGroup::~BlockGroup() [7] GridUtils::getViolations(Grid*) [79] std::__cxx11::to_string(int)
+  [94] PuzzleEntity::~PuzzleEntity() [20] GridUtils::floodfillCells(Grid*, std::pair<int, int>) [89] std::_Rb_tree<EntityColor::Color, EntityColor::Color, std::_Identity<EntityColor::Color>, std::less<EntityColor::Color>, std::allocator<EntityColor::Color> >::_M_erase(std::_Rb_tree_node<EntityColor::Color>*)
+  [62] Grid::isPathable(int, int) [87] GridUtils::getActiveColors(Grid*, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, bool) [92] std::pair<std::_Rb_tree_iterator<std::pair<EntityColor::Color const, int> >, bool> std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_insert_unique<std::pair<EntityColor::Color const, int> >(std::pair<EntityColor::Color const, int>&&)
+  [22] Grid::getSingleLine(std::pair<int, int>) [18] GridUtils::getRegionsCells(Grid*) [84] std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::find(EntityColor::Color const&)
+ [121] Grid::defaultDiagonal() [39] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<BlockGroup>(Grid*) [90] std::_Rb_tree<EntityColor::Color, std::pair<EntityColor::Color const, int>, std::_Select1st<std::pair<EntityColor::Color const, int> >, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<EntityColor::Color const, int> >*)
+  [16] Grid::validateSinglePath(std::pair<int, int>) [36] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<ColorEntity>(Grid*) [73] std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase_aux(std::_Rb_tree_const_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >)
+  [24] Grid::get(int, int)    [40] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Blob>(Grid*) [21] std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_lower_bound(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*, std::_Rb_tree_node_base*, std::pair<int, int> const&)
+ [106] Grid::set(int, int, PuzzleEntity*) [41] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Star>(Grid*) [69] std::pair<std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_insert_unique<std::pair<std::pair<int, int> const, std::pair<int, int> > >(std::pair<std::pair<int, int> const, std::pair<int, int> >&&)
+ [111] Grid::init()           [42] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Cancel>(Grid*) [17] std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::find(std::pair<int, int> const&)
+  [64] Grid::setLine(int, int, unsigned char) [43] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<PathDot>(Grid*) [85] std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::erase[abi:cxx11](std::_Rb_tree_iterator<std::pair<std::pair<int, int> const, std::pair<int, int> > >)
+  [96] Grid::drawLine(std::pair<int, int>, std::pair<int, int>, unsigned char) [37] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > GridUtils::getActiveSymbols<Triangle>(Grid*) [114] std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, std::pair<int, int> >, std::_Select1st<std::pair<std::pair<int, int> const, std::pair<int, int> > >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, std::pair<int, int> > > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, std::pair<int, int> > >*)
+  [97] Grid::drawLine(int, int, int, int, unsigned char) [10] GridUtils::getViolationsNoRecursion(Grid*) [83] std::_Rb_tree<std::pair<int, int>, std::pair<std::pair<int, int> const, int>, std::_Select1st<std::pair<std::pair<int, int> const, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<std::pair<int, int> const, int> > >::_M_erase(std::_Rb_tree_node<std::pair<std::pair<int, int> const, int> >*)
+ [122] Grid::drawPath(std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, unsigned char) [5] GridUtils::Validate(Grid*) [9] std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> const&>(std::pair<int, int> const&)
+  [27] Grid::getLines()       [28] GridUtils::isFFable(Grid*, std::pair<int, int>) [34] std::pair<std::_Rb_tree_iterator<std::pair<int, int> >, bool> std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_insert_unique<std::pair<int, int> >(std::pair<int, int>&&)
+  [12] Grid::neighbors(std::pair<int, int>, int) [6] GridUtils::floodfill(Grid*, std::pair<int, int>) [14] std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_get_insert_unique_pos(std::pair<int, int> const&)
+ [115] Grid::to_string[abi:cxx11]() [65] std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&) const [60] std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::find(std::pair<int, int> const&)
+ [112] Grid::~Grid()          [76] std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_initialize_map(unsigned long) [15] std::_Rb_tree_node<std::pair<int, int> >* std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_copy<false, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node>(std::_Rb_tree_node<std::pair<int, int> >*, std::_Rb_tree_node_base*, std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Alloc_node&)
+  [91] void Utils::push<EntityColor::Color>(std::map<EntityColor::Color, int, std::less<EntityColor::Color>, std::allocator<std::pair<EntityColor::Color const, int> > >&, EntityColor::Color) [77] std::_Deque_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::~_Deque_base() [13] std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_M_erase(std::_Rb_tree_node<std::pair<int, int> >*)
+  [82] Utils::resetBB(std::pair<std::pair<int, int>, std::pair<int, int> >) [95] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [29] std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::_Rb_tree(std::_Rb_tree<std::pair<int, int>, std::pair<int, int>, std::_Identity<std::pair<int, int> >, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > const&)
+  [61] Utils::contains(std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >, std::pair<int, int>) [103] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::seed(unsigned long) [119] std::_Rb_tree<int, std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > >, std::_Select1st<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >, std::less<int>, std::allocator<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > > >::_M_erase(std::_Rb_tree_node<std::pair<int const, std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > > > >*)
+   [4] Solver::path(std::pair<int, int>, std::pair<int, int>, int) [72] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [125] std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >* std::__do_uninit_copy<__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, __gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*)
+ [123] Solver::apply(int)    [101] unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [102] std::pair<unsigned long, unsigned long> std::__gen_two_uniform_ints<unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(unsigned long, unsigned long, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+   [3] Solver::solve(int)     [31] std::set<std::pair<int, int>, std::less<std::pair<int, int> >, std::allocator<std::pair<int, int> > >::insert(std::pair<int, int> const&) [120] void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+ [116] Solver::Solver()       [99] std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_pop_front_aux() [80] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::operator+<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)
+  [52] Solver::~Solver()     [100] void std::deque<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_push_back_aux<std::pair<int, int> const&>(std::pair<int, int> const&) [8] _init
