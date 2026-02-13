@@ -111,7 +111,8 @@ namespace GridUtils {
             Utils::point now = q.front();
             q.pop();
 
-            for (auto next : g->neighbors(now)) {
+            for (int d = 0; d < 4; d++) {
+                Utils::point next = {now.first + Utils::dx[d], now.second + Utils::dy[d]};
                 if (!isFFable(g, next)) continue;
                 if (Utils::contains(vis, next)) continue;
                 vis.insert(next);
@@ -139,8 +140,9 @@ namespace GridUtils {
             Utils::point now = q.front();
             q.pop();
 
-            for (auto next : g->neighbors(now)) {
-                if (!isFFable(g, next)) continue;
+            for (int d = 0; d < 4; d++) {
+                Utils::point next = {now.first + Utils::dx[d], now.second + Utils::dy[d]};
+                if (!isFFable(g, next) || !isFFable(g, hit)) continue;
                 if (Utils::contains(vis, next)) continue;
                 vis.insert(next);
                 q.push(next);

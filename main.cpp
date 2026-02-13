@@ -413,7 +413,7 @@ void randgridtest() {
     Solver s;
     s.grid = &grid;
 
-    s.solve(4, true, true);
+    s.solve(4, true, false);
     std::cout << "SOLVED " << s.solutions.size() << "\n";
     s.apply(0);
 
@@ -503,7 +503,8 @@ void randrottest() {
 
     Solver s;
     s.grid = &grid;
-    s.solve();
+    s.solve(INT_MAX);
+    std::cout << s.solutions.size() << "\n";
     std::cout << Utils::disp(s.solutions[0]) << "\n";
     s.apply(0);    
 
@@ -547,7 +548,7 @@ int main() {
 	auto start = std::chrono::high_resolution_clock::now();
 
 
-    randrottest();
+    randgridtest();
 
 
 
