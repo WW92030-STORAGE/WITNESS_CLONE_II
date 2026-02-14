@@ -52,22 +52,26 @@ class BlockGroup : public ColorEntity {
     }
 
     BlockGroup(Utils::pointSet ps) : ColorEntity() {
+        color = EntityColor::RGB_YELLOW;
         for (auto i : ps) points.insert(i);
         init();
     }
 
     BlockGroup(Utils::pointVec ps) : ColorEntity() {
+        color = EntityColor::RGB_YELLOW;
         for (auto i : ps) points.insert(i);
         init();
     }
 
     BlockGroup(Utils::pointSet ps, int val) : ColorEntity() {
+        color = EntityColor::RGB_YELLOW;
         for (auto i : ps) points.insert(i);
         value = val;
         init();
     }
 
     BlockGroup(Utils::pointVec ps, int val) : ColorEntity() {
+        color = EntityColor::RGB_YELLOW;
         for (auto i : ps) points.insert(i);
         value = val;
         init();

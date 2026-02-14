@@ -57,6 +57,8 @@ int main() {
     unit_test_rot(rotcase2);
     unit_test_rot(rotcase3);
 
+    randblocktest();
+
 	auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 

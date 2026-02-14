@@ -147,7 +147,7 @@ class Solver {
         // Begin pruning
 
         // If we are blocked in two opposing directions but not the other two then we check the regions of the others
-        if (prune) {
+        if (0 && prune) {
 
             for (int i = 0; i < 4; i++) {
                 Utils::point p0 = {src.first + Utils::dx[i], src.second + Utils::dy[i]};

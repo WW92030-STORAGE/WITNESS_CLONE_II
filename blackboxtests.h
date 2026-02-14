@@ -435,8 +435,9 @@ void randblocktest() {
     for (int r = 1; r < grid.R; r++) {
         for (int c = 1; c < grid.C; c++) {
             if (instanceof<BlockGroup, PuzzleEntity>(grid.board[r][c])) {
-                std::cout << r << " " << c << " : ";
+                
                 BlockGroup* bg = dynamic_cast<BlockGroup*>(grid.board[r][c]);
+                std::cout << r << " " << c << " | " << bg->color << " : ";
                 std::cout << bg->to_string() << "\n";
             }
         }
