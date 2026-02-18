@@ -330,7 +330,7 @@ class Grid {
         // If there are no degree 2 nodes, then check if the start connects to the end.
         // Otherwise check if the start connects to an internal node.
 
-        if (line.size() > 2) return intersection<Utils::point>(neighbors(theStart), line).size();
+        if (line.size() > 2) return intersection<Utils::point>(neighbors(theStart), line).size() && !Utils::contains(neighbors(theEnd), theStart);
 
         return Utils::contains(neighbors(theEnd), theStart);
     }

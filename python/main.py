@@ -14,6 +14,7 @@ import Render
 from RandGrid import RandGrid
 
 import Presets
+import time
 
 # Assuming you are invoking this from the base directory using the Makefile
 RENDER_OUTPUT = "grid"
@@ -200,4 +201,13 @@ def rgb():
 
 
 if __name__ == "__main__":
-    randrottest()
+    START = time.perf_counter_ns()
+
+
+
+    rgb()
+
+
+    END = time.perf_counter_ns()
+    ELAPSED_NS = END - START
+    print("FULL MS:", ELAPSED_NS * 0.000001)

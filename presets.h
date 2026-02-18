@@ -271,6 +271,14 @@ RotationalGrid weirddualshapes() {
 }
 
 // Starting here a preset is of the form {Grid, N} where N is the number of solutions to the Grid (Grid can be of any type)
+// N should be evaluated based on a ground truth such as witnesspuzzles.com
+
+std::pair<Grid, int> testcase0() {
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    return {grid, 8512};
+}
 
 std::pair<Grid, int> testcase1() {
     Grid grid(9, 9);
@@ -331,6 +339,36 @@ std::pair<Grid, int> testcase4() {
     return {grid, 288};
 }
 
+std::pair<Grid, int> testcase5() {
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(3, 3, new BlockGroup(BGS::hdomino));
+    grid.set(3, 5, new BlockGroup(BGS::vdomino));
+    grid.set(5, 5, new BlockGroup(BGS::corner));
+
+    return {grid, 70};
+}
+
+std::pair<Grid, int> testcase6() {
+    Grid grid(9, 9);
+    grid.defaultDiagonal();
+
+    grid.set(3, 3, new BlockGroup(BGS::hdomino));
+    grid.set(3, 5, new BlockGroup(BGS::vdomino));
+    grid.set(5, 5, new BlockGroup(BGS::corner));
+    grid.set(5, 3, new Cancel());
+
+    return {grid, 105};
+}
+
+std::pair<RotationalGrid, int> rotcase0() {
+    RotationalGrid grid(11, 11);
+    grid.defaultDiagonal();
+
+    return {grid, 3340};
+}
+
 // Rotational grid tests
 
 std::pair<RotationalGrid, int> rotcase1() {
@@ -355,14 +393,6 @@ std::pair<RotationalGrid, int> rotcase2() {
 
     return {grid, 152};
 }
-
-std::pair<RotationalGrid, int> rotcase3() {
-    RotationalGrid grid(11, 11);
-    grid.defaultDiagonal();
-
-    return {grid, 3340};
-}
-
 
 
 #endif

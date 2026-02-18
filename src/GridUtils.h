@@ -248,7 +248,7 @@ namespace GridUtils {
             if (cc != trix->count) violations.insert(i);
         }
 
-        auto entities = intersection(region, getActiveSymbols<ColorEntity>(grid)); // All colored symbols in the grid
+        // auto entities = intersection(region, getActiveSymbols<ColorEntity>(grid)); // All colored symbols in the grid
 
 
         /*

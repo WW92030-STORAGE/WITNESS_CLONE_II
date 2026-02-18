@@ -51,9 +51,6 @@ class Grid:
             return False
         return True
     
-    def isPathable(self, p: Utils.point):
-        return self.isPathable(p[0], p[1])
-    
     
     def get(self, p):
         if not self.inBounds(p):
@@ -218,6 +215,9 @@ class Grid:
         activeStarts = set()
         activeEnds = set()
 
+        theStart = None
+        theEnd = None
+
         for i in line:
             pp = self.get(i)
             if Utils.instanceof(pp, PuzzleEntity.Endpoint):
@@ -225,8 +225,10 @@ class Grid:
                     continue
                 if pp.isStart:
                     activeStarts.add(i)
+                    theStart = i
                 else:
                     activeEnds.add(i)
+                    theEnd = i
         
         if len(activeStarts) != 1 or len(activeEnds) != 1:
             return False
@@ -239,23 +241,11 @@ class Grid:
 
             if len(Utils.intersection(self.neighbors(i), line)) != 2:
                 return False
-            
-        q = collections.deque()
-        ps = set()
-
-        q.append(next(iter(activeStarts)))
-        while len(q) > 0:
-            now = q.popleft()
-            for i in self.neighbors(now):
-                if i in ps:
-                    continue
-                if self.get(i).hasLine == 0:
-                    continue
-
-                ps.add(i)
-                q.append(i)
         
-        return next(iter(activeEnds)) in ps
+        if len(line) > 2:
+            return len(Utils.intersection(self.neighbors(theStart), line)) > 0 and theEnd not in self.neighbors(theStart)
+        
+        return theEnd in self.neighbors(theStart)
     
     
     def validatePath(self):

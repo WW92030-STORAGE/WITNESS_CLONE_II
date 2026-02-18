@@ -48,16 +48,18 @@ int main() {
 	std::cout << "BEGIN\n";
 	auto start = std::chrono::high_resolution_clock::now();
 
-
+    unit_test_grid(testcase0);
     unit_test_grid(testcase1);
     unit_test_grid(testcase2);
     unit_test_grid(testcase3);
+    unit_test_grid(testcase4);
+    unit_test_grid(testcase5);
+    unit_test_grid(testcase6);
 
+    unit_test_rot(rotcase0);
     unit_test_rot(rotcase1);
     unit_test_rot(rotcase2);
-    unit_test_rot(rotcase3);
-
-    randblocktest();
+    
 
 	auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
