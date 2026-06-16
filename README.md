@@ -3,7 +3,7 @@
 - Clone of The Witness by Thekla Inc. as a portable interface. C++ and Python.
 - This repo attempts to add as much of the puzzle mechanics as possible.
   <br/>
-- This is currently a work in progress.
+- The C++ (base version) is technically done although it is a living document and will potentially be changed further, although the basic logic will remain the same.
 - But one thing will remain certain: this is an interface. If you wish to attach this to some display you will have to figure that part out on your own.
 - **THIS REPOSITORY CONTAINS SPOILERS FOR THE WITNESS.**
 
